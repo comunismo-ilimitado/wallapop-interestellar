@@ -1,4 +1,4 @@
-package urjc.grupoo;
+package urjc.grupoo.data;
 
 public class ClaseDePueba {
 

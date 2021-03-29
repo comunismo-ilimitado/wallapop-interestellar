@@ -1,5 +1,7 @@
 package urjc.grupoo;
 
+import urjc.grupoo.data.ClaseDePueba;
+
 public class MainInterstellarWallapop {
 
     
