@@ -1,5 +1,4 @@
 apply plugin: "java"
-apply plugin: "application"
 
 // Sources
 sourceCompatibility = '1.8'
@@ -12,24 +11,11 @@ sourceSets {
 group 'urjc.grupoo'
 version 'b0.1'
 
-ext {
-    javaMainClass = "urjc.grupoo.MainInterstellarWallapop"
-}
-
-repositories {
-    mavenCentral()
+// Run application
+if (!hasProperty('mainClass')) {
+    ext.mainClass = "urjc.grupoo.MainInterstellarWallapop"
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-// Run application
-application {
-    mainClassName = javaMainClass
+    testCompile group: 'junit', name: 'junit', version: '4.10'
 }
