@@ -1,4 +1,4 @@
-package urjc.grupoo.system.backend;
+package urjc.grupoo.system.ui;
 
 /**
  * Clase encargada de admisistrar las peticiones del programa y gestionar la ventana

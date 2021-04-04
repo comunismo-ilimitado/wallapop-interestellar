@@ -14,12 +14,18 @@ public class Client extends User {
     private List<ClientComment> commentList;
     private int ratingAverage;
     private License license;
+    private int idNumber;
 
     public Client(String origingPlanet, String species, License license, String name, String nick, String password, String email, int idNumber) {
         super(name, nick, password, email, idNumber);
         this.origingPlanet = origingPlanet;
         this.species = species;
         this.license = license;
+        this.idNumber = -1;
+    }
+    
+    public void setIdNumber(int idNumber){
+        this.idNumber = idNumber;
     }
 
     public String getOrigingPlanet() { return origingPlanet; }

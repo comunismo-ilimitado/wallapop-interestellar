@@ -2,7 +2,6 @@ package urjc.grupoo.system.backend;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
+
 
 /*
 *   Clase dedicada a ofrecer soporte a la carga y guardado de archivos
@@ -25,7 +24,7 @@ public class Database{
     // Carpeta donde se guardan los ficheros
     private static final String savefolder = "saveddata/";
     
-    // Sufiko de archivos
+    // Sufijo de archivos
     private static final String suffix = ".data";
     
     private HashMap<String, Container> containers;

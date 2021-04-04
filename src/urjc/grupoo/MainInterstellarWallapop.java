@@ -1,8 +1,8 @@
 package urjc.grupoo;
 
-import urjc.grupoo.system.backend.ProgramWindow;
-import urjc.grupoo.system.backend.SystemSesion;
-import urjc.grupoo.system.backend.WindowController;
+import urjc.grupoo.system.ui.ProgramWindow;
+import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.WindowController;
 
 public class MainInterstellarWallapop {
 
@@ -19,7 +19,7 @@ public class MainInterstellarWallapop {
 //        db.save();
 
         WindowController controller = new WindowController(new ProgramWindow());
-        SystemSesion sesion = new SystemSesion(controller);
+        SystemSession sesion = new SystemSession(controller);
         sesion.login();
 
         // Se imprime para comprobar el correcto funcionamiento del main.

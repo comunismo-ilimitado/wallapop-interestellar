@@ -18,13 +18,12 @@ public class SoldSpaceshipRegister implements Serializable{
     private double totalDamageAllowed;
     private double totalPower;
 
-    public SoldSpaceshipRegister(List<Spaceship> soldSpacheshipsList, Date soldDate, Client seller, Client buyer, double totalDamageAllowed, double totalPower) {
+    public SoldSpaceshipRegister(List<Spaceship> soldSpacheshipsList, Date soldDate, Client seller, Client buyer, double soldPrice) {
         this.soldSpacheshipsList = soldSpacheshipsList;
         this.soldDate = soldDate;
         this.seller = seller;
         this.buyer = buyer;
-        this.totalDamageAllowed = totalDamageAllowed;
-        this.totalPower = totalPower;
+        this.soldPrice = soldPrice;
     }
 
     public List<Spaceship> getSoldSpacheshipsList() {

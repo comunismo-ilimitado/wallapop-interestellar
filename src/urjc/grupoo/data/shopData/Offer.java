@@ -13,10 +13,10 @@ public class Offer implements Serializable{
     private List<Spaceship> offeredSpaceShips;
     private Date limitDate;
     private double price;
-    private Client seller;
+    private int seller;
 
 
-    public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, Client seller) {
+    public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, int seller) {
         this.offeredSpaceShips = offeredSpaceShips;
         this.limitDate = limitDate;
         this.price = price;
@@ -35,7 +35,7 @@ public class Offer implements Serializable{
         return price;
     }
 
-    public Client getSeller() {
+    public int getSeller() {
         return seller;
     }
 }

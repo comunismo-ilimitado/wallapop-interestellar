@@ -1,14 +1,21 @@
-package urjc.grupoo.system.backend;
+package urjc.grupoo.system.ui;
 
-public class SystemSesion {
+import urjc.grupoo.system.backend.ShopSystem;
+
+public class SystemSession {
 
     private final WindowController controller;
     private boolean active = true;
+    
+    private ShopSystem system;
 
-    public SystemSesion (WindowController controller) {
+    public SystemSession (WindowController controller) {
         this.controller = controller;
+        this.system = new ShopSystem();
+        
+        this.system.start();
     }
-
+    
     public boolean getActive() {
         return active;
     }

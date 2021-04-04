@@ -1,4 +1,4 @@
-package urjc.grupoo.system.backend;
+package urjc.grupoo.system.ui;
 
 import java.awt.*;
 import javax.swing.*;
