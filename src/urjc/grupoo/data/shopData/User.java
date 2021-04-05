@@ -14,12 +14,12 @@ import java.io.Serializable;
         private int idNumber;
 
 
-        public User(String name, String nick, String password, String email, int idNumber) {
+        public User(String name, String nick, String password, String email) {
             this.name = name;
             this.nick = nick;
             this.password = password;
             this.email = email;
-            this.idNumber = idNumber;
+            this.idNumber = -1;
         }
 
         public String getName() {

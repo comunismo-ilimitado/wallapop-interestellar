@@ -20,7 +20,7 @@ public class MainInterstellarWallapop {
 
         WindowController controller = new WindowController(new ProgramWindow());
         SystemSession sesion = new SystemSession(controller);
-        sesion.login();
+        sesion.start();
 
         // Se imprime para comprobar el correcto funcionamiento del main.
         System.out.println("Done");
