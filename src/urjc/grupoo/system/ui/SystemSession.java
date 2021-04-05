@@ -22,17 +22,17 @@ public class SystemSession {
 
     public void start(){
         switch(controller.selectInitialOperation()){
-            case "1": login();
+            case "1": login(); break;
             case "2": createAccount();
         }
     }
 
-    public void createAccount(){
+    private void createAccount(){
         Client newClient = controller.readClient();
         controller.printClient(newClient);
     }
 
-    public void login() {
+    private void login() {
         String[] userPassword = controller.readUserPassword();
         String clientType = checkUser(userPassword[0], userPassword[1]);
         if (clientType.equals("Client")){

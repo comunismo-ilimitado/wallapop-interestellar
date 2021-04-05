@@ -31,6 +31,8 @@ public class ProgramWindow implements ActionListener {
 
         // Se crea la cabecera.
         headerText.setForeground(Color.white);
+        mainText.setVerticalAlignment(JLabel.TOP);
+        headerText.setFont(headerText.getFont().deriveFont(20.0f));
         headerText.setBounds(50,50, 700,30);
 
         // Se crea el testo principal.
