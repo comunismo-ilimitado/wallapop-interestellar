@@ -24,4 +24,15 @@ public class License implements Serializable{
     public boolean isPirateSuspect() {
         return pirateSuspect;
     }
+
+    public void setFraudSuspect(boolean fraudSuspect) {
+        this.fraudSuspect = fraudSuspect;
+    }
+
+    public void setPirateSuspect(boolean pirateSuspect) {
+        this.pirateSuspect = pirateSuspect;
+    }
+    
+    
+    
 }

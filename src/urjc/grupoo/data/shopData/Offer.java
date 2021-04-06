@@ -15,13 +15,15 @@ public class Offer implements Serializable{
     private double price;
     private int seller;
     private int offerId;
+    private String offerType; // Los offertype estan definidos en ShopSystem
 
 
-    public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, int seller) {
+    public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, int seller, String offerType) {
         this.offeredSpaceShips = offeredSpaceShips;
         this.limitDate = limitDate;
         this.price = price;
         this.seller = seller;
+        this.offerType = offerType;
         offerId = -1;
     }
 
@@ -48,6 +50,11 @@ public class Offer implements Serializable{
     public int getOfferId() {
         return offerId;
     }
+
+    public String getOfferType() {
+        return offerType;
+    }
+    
     
     
 }

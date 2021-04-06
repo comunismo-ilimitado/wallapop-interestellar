@@ -22,6 +22,8 @@ public abstract class Operation {
     }
     public abstract String getName();
     public abstract void doOperation();
+    
+    
 }
 
 
