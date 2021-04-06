@@ -1,17 +1,48 @@
 package urjc.grupoo.system.ui;
 
 import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.system.ui.Operations.Operation;
+
+import java.util.ArrayList;
 
 /**
  * Clase encargada de admisistrar las peticiones del programa y gestionar la ventana
  */
-
 public class WindowController {
 
     private ProgramWindow window;
 
     public WindowController(ProgramWindow window){
         this.window = window;
+    }
+
+    private void clearScreen(){
+        window.setHeaderText("");
+        window.setMainText("");
+    }
+
+    private String readText() {
+        return window.readText();
+    }
+
+    private void showOptions(ArrayList<String> options) {
+        StringBuilder b = new StringBuilder();
+        b.append("<html><table>");
+        for (int i = 0; i < options.size(); i++) {
+            b.append(String.format("<tr><td align='left'>%s</td>%s", "["+(i+1)+"]:", options.get(i)));
+        }
+        b.append("</table></html>");
+        window.setMainText(b.toString());
+    }
+
+    private void showOperationOptions(ArrayList<Operation> options) {
+        StringBuilder b = new StringBuilder();
+        b.append("<html><table>");
+        for (int i = 0; i < options.size(); i++) {
+            b.append(String.format("<tr><td align='left'>%s</td>%s", "["+(i+1)+"]:", options.get(i).getName()));
+        }
+        b.append("</table></html>");
+        window.setMainText(b.toString());
     }
 
     /**
@@ -21,13 +52,63 @@ public class WindowController {
         clearScreen();
         window.setHeaderText("Bienvenido");
 
+        ArrayList<String> options = new ArrayList<>();
+        options.add("Iniciar sesión de ususario.");
+        options.add("Iniciar sesión de admisistrador.");
+        options.add("Crear cuenta de ususario.");
+        options.add("Crear cuenta de administrador.");
+        showOptions(options);
+
+        return window.readText();
+    }
+
+    public String clientMenu() {
+        clearScreen();
+        window.setHeaderText("Cliente");
+
+        ArrayList<String> options = new ArrayList<>();
+        options.add("Ver perfil.");
+        options.add("Subir nave.");
+        options.add("Explorar naves.");
+        options.add("Notificaciones.");
+        options.add("Salir.");
+        showOptions(options);
+
+        return window.readText();
+    }
+
+    /**
+     * Mestra la informacion relativa a un cliente (Su perfil).
+     */
+    public void printClient(Client c){
+        clearScreen();
+        window.setHeaderText("Perfil del usuario");
+
         StringBuilder b = new StringBuilder();
         b.append("<html><table>");
-        b.append(String.format("<tr><td align='left'>%s</td>", "[1]: Iniciar sesion."));
-        b.append(String.format("<tr><td align='left'>%s</td>", "[2]: Crear cuenta."));
+        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Nick", c.getNick()));
+        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Especie", c.getSpecies()));
+        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Planeta de origen", c.getOrigingPlanet()));
+        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Nombre", c.getName()));
+        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Correo", c.getEmail()));
         b.append("</table></html>");
         window.setMainText(b.toString());
-        return window.readText();
+        readText();
+    }
+
+    /**
+     * @return Un array con el nick y la contraseña introducidos por el usuario.
+     */
+    public String[] readUserPassword() {
+        clearScreen();
+        window.setHeaderText("Inicio de sesión");
+
+        String[] userpassword = new String[2];
+        window.setMainText("Introduzca su nick:");
+        userpassword[0] = readText();
+        window.setMainText("Introduzca la contraseña:");
+        userpassword[1] = readText();
+        return userpassword;
     }
 
     /**
@@ -52,48 +133,17 @@ public class WindowController {
         return new Client(origingPlanet, species, name, nick, password, email);
     }
 
-    /**
-     * Mestra la informacion relativa a un cliente (Su perfil).
-     */
-    public void printClient(Client c){
-        clearScreen();
-        window.setHeaderText("Perfil del usuario");
 
-        StringBuilder b = new StringBuilder();
-        b.append("<html><table>");
-        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Nick", c.getNick()));
-        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Especie", c.getSpecies()));
-        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Planeta de origen", c.getOrigingPlanet()));
-        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Nombre", c.getName()));
-        b.append(String.format("<tr><td align='left'>%s</td><td>:</td><td>%s</td></tr>", "Correo", c.getEmail()));
-        b.append("</table></html>");
-
-        window.setMainText(b.toString());
+    public Operation selectOption(ArrayList<Operation> operationList) {
+        showOperationOptions(operationList);
+        int option;
+        try {
+            option = Integer.parseInt(window.readText());
+        }
+        catch (NumberFormatException e)
+        {
+            option = 1;
+        }
+        return operationList.get(option-1);
     }
-
-    /**
-     * @return Un array con el nick y la contraseña introducidos por el usuario.
-     */
-    public String[] readUserPassword() {
-        clearScreen();
-        window.setHeaderText("Inicio de sesión");
-
-        String[] userpassword = new String[2];
-        window.setMainText("Introduzca su nick:");
-        userpassword[0] = readText();
-        window.setMainText("Introduzca la contraseña:");
-        userpassword[1] = readText();
-        return userpassword;
-    }
-
-    public void clearScreen(){
-        window.setHeaderText("");
-        window.setMainText("");
-    }
-
-    public String readText() {
-        return window.readText();
-    }
-
-
 }
