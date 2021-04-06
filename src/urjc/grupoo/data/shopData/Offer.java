@@ -14,6 +14,7 @@ public class Offer implements Serializable{
     private Date limitDate;
     private double price;
     private int seller;
+    private int offerId;
 
 
     public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, int seller) {
@@ -21,6 +22,7 @@ public class Offer implements Serializable{
         this.limitDate = limitDate;
         this.price = price;
         this.seller = seller;
+        offerId = -1;
     }
 
     public List<Spaceship> getOfferedSpaceShips() {
@@ -38,4 +40,14 @@ public class Offer implements Serializable{
     public int getSeller() {
         return seller;
     }
+
+    public void setOfferId(int offerId) {
+        this.offerId = offerId;
+    }
+
+    public int getOfferId() {
+        return offerId;
+    }
+    
+    
 }

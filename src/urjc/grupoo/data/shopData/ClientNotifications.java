@@ -1,5 +1,6 @@
 package urjc.grupoo.data.shopData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -9,6 +10,16 @@ import java.util.List;
 
 public class ClientNotifications{
 
-    private List<Offer> notificationList;
+    private List<Integer> notificationList;
 
+    public ClientNotifications(){
+        notificationList = new ArrayList<>();
+    }
+
+    public List<Integer> getNotificationList() {
+        return notificationList;
+    }
+    
+    
+    
 }

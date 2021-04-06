@@ -1,5 +1,9 @@
 package urjc.grupoo.system.backend;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.ClientComment;
 import urjc.grupoo.data.shopData.Offer;
@@ -43,7 +47,7 @@ public class ClientFacade {
         
         SystemOffers modoffers = (SystemOffers)system.getDatabase()
                 .get(ShopSystem.moderationOfferData);
-        modoffers.addOffer(offer);
+        modoffers.addOffer(offer, system);
     }
     
     // Guarda un cliente en la lista de clientes
@@ -55,29 +59,19 @@ public class ClientFacade {
     
     
     // TODO cambiar lo de offerType a algo mas estandar
+    //Suscribe al cliente a una oferta
     public void suscribeClientTo(int clientId, String offerType){
-        SystemOffers offers;
-                
-        switch(offerType){
-            case "Station":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.spaceStationOfferData);
-                break;
-            case "Cargo":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.cargoOfferData);
-                break;
-            case "Destructor":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.desOfferData);
-                break;
-            default:
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.spacefighterOfferData);
-                break;
-        }
+        
+        SystemOffers offers = system.getOffersByType(offerType);
         SystemOffersObserver observer = new SystemOffersObserver(clientId);
         offers.attach(observer);
+        
+    }
+    
+    public void unsuscribeClientTo(int clientId, String offerType){
+        SystemOffers offers = system.getOffersByType(offerType);
+        SystemOffersObserver observer = new SystemOffersObserver(clientId);
+        offers.detach(observer);
         
     }
     
@@ -100,25 +94,7 @@ public class ClientFacade {
                 return;
         
         //Obtener la oferta
-        SystemOffers offers;
-        switch(offerType){
-            case "Station":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.spaceStationOfferData);
-                break;
-            case "Cargo":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.cargoOfferData);
-                break;
-            case "Destructor":
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.desOfferData);
-                break;
-            default:
-                offers = (SystemOffers)system.getDatabase()
-                        .get(ShopSystem.spacefighterOfferData);
-                break;
-        }
+        SystemOffers offers = system.getOffersByType(offerType);
         
         // Borrar la oferta
         Offer offer = offers.getOffers().get(offerId);
@@ -135,5 +111,69 @@ public class ClientFacade {
         spaceships.getSoldSpaceshipList().add(reg);
     }
     
+    
+    public Client login(String user, String passwd){
+        Client c = null;
+        
+        SystemClients clients = 
+                (SystemClients)system.getDatabase().get(ShopSystem.clientData);
+        
+        boolean found = false;
+        Iterator<Client> it = clients.getClientList().values().iterator();
+        while(!found && it.hasNext()){
+            Client t = it.next();
+            if(t.getNick().equals(user)){
+                if(t.getPassword().equals(passwd)){
+                    c = t;
+                    found = true;
+                }
+            }
+        }
+        
+        
+        return c;
+    }
+    
+    public Client getClientInfo(int clientId){
+        Client c = null;
+        
+        SystemClients clients = 
+                (SystemClients)system.getDatabase().get(ShopSystem.clientData);
+        if(clients.getClientList().containsKey(clientId)){
+            c = clients.getClientList().get(clientId);
+        }
+        return c;
+    }
+    
+    
+    // Devuelve la lista de ofertas disponibles de un tipo
+    public Collection<Offer> getOffers(String offerType){
+        Collection<Offer> roffers = new ArrayList<>();
+        
+        //Obtener la oferta
+        SystemOffers offers = system.getOffersByType(offerType);
+        
+        roffers = offers.getOffers().values();
+        
+        return roffers;
+    }
+    
+    
+    // Obtiene una offerta con el codigo de oferta
+    public Offer getOffer(int offerId, String offerType){
+        SystemOffers offers = system.getOffersByType(offerType);
+        return offers.getOffers().get(offerId);
+    }
+    
+    
+    // Descarta una notificacion
+    public void notificationSeen(int clientId, int offerId){
+        SystemClients clients = 
+                (SystemClients)system.getDatabase().get(ShopSystem.clientData);
+        if(clients.getClientList().containsKey(clientId)){
+            Client c = clients.getClientList().get(clientId);
+            c.getNotifications().getNotificationList().remove(offerId);
+        }
+    }
     
 }

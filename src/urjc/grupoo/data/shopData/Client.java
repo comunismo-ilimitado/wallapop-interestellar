@@ -1,5 +1,7 @@
 package urjc.grupoo.data.shopData;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -12,6 +14,7 @@ public class Client extends User {
     private String species;
     private List<Integer> activeOffers;
     private List<ClientComment> commentList;
+    private ClientNotifications notifications;
     private int ratingAverage;
     private License license;
     private int idNumber;
@@ -22,6 +25,9 @@ public class Client extends User {
         this.species = species;
         this.license = null;
         this.idNumber = -1;
+        notifications = new ClientNotifications();
+        commentList = new ArrayList<>();
+        activeOffers = new ArrayList<>();
     }
 
     public void setIdNumber(int idNumber){
@@ -45,4 +51,15 @@ public class Client extends User {
     public void setRatingAverage(int ratingAverage) { this.ratingAverage = ratingAverage; }
 
     public License getLicense() { return license; }
+    
+    public void notifyOffer(Offer offer){
+        notifications.getNotificationList().add(offer.getOfferId());
+    }
+
+    public ClientNotifications getNotifications() {
+        return notifications;
+    }
+    
+    
+    
 }
