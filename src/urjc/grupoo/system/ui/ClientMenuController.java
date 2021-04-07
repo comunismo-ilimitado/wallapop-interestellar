@@ -1,20 +1,20 @@
 package urjc.grupoo.system.ui;
 
-import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.data.shopData.Client;
 
-public class AdminMenu {
+public class ClientMenuController {
 
     private final WindowController controller;
-    private final Admin admin;
+    private Client client;
 
-    public AdminMenu(Admin admin, WindowController controller) {
+    public ClientMenuController(Client client, WindowController controller) {
         this.controller = controller;
-        this.admin = admin;
+        this.client = client;
+ 
     }
 
     public void selectOperation(){
+        controller.showClientMenu();
 
     }
-
 }

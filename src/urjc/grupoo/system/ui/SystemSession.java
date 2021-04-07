@@ -1,6 +1,6 @@
 package urjc.grupoo.system.ui;
 
-import urjc.grupoo.data.shopData.Admin;
+import java.util.ArrayList;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.backend.AdminFacade;
 import urjc.grupoo.system.backend.ClientFacade;
@@ -8,57 +8,56 @@ import urjc.grupoo.system.backend.ShopSystem;
 
 public class SystemSession {
 
-    private final WindowController controller;
-    private boolean active = true;
+    private WindowController controller;
     private ShopSystem system;
     private ClientFacade clientFacade;
     private AdminFacade adminFacade;
+    private Client activeClient;
 
     public SystemSession () {
-        controller = new WindowController();
+        controller = new WindowController(this);
         this.system = new ShopSystem();
         this.system.start();
         clientFacade = new ClientFacade(system);
     }
     
-    public boolean getActive() {
-        return active;
+    public WindowController getController() {
+        return controller;
+    }
+    
+    public Client getClient() {
+        return activeClient;
     }
 
     public void start(){
-        switch(controller.selectInitialOperation()){
-            case "1": clientLogin(); break;
-            case "2": createClientAccount();
-            case "3": createClientAccount();
-            case "4": createClientAccount();
+        controller.selectInitialOperation();
+    }
+
+    public void createClient(ArrayList <String> clientAtributes){
+        Client newClient = new Client(clientAtributes.get(0), clientAtributes.get(1), clientAtributes.get(2), clientAtributes.get(3), clientAtributes.get(4), clientAtributes.get(5));
+        clientFacade.registerClient(newClient);
+        system.saveDatabase();
+//        controller.showClientProfile(newClient);
+        controller.selectInitialOperation();  
+    }
+    
+    public void clientLogin(String[] clientAndPassword) {
+        activeClient = clientFacade.login(clientAndPassword[0], clientAndPassword[1]);
+        if (activeClient != null) {
+            new ClientMenuController(activeClient, controller).selectOperation();
+        } else {
+            System.out.println("incorrectaaaaa");
         }
     }
 
-    private void createClientAccount(){
-        Client newClient = controller.readClient();
-        clientFacade.registerClient(newClient);
-        system.saveDatabase();
-        controller.printClient(newClient);
-        start();
-    }
-
     private void createAdminAccount(){
-//        Client newAdmin = controller.readAdmin();
-//        system.saveDatabase();
-    }
 
-    private void clientLogin() {
-        String[] clientPassword = controller.readUserPassword();
-        Client logedClient = clientFacade.login(clientPassword[0], clientPassword[1]);
-        ClientMenu menu = new ClientMenu(logedClient, controller);
-        menu.selectOperation();
     }
 
     private void adminLogin() {
-        String[] adminPassword = controller.readUserPassword();
-        Admin logedAdmin = adminFacade.login(adminPassword[0], adminPassword[1]);
-        AdminMenu menu = new AdminMenu(logedAdmin, controller);
-        menu.selectOperation();
+
     }
 
+    
+    
 }

@@ -9,7 +9,6 @@ import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.data.shopData.SystemAdmins;
 import urjc.grupoo.data.shopData.SystemClients;
 import urjc.grupoo.data.shopData.SystemOffers;
-import urjc.grupoo.system.ui.Operations.Operation;
 
 
 public class AdminFacade {
