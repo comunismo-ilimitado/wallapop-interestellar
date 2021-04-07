@@ -12,8 +12,8 @@ public class WindowController {
 
     private ProgramWindow window;
 
-    public WindowController(ProgramWindow window){
-        this.window = window;
+    public WindowController(){
+        window = new ProgramWindow();
     }
 
     private void clearScreen(){

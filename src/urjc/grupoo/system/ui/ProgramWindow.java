@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
 import javax.swing.*;
+import urjc.grupoo.system.ui.Forms.NewJPanel;
 
 /**
  * Ventana en la que se mostrará al usuario el programa y se interactuará con este.
@@ -14,7 +15,7 @@ import javax.swing.*;
 public class ProgramWindow implements ActionListener {
 
     private JFrame f = new JFrame("Walapop Interestelar");
-    private JPanel panel = new JPanel();
+    private JPanel panel = new NewJPanel();
     private JLabel headerText = new JLabel();
     private JLabel mainText = new JLabel();
     private JTextField textField = new JTextField();
@@ -25,41 +26,44 @@ public class ProgramWindow implements ActionListener {
      * El constructor pinta la ventana
      */
     public ProgramWindow(){
-        // Se establece el panel de fondo.
+//        // Se establece el panel de fondo.
         panel.setBounds(0, 0, 700, 400);
-        panel.setBackground(new Color(50, 50, 50));
-
-        // Se crea la cabecera.
-        headerText.setForeground(Color.white);
-        mainText.setVerticalAlignment(JLabel.TOP);
-        headerText.setFont(headerText.getFont().deriveFont(20.0f));
-        headerText.setBounds(50,50, 700,30);
-
-        // Se crea el testo principal.
-        mainText.setForeground(Color.white);
-        mainText.setVerticalAlignment(JLabel.TOP);
-        mainText.setBounds(50,80, 700,300);
-
-        // Se crea el campo de texto.
-        textField.setForeground(Color.white);
-        textField.setCaretColor(Color.white);
-        textField.setBackground(new Color(50, 50, 50));
-        textField.setBounds(50, 300, 500, 30);
-
-        // Se crea el boton.
-        button.setForeground(Color.white);
-        button.setBackground(new Color(50, 50, 50));
-        button.setBounds(600, 300, 50, 30);
-        button.addActionListener(this);
-
-        // Se añade tdo al Jframe.
-        f.add(mainText);
-        f.add(headerText);
-        f.add(textField);
-        f.add(button);
+//        panel.setBackground(new Color(50, 50, 50));
+//
+//        // Se crea la cabecera.
+//        headerText.setForeground(Color.white);
+//        mainText.setVerticalAlignment(JLabel.TOP);
+//        headerText.setFont(headerText.getFont().deriveFont(20.0f));
+//        headerText.setBounds(50,50, 700,30);
+//
+//        // Se crea el testo principal.
+//        mainText.setForeground(Color.white);
+//        mainText.setVerticalAlignment(JLabel.TOP);
+//        mainText.setBounds(50,80, 700,300);
+//
+//        // Se crea el campo de texto.
+//        textField.setForeground(Color.white);
+//        textField.setCaretColor(Color.white);
+//        textField.setBackground(new Color(50, 50, 50));
+//        textField.setBounds(50, 300, 500, 30);
+//
+//        // Se crea el boton.
+//        button.setForeground(Color.white);
+//        button.setBackground(new Color(50, 50, 50));
+//        button.setBounds(600, 300, 50, 30);
+//        button.addActionListener(this);
+//
+//        // Se añade tdo al Jframe.
+//        f.add(mainText);
+//        f.add(headerText);
+//        f.add(textField);
+//        f.add(button);
         f.add(panel);
 
+        
+
         // Se establecen los parametros de la ventana.
+
         f.setSize(700, 400);
         f.setLayout(null);
         f.setVisible(true);

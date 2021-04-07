@@ -14,8 +14,8 @@ public class SystemSession {
     private ClientFacade clientFacade;
     private AdminFacade adminFacade;
 
-    public SystemSession (WindowController controller) {
-        this.controller = controller;
+    public SystemSession () {
+        controller = new WindowController();
         this.system = new ShopSystem();
         this.system.start();
         clientFacade = new ClientFacade(system);
