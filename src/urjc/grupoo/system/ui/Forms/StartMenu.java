@@ -43,6 +43,11 @@ public class StartMenu extends javax.swing.JPanel {
         });
 
         adminLogin.setText("Iniciar sesión de Admisistrador");
+        adminLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminLoginActionPerformed(evt);
+            }
+        });
 
         crateClient.setText("Crear cuenta de Cliente");
         crateClient.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +114,12 @@ public class StartMenu extends javax.swing.JPanel {
         session.getController().addLastPanel(this);
         session.getController().createAdmin();
     }//GEN-LAST:event_crateAdminActionPerformed
+
+    private void adminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginActionPerformed
+        setVisible(false);
+        session.getController().addLastPanel(this);
+        session.getController().adminLogin();
+    }//GEN-LAST:event_adminLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
