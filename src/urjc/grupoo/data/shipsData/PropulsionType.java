@@ -12,14 +12,17 @@ public class PropulsionType {
 
     ;
 
-    public String getName{
-        return this.name
+    public String getName
+
+    {
+        return this.name;
     }
+
     ;
     public Double getmaxSpeed
 
     {
-        return this.maxSpeed
+        return this.maxSpeed;
     }
 
     ;
