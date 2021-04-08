@@ -4,7 +4,7 @@ public class Weapon {
     public String name;
     public double power;
 
-    public String getName{ return this.name};
-    public Double getNumber{ return this.power};
+    public String getName{ return name};
+    public Double getNumber{ return power};
 }
 

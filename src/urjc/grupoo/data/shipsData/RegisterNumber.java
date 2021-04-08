@@ -12,7 +12,7 @@ public class RegisterNumber {
     public String getNumber
 
     {
-        return this.number;
+        return number;
     }
 
     ;

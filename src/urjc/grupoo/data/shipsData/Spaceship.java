@@ -9,7 +9,7 @@ public abstract class Spaceship  implements Serializable {
     public PropulsionType secondpropulsion;
     public RegisterNumber registerNumber;
 
-    public String getNumber{ return this.registerNumber.getNumber};
+    public String getNumber{ return registerNumber.getNumber};
 
 
 }
