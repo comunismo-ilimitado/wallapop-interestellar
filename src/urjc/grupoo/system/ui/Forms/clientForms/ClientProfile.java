@@ -1,4 +1,4 @@
-package urjc.grupoo.system.ui.Forms;
+package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
@@ -47,6 +47,7 @@ public class ClientProfile extends javax.swing.JPanel {
         emailLabel = new javax.swing.JLabel();
         nick = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
 
         speciesTextField.setEditable(false);
         speciesTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +103,13 @@ public class ClientProfile extends javax.swing.JPanel {
             }
         });
 
+        backButton.setText("<");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,18 +120,20 @@ public class ClientProfile extends javax.swing.JPanel {
                     .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(speciesTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nickTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                .addContainerGap(215, Short.MAX_VALUE))
+                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +141,12 @@ public class ClientProfile extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(emailLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(emailLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(backButton))
                         .addGap(20, 20, 20)
                         .addComponent(nick)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,8 +195,14 @@ public class ClientProfile extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTextFieldActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        session.getController().goBack();
+        setVisible(false);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel nameLabel;

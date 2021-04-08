@@ -52,6 +52,11 @@ public class StartMenu extends javax.swing.JPanel {
         });
 
         crateAdmin.setText("Crear cuenta de Administrador");
+        crateAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crateAdminActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
@@ -65,9 +70,8 @@ public class StartMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(adminLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(clientLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(crateClient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(crateAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(crateClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(crateAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
@@ -90,13 +94,21 @@ public class StartMenu extends javax.swing.JPanel {
 
     private void clientLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientLoginActionPerformed
         setVisible(false);
+        session.getController().addLastPanel(this);
         session.getController().login();
     }//GEN-LAST:event_clientLoginActionPerformed
 
     private void crateClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateClientActionPerformed
         setVisible(false);
+        session.getController().addLastPanel(this);
         session.getController().createClient();
     }//GEN-LAST:event_crateClientActionPerformed
+
+    private void crateAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateAdminActionPerformed
+        setVisible(false);
+        session.getController().addLastPanel(this);
+        session.getController().createAdmin();
+    }//GEN-LAST:event_crateAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

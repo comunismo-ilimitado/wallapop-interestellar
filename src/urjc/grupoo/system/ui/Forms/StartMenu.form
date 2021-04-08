@@ -26,10 +26,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="adminLogin" max="32767" attributes="0"/>
                   <Component id="clientLogin" alignment="0" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="crateClient" alignment="0" max="32767" attributes="0"/>
-                      <Component id="crateAdmin" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="crateClient" alignment="0" max="32767" attributes="0"/>
+                  <Component id="crateAdmin" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="196" max="32767" attributes="0"/>
@@ -80,6 +78,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear cuenta de Administrador"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crateAdminActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

@@ -1,4 +1,4 @@
-package urjc.grupoo.system.ui.Forms;
+package urjc.grupoo.system.ui.Forms.clientForms;
 
 import java.util.ArrayList;
 import urjc.grupoo.system.ui.SystemSession;
@@ -7,12 +7,12 @@ import urjc.grupoo.system.ui.SystemSession;
  *
  * @author Gonzalo Ortega
  */
-public class LoginScreen extends javax.swing.JPanel {
+public class ClientLoginScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
 
     /** Creates new form LoginScreen */
-    public LoginScreen(SystemSession session) {
+    public ClientLoginScreen(SystemSession session) {
         this.session = session;
         initComponents();
     }
@@ -32,6 +32,7 @@ public class LoginScreen extends javax.swing.JPanel {
         userLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         doneButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -60,6 +61,13 @@ public class LoginScreen extends javax.swing.JPanel {
             }
         });
 
+        backButton.setText("<");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,16 +79,21 @@ public class LoginScreen extends javax.swing.JPanel {
                     .addComponent(passwordTextField)
                     .addComponent(userLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-                .addGap(270, 270, 270))
+                    .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(userLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backButton))
                 .addGap(20, 20, 20)
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -107,8 +120,14 @@ public class LoginScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_doneButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        session.getController().goBack();
+        setVisible(false);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField passwordTextField;
