@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientMenu;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientProfile;
@@ -11,6 +12,9 @@ import urjc.grupoo.system.ui.Forms.clientForms.ClientCreationScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientLoginScreen;
 import urjc.grupoo.system.ui.Forms.StartMenu;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminCreationScreen;
+import urjc.grupoo.system.ui.Forms.adminForms.AdminLoginScreen;
+import urjc.grupoo.system.ui.Forms.adminForms.AdminMenu;
+import urjc.grupoo.system.ui.Forms.adminForms.AdminProfile;
 
 /**
  * Clase encargada de admisistrar las peticiones del programa y gestionar la
@@ -30,6 +34,9 @@ public class WindowController {
     private final JPanel adminCreationScreen;
     private final ClientProfile clientProfile;
     private final JPanel clientMenu;
+    private final JPanel adminLoginScreen;
+    private final JPanel adminMenu;
+    private final AdminProfile adminProfile;
 
     // Lista y pila para admisistrar paneles:
     private final ArrayList<JPanel> panelList = new ArrayList<>();
@@ -64,6 +71,13 @@ public class WindowController {
         // Se crean los paneles relaccionados con el administrador.
         adminCreationScreen = new AdminCreationScreen(session);
         panelList.add(adminCreationScreen);
+        adminLoginScreen = new AdminLoginScreen(session);
+        panelList.add(adminLoginScreen);
+        adminMenu = new AdminMenu(session);
+        panelList.add(adminMenu);
+        adminProfile = new AdminProfile(session);
+        panelList.add(adminProfile);
+        
 
         // Se establece el tamaño de los paneles, se anaden a la centana y se ocultan.
         for (JPanel panel : panelList) {
@@ -130,5 +144,19 @@ public class WindowController {
 
     void adminClientMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void adminLogin(){
+        adminLoginScreen.setVisible(true);
+    }
+
+    public void showAdminMenu() { adminMenu.setVisible(true);
+    }
+    
+    
+
+    public void showAdminProfile(Admin admin) {
+        adminProfile.showAdmin(admin);
+        adminProfile.setVisible(true);
     }
 }

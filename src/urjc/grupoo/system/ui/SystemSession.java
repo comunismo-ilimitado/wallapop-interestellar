@@ -102,6 +102,7 @@ public class SystemSession {
                 adminAtributes.get(0), adminAtributes.get(1),
                 adminAtributes.get(2), adminAtributes.get(3));
         //adminFacade.
+        activeAdmin = newAdmin; //ESTA LINEA HAY Q QUITARLA LUEGO
         system.saveDatabase();
         controller.selectInitialOperation();
     }
@@ -112,16 +113,19 @@ public class SystemSession {
      * @param clientAndPassword: Array con administrador en la primera posición
      * y con la contraseña en la segunda.
      */
-    private void adminLogin(String[] clientAndPassword) {
+    public void adminLogin(String[] clientAndPassword) {
         activeAdmin = adminFacade.login(clientAndPassword[0], clientAndPassword[1]);
-        if (activeAdmin != null) {
-//            conroller.showAdminMenu();
-        } else {
-            System.out.println("incorrectaaaaa");
-        }
+//        if (activeAdmin != null) {
+//             controller.showAdminMenu();
+//        } else {
+//            System.out.println("incorrectaaaaa");
+//        }
+          controller.showAdminMenu(); //ESTO HAY CREO CAMBIARLO LUEGO
     }
 
     private void selectClientOperation() {
         controller.showClientMenu();
     }
+
+
 }
