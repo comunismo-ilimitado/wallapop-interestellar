@@ -85,7 +85,7 @@ public class SystemSession {
     public void clientLogin(String[] clientAndPassword) {
         activeClient = clientFacade.login(clientAndPassword[0], clientAndPassword[1]);
         if (activeClient != null) {
-            new ClientMenuController(activeClient, clientFacade, controller).selectOperation();
+            selectClientOperation();
         } else {
             System.out.println("incorrectaaaaa");
         }
@@ -115,9 +115,13 @@ public class SystemSession {
     private void adminLogin(String[] clientAndPassword) {
         activeAdmin = adminFacade.login(clientAndPassword[0], clientAndPassword[1]);
         if (activeAdmin != null) {
-            new AdminMenuController(activeAdmin, adminFacade, controller).selectOperation();
+//            conroller.showAdminMenu();
         } else {
             System.out.println("incorrectaaaaa");
         }
+    }
+
+    private void selectClientOperation() {
+        controller.showClientMenu();
     }
 }
