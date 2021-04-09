@@ -2,11 +2,10 @@ package urjc.grupoo.data.shipsData;
 
 import java.util.ArrayList;
 
-public class SpaceFighter extends Spaceship{
+public class SpaceFighter extends Spaceship {
 
     public ArrayList<Weapon> weapons;
     public DefenceSystem defence;
-
 
     public ArrayList<Weapon> getWeapons() {
         return weapons;
@@ -24,8 +23,10 @@ public class SpaceFighter extends Spaceship{
         this.defence = defence;
     }
 
-    public SpaceFighter(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num) {
+    public SpaceFighter(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num, ArrayList<Weapon> weaponlist, DefenceSystem dfsystem) {
         super(i, fprop, sprop, num);
+        setDefence(dfsystem);
+        setWeapons(weaponlist);
     }
 
 }

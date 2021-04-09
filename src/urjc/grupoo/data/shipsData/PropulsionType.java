@@ -1,6 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
 public class PropulsionType {
+
     public String getName() {
         return name;
     }
@@ -21,13 +22,10 @@ public class PropulsionType {
 
     public double maxSpeed;
 
-
     public PropulsionType(double i, String str) {
         setMaxSpeed(i);
         setName(str);
+
     }
-
-
-
 
 }

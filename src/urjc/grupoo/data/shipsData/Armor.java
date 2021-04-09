@@ -5,7 +5,7 @@ public class Armor extends DefenceSystem {
     public Double addedWeigth;
     public String material;
 
-    public Armor(double i, double j , String str) {
+    public Armor(double i, double j, String str) {
         super(i);
         setAddedWeigth(j);
         setMaterial(str);
@@ -18,7 +18,6 @@ public class Armor extends DefenceSystem {
     public void setMaterial(String material) {
         this.material = material;
     }
-
 
     public Double getAddedWeigth() {
         return addedWeigth;

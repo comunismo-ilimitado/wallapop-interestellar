@@ -9,7 +9,6 @@ public abstract class Spaceship implements Serializable {
     public PropulsionType firstpropulsion;
     public PropulsionType secondpropulsion;
 
-
     public int getCrewMembersAmount() {
         return crewMembersAmount;
     }
@@ -17,7 +16,6 @@ public abstract class Spaceship implements Serializable {
     public void setCrewMembersAmount(int crewMembersAmount) {
         this.crewMembersAmount = crewMembersAmount;
     }
-
 
     public String getType() {
         return type;
@@ -37,7 +35,6 @@ public abstract class Spaceship implements Serializable {
         this.firstpropulsion = firstpropulsion;
     }
 
-
     public PropulsionType getSecondpropulsion() {
         return secondpropulsion;
     }
@@ -46,17 +43,13 @@ public abstract class Spaceship implements Serializable {
         this.secondpropulsion = secondpropulsion;
     }
 
-
     public void setRegisterNumber(RegisterNumber registerNumber) {
         this.registerNumber = registerNumber;
     }
 
-
     public RegisterNumber getRegisterNumber() {
         return registerNumber;
     }
-
-
 
     public Spaceship(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num) {
         crewMembersAmount = i;

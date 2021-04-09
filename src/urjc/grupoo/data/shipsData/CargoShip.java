@@ -12,7 +12,6 @@ public class CargoShip extends Spaceship {
         this.maxCargo = maxCargo;
     }
 
-
     public DefenceSystem getDefence() {
         return defence;
     }
@@ -21,10 +20,10 @@ public class CargoShip extends Spaceship {
         this.defence = defence;
     }
 
-
     public CargoShip(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num, DefenceSystem defence, int j) {
         super(i, fprop, sprop, num);
         setDefence(defence);
         setMaxCargo(j);
+
     }
 }

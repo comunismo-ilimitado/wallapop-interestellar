@@ -12,11 +12,8 @@ public class RegisterNumber {
         Number = number;
     }
 
-
     public RegisterNumber(String str) {
         setNumber(str);
     }
-
-
 
 }

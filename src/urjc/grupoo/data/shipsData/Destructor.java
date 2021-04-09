@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Destructor extends Spaceship {
 
-
     public ArrayList<Weapon> weapons;
     public ArrayList<DefenceSystem> defences;
 
@@ -12,11 +11,9 @@ public class Destructor extends Spaceship {
         return defences;
     }
 
-
     public void setDefences(ArrayList<DefenceSystem> defences) {
         this.defences = defences;
     }
-
 
     public ArrayList<Weapon> getWeapons() {
         return weapons;
@@ -26,8 +23,9 @@ public class Destructor extends Spaceship {
         this.weapons = weapons;
     }
 
-
-    public Destructor(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num) {
+    public Destructor(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num, ArrayList<Weapon> weaponlist, ArrayList<DefenceSystem> defencelist) {
         super(i, fprop, sprop, num);
+        setDefences(defencelist);
+        setWeapons(weaponlist);
     }
 }
