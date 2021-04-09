@@ -1,10 +1,15 @@
 package urjc.grupoo.data.shipsData;
 
 public class RegisterNumber {
-    public String number;
+
+    public String Number;
+
+    public String getNumber() {
+        return Number;
+    }
 
     public void setNumber(String number) {
-        this.number = number;
+        Number = number;
     }
 
 
@@ -12,10 +17,6 @@ public class RegisterNumber {
         setNumber(str);
     }
 
-
-    public String getNumber() {
-        return number;
-    }
 
 
 }
