@@ -19,7 +19,6 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="subcriptions" max="32767" attributes="0"/>
                   <Component id="uploadShip" alignment="0" max="32767" attributes="0"/>
                   <Component id="clientProfile" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
@@ -30,8 +29,8 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="comments" alignment="0" max="32767" attributes="0"/>
-                          <Component id="notifications" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                          <Component id="soldShips" alignment="0" min="-2" pref="205" max="-2" attributes="0"/>
+                          <Component id="notifications" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="subcriptions" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="256" max="32767" attributes="0"/>
                   </Group>
@@ -59,19 +58,18 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="uploadShip" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="searchShips" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="searchShips" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="subcriptions" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="notifications" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="comments" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="soldShips" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="subcriptions" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="254" max="32767" attributes="0"/>
+              <EmptySpace pref="304" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="uploadShip">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Subir nave"/>
+        <Property name="text" type="java.lang.String" value="Crear oferta"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uploadShipActionPerformed"/>
@@ -123,14 +121,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commentsActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="soldShips">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Naves vendidas"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soldShipsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">

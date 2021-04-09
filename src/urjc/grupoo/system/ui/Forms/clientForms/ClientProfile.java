@@ -116,7 +116,7 @@ public class ClientProfile extends javax.swing.JPanel {
             }
         });
 
-        comments.setText("Mis valoraciones");
+        comments.setText("Valoraciones");
         comments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 commentsActionPerformed(evt);

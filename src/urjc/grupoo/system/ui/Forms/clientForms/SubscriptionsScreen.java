@@ -36,9 +36,10 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         stationsSubCheck = new javax.swing.JCheckBox();
-        destructorsSubCheck = new javax.swing.JCheckBox();
+        destructorSubCheck = new javax.swing.JCheckBox();
         cargoSubCheck = new javax.swing.JCheckBox();
         fighterSubCheck = new javax.swing.JCheckBox();
+        saveSubcriptionsButtons = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("Subscripciones");
@@ -52,16 +53,23 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
 
         stationsSubCheck.setText("Estaciones espaciales");
 
-        destructorsSubCheck.setText("Destructores");
-        destructorsSubCheck.addActionListener(new java.awt.event.ActionListener() {
+        destructorSubCheck.setText("Destructores");
+        destructorSubCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                destructorsSubCheckActionPerformed(evt);
+                destructorSubCheckActionPerformed(evt);
             }
         });
 
         cargoSubCheck.setText("Cargueros");
 
         fighterSubCheck.setText("Cazas");
+
+        saveSubcriptionsButtons.setText("Guardar");
+        saveSubcriptionsButtons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveSubcriptionsButtonsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,10 +87,11 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
                         .addComponent(backButton)
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fighterSubCheck)
                             .addComponent(cargoSubCheck)
-                            .addComponent(destructorsSubCheck))
+                            .addComponent(destructorSubCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(saveSubcriptionsButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -95,12 +104,14 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(stationsSubCheck)
                 .addGap(18, 18, 18)
-                .addComponent(destructorsSubCheck)
+                .addComponent(destructorSubCheck)
                 .addGap(18, 18, 18)
                 .addComponent(cargoSubCheck)
                 .addGap(18, 18, 18)
                 .addComponent(fighterSubCheck)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(saveSubcriptionsButtons)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,17 +120,45 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void destructorsSubCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destructorsSubCheckActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_destructorsSubCheckActionPerformed
+    private void destructorSubCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destructorSubCheckActionPerformed
+        
+    }//GEN-LAST:event_destructorSubCheckActionPerformed
+
+    private void saveSubcriptionsButtonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSubcriptionsButtonsActionPerformed
+        if (cargoSubCheck.isSelected()){
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "cargo");
+        } else {
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "cargo");
+        }
+        
+        if (destructorSubCheck.isSelected()){
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "destructor");
+        } else {
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "destructor");
+        }
+        
+        if (fighterSubCheck.isSelected()){
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "fighter");
+        } else {
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "fighter");
+        }
+        
+        if (stationsSubCheck.isSelected()){
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "stations");
+        } else {
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "stations");
+        }
+        
+    }//GEN-LAST:event_saveSubcriptionsButtonsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JCheckBox cargoSubCheck;
-    private javax.swing.JCheckBox destructorsSubCheck;
+    private javax.swing.JCheckBox destructorSubCheck;
     private javax.swing.JCheckBox fighterSubCheck;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton saveSubcriptionsButtons;
     private javax.swing.JCheckBox stationsSubCheck;
     // End of variables declaration//GEN-END:variables
 

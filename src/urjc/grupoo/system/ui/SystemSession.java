@@ -1,7 +1,5 @@
 package urjc.grupoo.system.ui;
 
-import urjc.grupoo.data.shopData.Admin;
-import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.backend.AdminFacade;
 import urjc.grupoo.system.backend.ClientFacade;
 import urjc.grupoo.system.backend.ShopSystem;
@@ -21,7 +19,6 @@ public class SystemSession {
         clientFacade = new ClientFacade(system);
         adminFacade = new AdminFacade(system);
     }
-    
     
     public void start(){
         this.controller = new WindowController(this);

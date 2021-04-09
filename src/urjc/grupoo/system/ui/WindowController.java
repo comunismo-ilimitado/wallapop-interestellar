@@ -3,7 +3,6 @@ package urjc.grupoo.system.ui;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Stack;
 import java.util.logging.Level;
@@ -12,8 +11,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import urjc.grupoo.system.ui.Forms.StartMenu;
-
-
 
 public class WindowController {
 

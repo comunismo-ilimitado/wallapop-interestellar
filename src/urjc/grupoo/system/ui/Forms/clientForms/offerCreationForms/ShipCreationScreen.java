@@ -11,10 +11,13 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ShipCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-    private OfferCreationHandler handler;
+    private ShipCreationScreen.ShipCreationHandler handler;
+
+    
     /** Creates new form ShipCreationScreen */
-    public ShipCreationScreen(SystemSession session, OfferCreationHandler handler) {
-        this.session = session;
+    public ShipCreationScreen(SystemSession session,
+        ShipCreationScreen.ShipCreationHandler handler) {
+        this.session = session;  
         this.handler = handler;
         initComponents();
     }
@@ -28,6 +31,8 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         propulsion2Label = new javax.swing.JLabel();
         tripulantsLabel = new javax.swing.JLabel();
         tripulantsTextField = new javax.swing.JTextField();
@@ -42,6 +47,19 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         shipTypeSelector = new javax.swing.JComboBox<>();
         registerTextField1 = new javax.swing.JTextField();
         registerLabel1 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         propulsion2Label.setText("Tipo de propulsión 2");
 
@@ -115,29 +133,30 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                         .addComponent(backButton)
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(registerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tripulantsTextField))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tripulantsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registerTextField1)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(propulsion1Selector, 0, 243, Short.MAX_VALUE)
-                            .addComponent(propulsion1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(propulsion2Selector, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(propulsion2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(registerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tripulantsTextField))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tripulantsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(registerTextField1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(propulsion1Selector, 0, 243, Short.MAX_VALUE)
+                                    .addComponent(propulsion1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(propulsion2Selector, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(propulsion2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,11 +202,14 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         String selectedType = (String) shipTypeSelector.getSelectedItem();
         switch (selectedType) {
             case "Destructor":
-                session.getController().addNewPanel(new DestructorCreationScreen(session, handler));
+                session.getController().addNewPanel(new DestructorCreationScreen(session, handler)); break;
+            case "Carguero":
+                session.getController().addNewPanel(new CargoCreationScreen(session, handler)); break;
+            case "Caza":
+                session.getController().addNewPanel(new FighterCreationScreen(session, handler)); break;
+            case "Estación Espacial":
+                session.getController().addNewPanel(new StationCreationScreen(session, handler)); break;
         }
-        
-        
-
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -200,17 +222,18 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_registerTextFieldActionPerformed
 
     private void shipTypeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shipTypeSelectorActionPerformed
-
+        
     }//GEN-LAST:event_shipTypeSelectorActionPerformed
 
     private void registerTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerTextField1ActionPerformed
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel propulsion1Label;
     private javax.swing.JComboBox<String> propulsion1Selector;
@@ -225,9 +248,8 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     private javax.swing.JTextField tripulantsTextField;
     // End of variables declaration//GEN-END:variables
 
-    
-    public interface OfferCreationHandler{
-        public void onOfferCreated(Offer offer);
+    public interface ShipCreationHandler{
+        public void onShipCreated(Spaceship ship);
     }
     
 }

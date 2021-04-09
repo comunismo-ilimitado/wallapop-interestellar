@@ -21,6 +21,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tripulantsLabel2" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                          <Component id="jComboBox3" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="registerLabel1" min="-2" pref="243" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -30,19 +37,28 @@
                               </Group>
                           </Group>
                           <Component id="nameLabel" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
-                          <Component id="doneButton" min="-2" pref="494" max="-2" attributes="0"/>
+                          <Component id="doneButton" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Component id="backButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tripulantsLabel1" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
                           <Component id="jComboBox1" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tripulantsLabel1" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                                  <Component id="jComboBox2" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="registerLabel3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextField3" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="107" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -58,29 +74,52 @@
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="registerLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="registerLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tripulantsLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="tripulantsLabel1" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="registerLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="tripulantsLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="doneButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="tripulantsLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sistema de defensa 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="registerLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sistema de defensa 1"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="doneButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Siguiente"/>
@@ -92,7 +131,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="nameLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Destructor"/>
+        <Property name="text" type="java.lang.String" value="Estaci&#xf3;n espacial"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
@@ -102,16 +141,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="tripulantsLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sistema de defensa 2"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="registerLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sistema de defensa 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
@@ -136,7 +165,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="registerLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero de armas"/>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero m&#xe1;ximo de pasajeros"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
@@ -152,6 +181,35 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox3">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="-"/>
+            <StringItem index="1" value="Escudos"/>
+            <StringItem index="2" value="Blindaje"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="tripulantsLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sistema de defensa 3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField3">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="registerLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero de naves en su interior"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

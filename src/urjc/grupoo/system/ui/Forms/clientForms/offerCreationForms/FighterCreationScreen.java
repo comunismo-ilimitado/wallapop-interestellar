@@ -1,22 +1,20 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-import urjc.grupoo.data.shopData.Spaceship;
-import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen.ShipCreationHandler;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
  *
  * @author Gonzalo Ortega
  */
-public class DestructorCreationScreen extends javax.swing.JPanel {
-    
+public class FighterCreationScreen extends javax.swing.JPanel {
+
     private final SystemSession session;
 
     private final ShipCreationScreen.ShipCreationHandler handler;
     
     /** Creates new form fighterCreationScreen */
-    public DestructorCreationScreen(SystemSession session,
-            ShipCreationHandler handler) {
+    public FighterCreationScreen(SystemSession session, 
+            ShipCreationScreen.ShipCreationHandler handler) {
         this.session = session;
         this.handler = handler;
         initComponents();
@@ -31,15 +29,15 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        registerLabel1 = new javax.swing.JLabel();
         doneButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        tripulantsLabel1 = new javax.swing.JLabel();
-        registerLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
         registerLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        registerLabel3 = new javax.swing.JLabel();
+
+        registerLabel1.setText("Sistema de defensa");
 
         doneButton.setText("Siguiente");
         doneButton.setToolTipText("");
@@ -49,7 +47,7 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        nameLabel.setText("Destructor");
+        nameLabel.setText("Caza");
 
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,10 +56,6 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        tripulantsLabel1.setText("Sistema de defensa 2");
-
-        registerLabel1.setText("Sistema de defensa 1");
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escudos", "Blindaje" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,15 +63,9 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+        registerLabel2.setText("Número de armas: 2");
 
-        registerLabel2.setText("Número de armas");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Escudos", "Blindaje" }));
+        registerLabel3.setText("Número de tripulantes: 1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,19 +79,16 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(registerLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(registerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(backButton)
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tripulantsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -115,21 +100,15 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
                     .addComponent(nameLabel))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(registerLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(registerLabel2)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(registerLabel1)
+                    .addComponent(registerLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tripulantsLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerLabel3)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(155, 155, 155)
                 .addComponent(doneButton)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,10 +121,6 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -155,12 +130,10 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel registerLabel1;
     private javax.swing.JLabel registerLabel2;
-    private javax.swing.JLabel tripulantsLabel1;
+    private javax.swing.JLabel registerLabel3;
     // End of variables declaration//GEN-END:variables
 
 }

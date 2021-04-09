@@ -30,10 +30,11 @@
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="fighterSubCheck" min="-2" max="-2" attributes="0"/>
                           <Component id="cargoSubCheck" min="-2" max="-2" attributes="0"/>
-                          <Component id="destructorsSubCheck" min="-2" max="-2" attributes="0"/>
+                          <Component id="destructorSubCheck" max="32767" attributes="0"/>
+                          <Component id="saveSubcriptionsButtons" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -52,12 +53,14 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="stationsSubCheck" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="destructorsSubCheck" min="-2" max="-2" attributes="0"/>
+              <Component id="destructorSubCheck" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="cargoSubCheck" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="fighterSubCheck" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="saveSubcriptionsButtons" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="83" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,12 +87,12 @@
         <Property name="text" type="java.lang.String" value="Estaciones espaciales"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="destructorsSubCheck">
+    <Component class="javax.swing.JCheckBox" name="destructorSubCheck">
       <Properties>
         <Property name="text" type="java.lang.String" value="Destructores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="destructorsSubCheckActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="destructorSubCheckActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cargoSubCheck">
@@ -101,6 +104,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cazas"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveSubcriptionsButtons">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Guardar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveSubcriptionsButtonsActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
