@@ -12,9 +12,14 @@ import urjc.grupoo.system.ui.Forms.clientForms.ClientCreationScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientLoginScreen;
 import urjc.grupoo.system.ui.Forms.StartMenu;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.SubscriptionsScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.ValorationsScreen;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminLoginScreen;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminMenu;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminProfile;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.DestructorCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.PriceSelectionScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen;
 
 /**
  * Clase encargada de admisistrar las peticiones del programa y gestionar la
@@ -29,11 +34,22 @@ public class WindowController {
 
     // Paneles que se van a utilizar durante la ejecución del programa:
     private final JPanel startMenu;
-    private final JPanel clietnLoginScreen;
+    
+    // Paneles de cliente:
+    private final JPanel clientLoginScreen;
     private final JPanel clientCreationScreen;
-    private final JPanel adminCreationScreen;
     private final ClientProfile clientProfile;
     private final JPanel clientMenu;
+    private final SubscriptionsScreen subscriptionsScreen;
+    private final ValorationsScreen valorationsScreen;
+    
+    // Paneles de naves:
+    private final JPanel shipCreationScreen;
+    private final JPanel destructorCreationScreen;
+    private final JPanel priceSelectionScreen;
+    
+    // Paneles de administrador:
+    private final JPanel adminCreationScreen;
     private final JPanel adminLoginScreen;
     private final JPanel adminMenu;
     private final AdminProfile adminProfile;
@@ -41,7 +57,11 @@ public class WindowController {
     // Lista y pila para admisistrar paneles:
     private final ArrayList<JPanel> panelList = new ArrayList<>();
     private final Stack<JPanel> previousPanels = new Stack<>();
-
+    
+    // Dimensiones de la ventana
+    private final int windowHeight = 400;
+    private final int windowWidth = 700;
+    
     /**
      * Inicializa todos los paneles y la ventana.
      *
@@ -59,14 +79,27 @@ public class WindowController {
         panelList.add(startMenu);
 
         // Se crean los paneles relaccionados con el cliente.
-        clietnLoginScreen = new ClientLoginScreen(session);
-        panelList.add(clietnLoginScreen);
+        clientLoginScreen = new ClientLoginScreen(session);
+        panelList.add(clientLoginScreen);
         clientCreationScreen = new ClientCreationScreen(session);
         panelList.add(clientCreationScreen);
         clientProfile = new ClientProfile(session);
         panelList.add(clientProfile);
         clientMenu = new ClientMenu(session);
         panelList.add(clientMenu);
+        subscriptionsScreen = new SubscriptionsScreen(session);
+        panelList.add(subscriptionsScreen);
+        valorationsScreen = new ValorationsScreen(session);
+        panelList.add(valorationsScreen);
+        
+        // Se crean los paneles relaccionados con las naves.
+        shipCreationScreen = new ShipCreationScreen(session);
+        panelList.add(shipCreationScreen);
+        destructorCreationScreen = new DestructorCreationScreen(session);
+        panelList.add(destructorCreationScreen);
+        priceSelectionScreen = new PriceSelectionScreen(session);
+        panelList.add(priceSelectionScreen);
+        
 
         // Se crean los paneles relaccionados con el administrador.
         adminCreationScreen = new AdminCreationScreen(session);
@@ -77,17 +110,17 @@ public class WindowController {
         panelList.add(adminMenu);
         adminProfile = new AdminProfile(session);
         panelList.add(adminProfile);
-        
+
 
         // Se establece el tamaño de los paneles, se anaden a la centana y se ocultan.
         for (JPanel panel : panelList) {
-            panel.setBounds(0, 0, 700, 400);
+            panel.setBounds(0, 0, windowWidth, windowHeight);
             window.add(panel);
             panel.setVisible(false);
         }
 
         // Se establecen los parametros de la ventana.
-        window.setSize(700, 400);
+        window.setSize(windowWidth, windowHeight);
         window.setLayout(null);
         window.setVisible(true);
         window.setResizable(false);
@@ -122,7 +155,7 @@ public class WindowController {
     }
 
     public void login() {
-        clietnLoginScreen.setVisible(true);
+        clientLoginScreen.setVisible(true);
     }
 
     public void createClient() {
@@ -142,21 +175,36 @@ public class WindowController {
         clientMenu.setVisible(true);
     }
 
-    void adminClientMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public void adminLogin(){
         adminLoginScreen.setVisible(true);
     }
 
     public void showAdminMenu() { adminMenu.setVisible(true);
     }
-    
-    
 
     public void showAdminProfile(Admin admin) {
         adminProfile.showAdmin(admin);
         adminProfile.setVisible(true);
+    }
+
+    public void showSubsciptionsOptions(Client client) {
+        subscriptionsScreen.showSubscriptions(client);
+        subscriptionsScreen.setVisible(true);
+    }
+
+    public void showComments() {
+        valorationsScreen.setVisible(true);
+    }
+
+    public void createShip() {
+        shipCreationScreen.setVisible(true);
+    }
+
+    public void createDestructor() {
+        destructorCreationScreen.setVisible(true);
+    }
+
+    public void selectPrice() {
+        priceSelectionScreen.setVisible(true);
     }
 }

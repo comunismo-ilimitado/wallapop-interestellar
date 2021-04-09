@@ -85,7 +85,7 @@ public class SystemSession {
     public void clientLogin(String[] clientAndPassword) {
         activeClient = clientFacade.login(clientAndPassword[0], clientAndPassword[1]);
         if (activeClient != null) {
-            selectClientOperation();
+            controller.showClientMenu();
         } else {
             System.out.println("incorrectaaaaa");
         }
@@ -123,9 +123,7 @@ public class SystemSession {
           controller.showAdminMenu(); //ESTO HAY CREO CAMBIARLO LUEGO
     }
 
-    private void selectClientOperation() {
-        controller.showClientMenu();
+    public void getSubscriptions(){
+
     }
-
-
 }
