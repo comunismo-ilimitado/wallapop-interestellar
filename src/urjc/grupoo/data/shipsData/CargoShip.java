@@ -22,7 +22,9 @@ public class CargoShip extends Spaceship {
     }
 
 
-    public CargoShip(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num) {
+    public CargoShip(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num, DefenceSystem defence, int j) {
         super(i, fprop, sprop, num);
+        setDefence(defence);
+        setMaxCargo(j);
     }
 }

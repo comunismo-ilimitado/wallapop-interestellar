@@ -5,6 +5,12 @@ public class Armor extends DefenceSystem {
     public Double addedWeigth;
     public String material;
 
+    public Armor(double i, double j , String str) {
+        super(i);
+        setAddedWeigth(j);
+        setMaterial(str);
+    }
+
     public String getMaterial() {
         return material;
     }
