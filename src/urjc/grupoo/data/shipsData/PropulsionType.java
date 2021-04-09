@@ -10,33 +10,33 @@ public class PropulsionType {
         setName(str);
     }
 
-    ;
+
 
     public void setName(String str) {
         this.name = str;
     }
 
-    ;
-    public String getName
+
+    public String getName()
 
     {
         return name;
     }
 
-    ;
-    public Double getmaxSpeedADouble
+
+    public Double getmaxSpeedADouble()
 
     {
         return maxSpeed;
     }
 
-    ;
+
 
 
     public void setmaxSpeed(int i) {
         maxSpeed = i;
     }
 
-    ;
+
 
 }

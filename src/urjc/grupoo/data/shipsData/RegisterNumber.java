@@ -3,25 +3,19 @@ package urjc.grupoo.data.shipsData;
 public class RegisterNumber {
     public String number;
 
-    public RegisterNumber(int i) {
-        setNumber(i);
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    ;
 
-    public String getNumber
+    public RegisterNumber(String str) {
+        setNumber(str);
+    }
 
-    {
+
+    public String getNumber() {
         return number;
     }
-
-    ;
-
-    public void setNumber(int i) {
-        number = i;
-    }
-
-    ;
 
 
 }
