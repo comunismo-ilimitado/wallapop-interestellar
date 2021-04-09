@@ -1,6 +1,10 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -10,9 +14,12 @@ public class ClientMenu extends javax.swing.JPanel {
     
     private final SystemSession session;
 
+    private Client client;
+    
     /** Creates new form ClientMenu */
-    public ClientMenu(SystemSession session) {
+    public ClientMenu(SystemSession session, Client client) {
         this.session = session;
+        this.client = client;
         initComponents();
     }
 
@@ -33,6 +40,7 @@ public class ClientMenu extends javax.swing.JPanel {
         comments = new javax.swing.JButton();
         soldShips = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        subcriptions = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("Menu Cliente");
@@ -45,6 +53,11 @@ public class ClientMenu extends javax.swing.JPanel {
         });
 
         uploadShip.setText("Subir nave");
+        uploadShip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadShipActionPerformed(evt);
+            }
+        });
 
         searchShips.setText("Explorar ofertas");
         searchShips.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +74,11 @@ public class ClientMenu extends javax.swing.JPanel {
         });
 
         comments.setText("Mis valoraciones");
+        comments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commentsActionPerformed(evt);
+            }
+        });
 
         soldShips.setText("Naves vendidas");
         soldShips.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +94,13 @@ public class ClientMenu extends javax.swing.JPanel {
             }
         });
 
+        subcriptions.setText("Suscripciones");
+        subcriptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subcriptionsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,6 +108,7 @@ public class ClientMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(subcriptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(uploadShip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(clientProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,15 +147,14 @@ public class ClientMenu extends javax.swing.JPanel {
                         .addComponent(comments)
                         .addGap(18, 18, 18)
                         .addComponent(soldShips)))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(subcriptions)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void clientProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientProfileActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showClientProfile(session.getClient());
-
+        session.getController().addNewPanel(new ClientProfile(session, client));
     }//GEN-LAST:event_clientProfileActionPerformed
 
     private void searchShipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchShipsActionPerformed
@@ -146,8 +171,27 @@ public class ClientMenu extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void subcriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subcriptionsActionPerformed
+        session.getController().addNewPanel(new SubscriptionsScreen(session, client));
+    }//GEN-LAST:event_subcriptionsActionPerformed
+
+    private void commentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentsActionPerformed
+        session.getController().addNewPanel(new ValorationsScreen(session, client));
+    }//GEN-LAST:event_commentsActionPerformed
+
+    private void uploadShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadShipActionPerformed
+        session.getController().checkPoint();
+        
+        session.getController().addNewPanel(new ShipCreationScreen(session, 
+        new ShipCreationScreen.OfferCreationHandler(){
+            @Override
+            public void onOfferCreated(Offer offer) {
+                session.getClientFacade().uploadOffer(client.getIdNumber(), offer);
+            }
+        }));
+    }//GEN-LAST:event_uploadShipActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,6 +202,7 @@ public class ClientMenu extends javax.swing.JPanel {
     private javax.swing.JButton notifications;
     private javax.swing.JButton searchShips;
     private javax.swing.JButton soldShips;
+    private javax.swing.JButton subcriptions;
     private javax.swing.JButton uploadShip;
     // End of variables declaration//GEN-END:variables
 

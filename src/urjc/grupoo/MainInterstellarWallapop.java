@@ -1,5 +1,6 @@
 package urjc.grupoo;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 public class MainInterstellarWallapop {
     
@@ -14,8 +15,8 @@ public class MainInterstellarWallapop {
 //        //db.addContainer("Prueba", p);
 //        db.save();
 
-        SystemSession sesion = new SystemSession();
-        sesion.start();
+        SystemSession session = new SystemSession();
+        session.start();
 
         // Se imprime para comprobar el correcto funcionamiento del main.
         System.out.println("Done");

@@ -1,6 +1,12 @@
 package urjc.grupoo.system.ui.Forms;
 
+import javax.swing.JPanel;
+import urjc.grupoo.system.ui.Forms.adminForms.AdminCreationScreen;
+import urjc.grupoo.system.ui.Forms.adminForms.AdminLoginScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.ClientCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.ClientLoginScreen;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -34,6 +40,7 @@ public class StartMenu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(50, 50, 50));
+        setOpaque(false);
 
         clientLogin.setText("Iniciar sesión de Cliente");
         clientLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +71,7 @@ public class StartMenu extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -98,27 +106,19 @@ public class StartMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clientLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientLoginActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().login();
+        session.getController().addNewPanel(new ClientLoginScreen(session));
     }//GEN-LAST:event_clientLoginActionPerformed
 
     private void crateClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateClientActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().createClient();
+        session.getController().addNewPanel(new ClientCreationScreen(session));
     }//GEN-LAST:event_crateClientActionPerformed
 
     private void crateAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateAdminActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().createAdmin();
+        session.getController().addNewPanel(new AdminCreationScreen(session));
     }//GEN-LAST:event_crateAdminActionPerformed
 
     private void adminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().adminLogin();
+        session.getController().addNewPanel(new AdminLoginScreen(session));
     }//GEN-LAST:event_adminLoginActionPerformed
 
 

@@ -27,7 +27,6 @@ public class AdminFacade {
         SystemAdmins admins = 
                 (SystemAdmins)system.getDatabase().get(ShopSystem.adminData);
         
-        boolean found = false;
         c = admins.getAdmin(user);
         return c;
     }
@@ -106,5 +105,12 @@ public class AdminFacade {
             Client client = clients.getClientList().get(clientId);
             client.getLicense().setPirateSuspect(false);
         }
+    }
+    
+    // Guarda un cliente en la lista de admines
+    public void registerAdmin(Admin admin){
+        SystemAdmins admins = 
+                (SystemAdmins)system.getDatabase().get(ShopSystem.adminData);
+        admins.getAdminList().add(admin);
     }
 }

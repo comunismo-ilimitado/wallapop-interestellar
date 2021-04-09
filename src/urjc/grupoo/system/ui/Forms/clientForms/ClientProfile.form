@@ -25,6 +25,7 @@
                   <Component id="speciesLabel" alignment="0" pref="231" max="32767" attributes="0"/>
                   <Component id="planetTextField" alignment="1" max="32767" attributes="0"/>
                   <Component id="planetLabel" alignment="1" pref="231" max="32767" attributes="0"/>
+                  <Component id="comments" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -78,7 +79,9 @@
                       <Component id="planetTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="303" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="comments" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="253" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,6 +171,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="comments">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mis valoraciones"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commentsActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

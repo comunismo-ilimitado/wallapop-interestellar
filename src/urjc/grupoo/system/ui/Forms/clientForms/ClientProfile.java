@@ -2,6 +2,7 @@ package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -11,13 +12,17 @@ public class ClientProfile extends javax.swing.JPanel {
 
     private final SystemSession session;
     
+    private Client client;
+    
     /** Creates new form ClientProfile */
-    public ClientProfile(SystemSession session) {
+    public ClientProfile(SystemSession session, Client clientt) {
         this.session = session;
+        this.client = clientt;
         initComponents();
+        showClient();
     }
     
-    public void showCLient(Client client){
+    public void showClient(){
         speciesTextField.setText(client.getSpecies());
         planetTextField.setText(client.getOrigingPlanet());
         nameTextField.setText(client.getName());
@@ -48,6 +53,7 @@ public class ClientProfile extends javax.swing.JPanel {
         nick = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        comments = new javax.swing.JButton();
 
         speciesTextField.setEditable(false);
         speciesTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +116,13 @@ public class ClientProfile extends javax.swing.JPanel {
             }
         });
 
+        comments.setText("Mis valoraciones");
+        comments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commentsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +135,8 @@ public class ClientProfile extends javax.swing.JPanel {
                     .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(comments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -167,7 +181,9 @@ public class ClientProfile extends javax.swing.JPanel {
                         .addComponent(planetLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(planetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(comments)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,12 +213,16 @@ public class ClientProfile extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void commentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentsActionPerformed
+        session.getController().addNewPanel(new ValorationsScreen(session, client));
+    }//GEN-LAST:event_commentsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton comments;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel nameLabel;

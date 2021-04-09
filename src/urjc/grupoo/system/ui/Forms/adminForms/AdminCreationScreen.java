@@ -1,7 +1,9 @@
 package urjc.grupoo.system.ui.Forms.adminForms;
 
 import java.util.ArrayList;
+import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -160,13 +162,14 @@ public class AdminCreationScreen extends javax.swing.JPanel {
         adminAtributes.add(nickTextField.getText());
         adminAtributes.add(passwordTextField.getText());
         adminAtributes.add(emailTextField.getText());
-        session.createAdmin(adminAtributes);
-        setVisible(false);
+        Admin admin = new Admin(adminAtributes.get(0), adminAtributes.get(1), 
+                adminAtributes.get(2), adminAtributes.get(3));
+        session.getAdminFacade().registerAdmin(admin);
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
 
