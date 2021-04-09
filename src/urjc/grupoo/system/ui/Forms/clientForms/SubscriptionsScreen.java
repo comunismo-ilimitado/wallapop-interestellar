@@ -1,14 +1,24 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.system.ui.SystemSession;
+
 /**
  *
  * @author Gonzalo Ortega
  */
-public class SubsciptionsScreen extends javax.swing.JPanel {
+public class SubscriptionsScreen extends javax.swing.JPanel {
+
+    private final SystemSession session;
 
     /** Creates new form SubsciptionsScreen */
-    public SubsciptionsScreen() {
+    public SubscriptionsScreen(SystemSession session) {
+        this.session = session;
         initComponents();
+    }
+    
+    public void showSubscriptions(Client client) {
+        
     }
 
     /** This method is called from within the constructor to
@@ -92,7 +102,7 @@ public class SubsciptionsScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        //session.getController().goBack();
+        session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
@@ -109,5 +119,7 @@ public class SubsciptionsScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JCheckBox stationsSubCheck;
     // End of variables declaration//GEN-END:variables
+
+    
 
 }

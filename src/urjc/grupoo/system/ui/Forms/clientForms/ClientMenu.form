@@ -19,6 +19,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="subcriptions" max="32767" attributes="0"/>
                   <Component id="uploadShip" alignment="0" max="32767" attributes="0"/>
                   <Component id="clientProfile" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
@@ -68,7 +69,9 @@
                       <Component id="soldShips" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="304" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="subcriptions" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="254" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,6 +97,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Subir nave"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uploadShipActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="searchShips">
       <Properties>
@@ -115,6 +121,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mis valoraciones"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commentsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="soldShips">
       <Properties>
@@ -130,6 +139,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="subcriptions">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Suscripciones"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subcriptionsActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
