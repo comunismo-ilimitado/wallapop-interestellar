@@ -21,8 +21,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="searchShips" alignment="0" pref="294" max="32767" attributes="0"/>
-                      <Component id="uploadShip" alignment="0" max="32767" attributes="0"/>
+                      <Component id="viewoffers" alignment="0" pref="294" max="32767" attributes="0"/>
+                      <Component id="viewusers" alignment="0" max="32767" attributes="0"/>
                       <Component id="adminProfile" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -43,9 +43,9 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="adminProfile" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="uploadShip" min="-2" max="-2" attributes="0"/>
+              <Component id="viewusers" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="searchShips" min="-2" max="-2" attributes="0"/>
+              <Component id="viewoffers" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="208" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -68,17 +68,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminProfileActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="uploadShip">
+    <Component class="javax.swing.JButton" name="viewusers">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver usuarios"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="searchShips">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ver todas las ofertas"/>
+        <Property name="text" type="java.lang.String" value="Reportar usuarios"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchShipsActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewusersActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewoffers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Moderar ofertas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewoffersActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">

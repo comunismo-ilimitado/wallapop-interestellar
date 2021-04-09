@@ -36,8 +36,8 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         adminProfile = new javax.swing.JButton();
-        uploadShip = new javax.swing.JButton();
-        searchShips = new javax.swing.JButton();
+        viewusers = new javax.swing.JButton();
+        viewoffers = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -50,12 +50,17 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
 
-        uploadShip.setText("Ver usuarios");
-
-        searchShips.setText("Ver todas las ofertas");
-        searchShips.addActionListener(new java.awt.event.ActionListener() {
+        viewusers.setText("Reportar usuarios");
+        viewusers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchShipsActionPerformed(evt);
+                viewusersActionPerformed(evt);
+            }
+        });
+
+        viewoffers.setText("Moderar ofertas");
+        viewoffers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewoffersActionPerformed(evt);
             }
         });
 
@@ -75,8 +80,8 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(searchShips, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                        .addComponent(uploadShip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewoffers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                        .addComponent(viewusers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(adminProfile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(backButton)
@@ -92,9 +97,9 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addComponent(adminProfile)
                 .addGap(18, 18, 18)
-                .addComponent(uploadShip)
+                .addComponent(viewusers)
                 .addGap(18, 18, 18)
-                .addComponent(searchShips)
+                .addComponent(viewoffers)
                 .addContainerGap(208, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -103,21 +108,25 @@ public class AdminMenu extends javax.swing.JPanel {
         session.getController().addNewPanel(new AdminProfile(session, admin));
     }//GEN-LAST:event_adminProfileActionPerformed
 
-    private void searchShipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchShipsActionPerformed
-
-    }//GEN-LAST:event_searchShipsActionPerformed
+    private void viewoffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewoffersActionPerformed
+        session.getController().addNewPanel(new ModerateOffers(session));
+    }//GEN-LAST:event_viewoffersActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void viewusersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewusersActionPerformed
+        session.getController().addNewPanel(new UpdatePermission(session));
+    }//GEN-LAST:event_viewusersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminProfile;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton searchShips;
-    private javax.swing.JButton uploadShip;
+    private javax.swing.JButton viewoffers;
+    private javax.swing.JButton viewusers;
     // End of variables declaration//GEN-END:variables
 }

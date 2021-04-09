@@ -30,7 +30,7 @@ public class WindowController {
         JPanel startingPanel = new StartMenu(this.session);
         
         try {
-            Image background = ImageIO.read(getClass().getResourceAsStream("/sky.png"));
+            Image background = ImageIO.read(getClass().getResourceAsStream("/nave.jpg"));
             window.setContentPane(new JPanel() {
                 @Override
                 public void paintComponent(Graphics g) {
