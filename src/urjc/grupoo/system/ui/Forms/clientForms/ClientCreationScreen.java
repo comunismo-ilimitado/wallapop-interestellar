@@ -1,6 +1,8 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
 import java.util.ArrayList;
+import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.system.ui.SystemSession;
 import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
@@ -9,10 +11,10 @@ import urjc.grupoo.system.ui.SystemSession_OLD;
  */
 public class ClientCreationScreen extends javax.swing.JPanel {
 
-    private final SystemSession_OLD session;
+    private final SystemSession session;
 
     /** Creates new form CreateUserScreen */
-    public ClientCreationScreen(SystemSession_OLD session) {
+    public ClientCreationScreen(SystemSession session) {
         this.session = session;
         initComponents();
     }
@@ -203,13 +205,15 @@ public class ClientCreationScreen extends javax.swing.JPanel {
         clientAtributes.add(nickTextField.getText());
         clientAtributes.add(passwordTextField.getText());
         clientAtributes.add(emailTextField.getText());
-        session.createClient(clientAtributes);
-        setVisible(false);
+        Client newClient = new Client(
+                clientAtributes.get(0), clientAtributes.get(1), clientAtributes.get(2),
+                clientAtributes.get(3), clientAtributes.get(4), clientAtributes.get(5));
+        session.getClientFacade().registerClient(newClient);
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
 

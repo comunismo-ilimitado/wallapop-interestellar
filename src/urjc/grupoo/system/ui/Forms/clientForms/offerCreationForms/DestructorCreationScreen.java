@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shopData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -10,9 +11,13 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     
     private final SystemSession session;
 
+    private ShipCreationScreen.OfferCreationHandler handler;
+    
     /** Creates new form fighterCreationScreen */
-    public DestructorCreationScreen(SystemSession session) {
+    public DestructorCreationScreen(SystemSession session, 
+            ShipCreationScreen.OfferCreationHandler handler) {
         this.session = session;
+        this.handler = handler;
         initComponents();
     }
 
@@ -183,14 +188,11 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        //        ArrayList <String> clientAtributes = new ArrayList<>();
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().selectPrice();
+        session.getController().addNewPanel(new PriceSelectionScreen(session, handler));
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        session.getController().goBack();
+        session.getController().goBack(); // Para volver al checkpoint
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 

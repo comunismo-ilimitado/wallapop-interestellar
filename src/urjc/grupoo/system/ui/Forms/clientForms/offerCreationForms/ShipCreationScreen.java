@@ -1,5 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.data.shopData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,10 +11,11 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ShipCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-    
+    private OfferCreationHandler handler;
     /** Creates new form ShipCreationScreen */
-    public ShipCreationScreen(SystemSession session) {
+    public ShipCreationScreen(SystemSession session, OfferCreationHandler handler) {
         this.session = session;
+        this.handler = handler;
         initComponents();
     }
 
@@ -177,14 +180,10 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_tripulantsTextFieldActionPerformed
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-//        ArrayList <String> clientAtributes = new ArrayList<>();
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        
         String selectedType = (String) shipTypeSelector.getSelectedItem();
         switch (selectedType) {
             case "Destructor":
-                session.getController().createDestructor();
+                session.getController().addNewPanel(new DestructorCreationScreen(session, handler));
         }
         
         
@@ -208,7 +207,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_registerTextField1ActionPerformed
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
@@ -226,4 +225,9 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     private javax.swing.JTextField tripulantsTextField;
     // End of variables declaration//GEN-END:variables
 
+    
+    public interface OfferCreationHandler{
+        public void onOfferCreated(Offer offer);
+    }
+    
 }

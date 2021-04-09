@@ -5,18 +5,23 @@
  */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
+import urjc.grupoo.data.shopData.Admin;
+import urjc.grupoo.system.ui.SystemSession;
 import urjc.grupoo.system.ui.SystemSession_OLD;
 
 
 public class AdminMenu extends javax.swing.JPanel {
     
-    private final SystemSession_OLD session;
+    private final SystemSession session;
 
+    private Admin admin;
+    
     /**
      * Creates new form AdminMenu
      */
-    public AdminMenu(SystemSession_OLD session) {
+    public AdminMenu(SystemSession session, Admin admin) {
         this.session = session;
+        this.admin = admin;
         initComponents();
     }
 
@@ -95,9 +100,7 @@ public class AdminMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminProfileActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showAdminProfile(session.getAdmin());
+        session.getController().addNewPanel(new AdminProfile(session, admin));
     }//GEN-LAST:event_adminProfileActionPerformed
 
     private void searchShipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchShipsActionPerformed

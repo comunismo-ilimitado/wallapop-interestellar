@@ -10,14 +10,17 @@ import urjc.grupoo.system.ui.SystemSession;
 public class SubscriptionsScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
+    private Client client;
 
     /** Creates new form SubsciptionsScreen */
-    public SubscriptionsScreen(SystemSession session) {
+    public SubscriptionsScreen(SystemSession session, Client client) {
         this.session = session;
+        this.client = client;
         initComponents();
+        showSubscriptions();
     }
     
-    public void showSubscriptions(Client client) {
+    public void showSubscriptions() {
         
     }
 

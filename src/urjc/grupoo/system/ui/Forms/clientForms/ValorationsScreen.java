@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,10 +10,12 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ValorationsScreen extends javax.swing.JPanel {
     
     private final SystemSession session;
-
+    private Client client;
+    
     /** Creates new form ValorationsScreen */
-    public ValorationsScreen(SystemSession session) {
+    public ValorationsScreen(SystemSession session, Client client) {
         this.session = session;
+        this.client = client;
         initComponents();
     }
 

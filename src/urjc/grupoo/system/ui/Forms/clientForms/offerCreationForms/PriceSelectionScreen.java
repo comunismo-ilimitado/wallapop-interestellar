@@ -1,18 +1,19 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shopData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
-/**
- *
- * @author Gonzalo Ortega
- */
 public class PriceSelectionScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
     
+    private ShipCreationScreen.OfferCreationHandler handler;
+    
     /** Creates new form PriceSelectionScreen */
-    public PriceSelectionScreen(SystemSession session) {
+    public PriceSelectionScreen(SystemSession session, 
+            ShipCreationScreen.OfferCreationHandler handler) {
         this.session = session;
+        this.handler = handler;
         initComponents();
     }
 
@@ -88,8 +89,7 @@ public class PriceSelectionScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        setVisible(false);
-        session.getController().showClientMenu();
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

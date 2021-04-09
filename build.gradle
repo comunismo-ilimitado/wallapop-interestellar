@@ -28,6 +28,14 @@ test {
     useJUnitPlatform()
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'urjc.grupoo.MainInterstellarWallapop'
+        )
+    }
+}
+
 // Run application
 application {
     mainClassName = javaMainClass

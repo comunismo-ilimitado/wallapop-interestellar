@@ -27,6 +27,10 @@ public class SystemSession {
         this.controller = new WindowController(this);
     }
 
+    public void exit(){
+        system.getDatabase().save();
+    }
+    
     public WindowController getController() {
         return controller;
     }

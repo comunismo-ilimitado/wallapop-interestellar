@@ -216,9 +216,7 @@ public class ClientProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void commentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentsActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showComments();
+        session.getController().addNewPanel(new ValorationsScreen(session, client));
     }//GEN-LAST:event_commentsActionPerformed
 
 

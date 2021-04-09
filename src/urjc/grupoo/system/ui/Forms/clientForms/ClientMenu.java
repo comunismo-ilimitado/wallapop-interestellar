@@ -1,6 +1,8 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen;
 import urjc.grupoo.system.ui.SystemSession;
 import urjc.grupoo.system.ui.SystemSession_OLD;
 
@@ -172,21 +174,23 @@ public class ClientMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void subcriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subcriptionsActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showSubsciptionsOptions(session.getClient());
+        session.getController().addNewPanel(new SubscriptionsScreen(session, client));
     }//GEN-LAST:event_subcriptionsActionPerformed
 
     private void commentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentsActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showComments();
+        session.getController().addNewPanel(new ValorationsScreen(session, client));
     }//GEN-LAST:event_commentsActionPerformed
 
     private void uploadShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadShipActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().createShip();
+        session.getController().checkPoint();
+        
+        session.getController().addNewPanel(new ShipCreationScreen(session, 
+        new ShipCreationScreen.OfferCreationHandler(){
+            @Override
+            public void onOfferCreated(Offer offer) {
+                session.getClientFacade().uploadOffer(client.getIdNumber(), offer);
+            }
+        }));
     }//GEN-LAST:event_uploadShipActionPerformed
 
 
