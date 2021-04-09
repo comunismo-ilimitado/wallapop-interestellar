@@ -1,6 +1,9 @@
 package urjc.grupoo.system.ui.Forms;
 
+import javax.swing.JPanel;
+import urjc.grupoo.system.ui.Forms.clientForms.ClientLoginScreen;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -99,26 +102,25 @@ public class StartMenu extends javax.swing.JPanel {
 
     private void clientLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientLoginActionPerformed
         setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().login();
+        session.getController().addNewPanel(new ClientLoginScreen(session));
     }//GEN-LAST:event_clientLoginActionPerformed
 
     private void crateClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateClientActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().createClient();
+    //    setVisible(false);
+    //    session.getController().addLastPanel(this);
+    //    session.getController().createClient();
     }//GEN-LAST:event_crateClientActionPerformed
 
     private void crateAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crateAdminActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().createAdmin();
+    //    setVisible(false);
+    //    session.getController().addLastPanel(this);
+    //    session.getController().createAdmin();
     }//GEN-LAST:event_crateAdminActionPerformed
 
     private void adminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().adminLogin();
+    //    setVisible(false);
+    //    session.getController().addLastPanel(this);
+    //    session.getController().adminLogin();
     }//GEN-LAST:event_adminLoginActionPerformed
 
 

@@ -1,7 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
 import java.util.ArrayList;
-import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -9,10 +9,10 @@ import urjc.grupoo.system.ui.SystemSession;
  */
 public class ClientCreationScreen extends javax.swing.JPanel {
 
-    private final SystemSession session;
+    private final SystemSession_OLD session;
 
     /** Creates new form CreateUserScreen */
-    public ClientCreationScreen(SystemSession session) {
+    public ClientCreationScreen(SystemSession_OLD session) {
         this.session = session;
         initComponents();
     }

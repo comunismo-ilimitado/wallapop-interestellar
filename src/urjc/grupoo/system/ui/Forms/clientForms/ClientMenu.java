@@ -1,6 +1,8 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -10,9 +12,12 @@ public class ClientMenu extends javax.swing.JPanel {
     
     private final SystemSession session;
 
+    private Client client;
+    
     /** Creates new form ClientMenu */
-    public ClientMenu(SystemSession session) {
+    public ClientMenu(SystemSession session, Client client) {
         this.session = session;
+        this.client = client;
         initComponents();
     }
 
@@ -126,10 +131,7 @@ public class ClientMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clientProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientProfileActionPerformed
-        setVisible(false);
-        session.getController().addLastPanel(this);
-        session.getController().showClientProfile(session.getClient());
-
+        session.getController().addNewPanel(new ClientProfile(session, client));
     }//GEN-LAST:event_clientProfileActionPerformed
 
     private void searchShipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchShipsActionPerformed
@@ -146,7 +148,6 @@ public class ClientMenu extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
 

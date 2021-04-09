@@ -5,17 +5,17 @@
  */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
-import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 
 public class AdminMenu extends javax.swing.JPanel {
     
-    private final SystemSession session;
+    private final SystemSession_OLD session;
 
     /**
      * Creates new form AdminMenu
      */
-    public AdminMenu(SystemSession session) {
+    public AdminMenu(SystemSession_OLD session) {
         this.session = session;
         initComponents();
     }

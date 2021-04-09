@@ -6,17 +6,17 @@
 package urjc.grupoo.system.ui.Forms.adminForms;
 
 import urjc.grupoo.data.shopData.Admin;
-import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 
 public class AdminProfile extends javax.swing.JPanel {
     
-    private final SystemSession session;
+    private final SystemSession_OLD session;
 
     /**
      * Creates new form AdminProfile
      */
-    public AdminProfile(SystemSession session) {
+    public AdminProfile(SystemSession_OLD session) {
         this.session = session;
         initComponents();
     }

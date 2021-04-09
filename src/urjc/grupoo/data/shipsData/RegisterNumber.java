@@ -3,13 +3,13 @@ package urjc.grupoo.data.shipsData;
 public class RegisterNumber {
     public String number;
 
-    public RegisterNumber(int i) {
+    public RegisterNumber(String i) {
         setNumber(i);
     }
 
     ;
 
-    public String getNumber
+    public String getNumber()
 
     {
         return number;
@@ -17,7 +17,7 @@ public class RegisterNumber {
 
     ;
 
-    public void setNumber(int i) {
+    public void setNumber(String i) {
         number = i;
     }
 

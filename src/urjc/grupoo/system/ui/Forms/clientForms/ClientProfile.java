@@ -2,6 +2,7 @@ package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
+import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
@@ -11,13 +12,17 @@ public class ClientProfile extends javax.swing.JPanel {
 
     private final SystemSession session;
     
+    private Client client;
+    
     /** Creates new form ClientProfile */
-    public ClientProfile(SystemSession session) {
+    public ClientProfile(SystemSession session, Client clientt) {
         this.session = session;
+        this.client = clientt;
         initComponents();
+        showClient();
     }
     
-    public void showCLient(Client client){
+    public void showClient(){
         speciesTextField.setText(client.getSpecies());
         planetTextField.setText(client.getOrigingPlanet());
         nameTextField.setText(client.getName());
@@ -197,7 +202,6 @@ public class ClientProfile extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
 

@@ -17,14 +17,14 @@ public class PropulsionType {
     }
 
     ;
-    public String getName
+    public String getName()
 
     {
         return name;
     }
 
     ;
-    public Double getmaxSpeedADouble
+    public Double getmaxSpeedADouble()
 
     {
         return maxSpeed;
