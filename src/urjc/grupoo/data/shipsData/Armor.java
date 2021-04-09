@@ -2,8 +2,8 @@ package urjc.grupoo.data.shipsData;
 
 public class Armor extends DefenceSystem {
 
-    public Double addedWeigth;
-    public String material;
+    private Double addedWeigth;
+    private String material;
 
     public Armor(double i, double j, String str) {
         super(i);

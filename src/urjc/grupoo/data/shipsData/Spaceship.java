@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public abstract class Spaceship implements Serializable {
 
-    public RegisterNumber registerNumber;
-    public int crewMembersAmount;
-    public PropulsionType firstpropulsion;
-    public PropulsionType secondpropulsion;
+    private RegisterNumber registerNumber;
+    private int crewMembersAmount;
+    private PropulsionType firstpropulsion;
+    private PropulsionType secondpropulsion;
+    private String type;
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;
@@ -24,8 +25,6 @@ public abstract class Spaceship implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-
-    public String type;
 
     public PropulsionType getFirstpropulsion() {
         return firstpropulsion;

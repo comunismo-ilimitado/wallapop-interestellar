@@ -1,8 +1,8 @@
 package urjc.grupoo.data.shipsData;
 
 public class Weapon {
-    public double power;
-    public String name;
+    private double power;
+    private String name;
 
     public Weapon(double i, String str) {
         setName(str);

@@ -2,7 +2,7 @@ package urjc.grupoo.data.shipsData;
 
 public abstract class DefenceSystem {
 
-    public double damageAllowed;
+    private double damageAllowed;
 
     public DefenceSystem(double i) {
         this.setDamageAllowed(i);

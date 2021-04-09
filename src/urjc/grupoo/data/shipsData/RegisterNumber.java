@@ -2,7 +2,7 @@ package urjc.grupoo.data.shipsData;
 
 public class RegisterNumber {
 
-    public String Number;
+    private String Number;
 
     public String getNumber() {
         return Number;

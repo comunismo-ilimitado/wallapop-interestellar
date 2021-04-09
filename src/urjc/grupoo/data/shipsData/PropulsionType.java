@@ -2,6 +2,9 @@ package urjc.grupoo.data.shipsData;
 
 public class PropulsionType {
 
+    private String name;
+    private double maxSpeed;
+
     public String getName() {
         return name;
     }
@@ -10,8 +13,6 @@ public class PropulsionType {
         this.name = name;
     }
 
-    public String name;
-
     public double getMaxSpeed() {
         return maxSpeed;
     }
@@ -19,8 +20,6 @@ public class PropulsionType {
     public void setMaxSpeed(double maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
-
-    public double maxSpeed;
 
     public PropulsionType(double i, String str) {
         setMaxSpeed(i);

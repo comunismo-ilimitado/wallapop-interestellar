@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Destructor extends Spaceship {
 
-    public ArrayList<Weapon> weapons;
-    public ArrayList<DefenceSystem> defences;
+    private ArrayList<Weapon> weapons;
+    private ArrayList<DefenceSystem> defences;
 
     public ArrayList<DefenceSystem> getDefences() {
         return defences;

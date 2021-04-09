@@ -2,7 +2,7 @@ package urjc.grupoo.data.shipsData;
 
 public class Shield extends DefenceSystem {
 
-    public double neededEnergy;
+    private double neededEnergy;
 
     public Shield(double i, double j) {
         super(i);

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class SpaceFighter extends Spaceship {
 
-    public ArrayList<Weapon> weapons;
-    public DefenceSystem defence;
+    private ArrayList<Weapon> weapons;
+    private DefenceSystem defence;
 
     public ArrayList<Weapon> getWeapons() {
         return weapons;

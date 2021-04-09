@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class SpaceStation extends Spaceship {
 
-    public ArrayList<DefenceSystem> defences;
-    public int passengersLimit;
-    public ArrayList<Spaceship> containedShips;
+    private ArrayList<DefenceSystem> defences;
+    private int passengersLimit;
+    private ArrayList<Spaceship> containedShips;
 
     public int getPassengersLimit() {
         return passengersLimit;
