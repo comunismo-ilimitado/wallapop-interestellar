@@ -2,7 +2,6 @@ package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
-import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *

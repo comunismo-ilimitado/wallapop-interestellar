@@ -37,7 +37,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         addShipButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        shipsDisplay = new javax.swing.JList<>();
 
         doneButton.setText("Publicar Oferta");
         doneButton.setToolTipText("");
@@ -56,12 +56,6 @@ public class OfferCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         addShipButton.setText("Añadir nave");
         addShipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +65,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
 
         jLabel1.setText("Naves añadidas:");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(shipsDisplay);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -127,18 +121,13 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void addShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShipButtonActionPerformed
         session.getController().checkPoint();
-        
         session.getController().addNewPanel(new ShipCreationScreen(session, 
         new ShipCreationScreen.ShipCreationHandler(){
             @Override
             public void onShipCreated(Spaceship ship) {
-                ;
+                // CREAR NAVE
             }
         }));
     }//GEN-LAST:event_addShipButtonActionPerformed
@@ -148,10 +137,10 @@ public class OfferCreationScreen extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JList<String> shipsDisplay;
     // End of variables declaration//GEN-END:variables
 
     public interface OfferCreationHandler{
