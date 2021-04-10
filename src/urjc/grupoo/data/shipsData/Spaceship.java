@@ -12,8 +12,10 @@ public class Spaceship implements Serializable {
     private PropulsionType secondpropulsion;
     private String type;
     
-    public static final String station = "Station", cargo = "Cargo", 
-            destructor = "Destructor", fighter = "Fighter";
+    public static final String station = "Station", cargo = "Cargo",
+            destructor = "Destructor", fighter = "Fighter",shield = "Shield", armor = "Armor";
+
+
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;
