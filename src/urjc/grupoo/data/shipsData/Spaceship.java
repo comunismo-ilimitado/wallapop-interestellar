@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public abstract class Spaceship implements Serializable {
 
-    private RegisterNumber registerNumber;
+    private String registerNumber;
     private int crewMembersAmount;
     private PropulsionType firstpropulsion;
     private PropulsionType secondpropulsion;
@@ -42,20 +42,26 @@ public abstract class Spaceship implements Serializable {
         this.secondpropulsion = secondpropulsion;
     }
 
-    public void setRegisterNumber(RegisterNumber registerNumber) {
+    public void setRegisterNumber(String registerNumber) {
         this.registerNumber = registerNumber;
     }
 
-    public RegisterNumber getRegisterNumber() {
+    public String getRegisterNumber() {
         return registerNumber;
     }
 
-    public Spaceship(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num) {
-        crewMembersAmount = i;
-        firstpropulsion = fprop;
-        secondpropulsion = sprop;
-        registerNumber = num;
+
+    public Spaceship(String type, int i, PropulsionType fprop, PropulsionType sprop, String num) {
+        setType(type);
+        setCrewMembersAmount(i);
+        setFirstpropulsion(fprop);
+        setSecondpropulsion(sprop);
+        setRegisterNumber(num);
     }
+
+
+
+
 
 
 }

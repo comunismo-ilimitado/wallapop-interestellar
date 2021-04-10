@@ -32,9 +32,9 @@ public class SpaceStation extends Spaceship {
         this.defences = defences;
     }
 
-    public SpaceStation(int i, PropulsionType fprop, PropulsionType sprop, RegisterNumber num, int passengers,
+    public SpaceStation(String type, int i, PropulsionType fprop, PropulsionType sprop, String num, int passengers,
                         ArrayList<DefenceSystem> defencelist, ArrayList<Spaceship> listofships) {
-        super(i, fprop, sprop, num);
+        super(type, i, fprop, sprop, num);
         setPassengersLimit(passengers);
         setContainedShips(listofships);
         setDefences(defencelist);
