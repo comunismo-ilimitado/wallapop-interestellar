@@ -11,18 +11,21 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 import javax.swing.JPanel;
+import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.system.ui.SystemSession;
 
 
-public class ModerateOffers extends javax.swing.JPanel {
+public class BuyOffers extends javax.swing.JPanel {
     
     private final SystemSession session;
     private JPanel mainList;
     
-    /** Creates new form ValorationsScreen */
-    public ModerateOffers(SystemSession session) {
+    Collection<Offer> offers;
+    
+    public BuyOffers(SystemSession session, Client client, Collection<Offer> offers) {
         this.session = session;
         initComponents();
         
@@ -34,8 +37,9 @@ public class ModerateOffers extends javax.swing.JPanel {
         mainList.add(new JPanel(), gbc);
         scrollpane.setViewportView(mainList);
         
+        this.offers = offers;
         
-        for(Offer offer : session.getAdminFacade().getModerationList()){
+        for(Offer offer : offers){
             addEntry(offer);
         }
         
@@ -48,8 +52,7 @@ public class ModerateOffers extends javax.swing.JPanel {
         Label offeridlab = new Label("Id: "+Integer
                 .toString(offerId.getOfferId())+" de tipo "+offerId.getOfferType()+" ");
         Button viewButton = new Button("Ver oferta");
-        Button acceptButton = new Button("Aceptar");
-        Button deleteButton = new Button("Rechazar");
+        Button acceptButton = new Button("Comprar");
         
         viewButton.addActionListener(new ActionListener() {
             @Override
@@ -65,16 +68,10 @@ public class ModerateOffers extends javax.swing.JPanel {
             }
         });
         
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-               session.getAdminFacade().moderateOffer(offerId.getOfferId(), false);
-            }
-        });
+        
         panel.add(offeridlab);
         panel.add(viewButton);
         panel.add(acceptButton);
-        panel.add(deleteButton);
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -123,7 +120,7 @@ public class ModerateOffers extends javax.swing.JPanel {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("Ofertas a moderar");
+        jLabel1.setText("Comprar Ofertas");
 
         backButtonn.setText("<");
         backButtonn.addActionListener(new java.awt.event.ActionListener() {
@@ -139,14 +136,12 @@ public class ModerateOffers extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(591, Short.MAX_VALUE))
+                    .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(193, 193, 193)
-                        .addComponent(backButtonn)
-                        .addGap(50, 502, Short.MAX_VALUE))))
+                        .addComponent(backButtonn)))
+                .addContainerGap(502, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

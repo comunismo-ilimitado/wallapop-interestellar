@@ -2,6 +2,7 @@ package urjc.grupoo.data.shopData;
 
 import urjc.grupoo.system.backend.SystemOffersObserver;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import urjc.grupoo.system.backend.ShopSystem;
@@ -18,6 +19,7 @@ public class SystemOffers implements Serializable{
     
     public SystemOffers() {
         offers = new HashMap<>();
+        observers = new ArrayList<>();
     }
 
     public HashMap<Integer, Offer> getOffers() {

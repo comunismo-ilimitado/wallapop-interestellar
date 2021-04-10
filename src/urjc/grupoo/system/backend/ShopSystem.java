@@ -2,6 +2,7 @@ package urjc.grupoo.system.backend;
 
 
 import java.util.Date;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.SoldSpaceships;
 import urjc.grupoo.data.shopData.SystemAdmins;
@@ -98,15 +99,15 @@ public class ShopSystem {
     public SystemOffers getOffersByType(String offerType){
         SystemOffers offers = null;
         switch(offerType){
-            case "Station":
+            case Spaceship.station:
                 offers = (SystemOffers)getDatabase()
                         .get(ShopSystem.spaceStationOfferData);
                 break;
-            case "Cargo":
+            case Spaceship.cargo:
                 offers = (SystemOffers)getDatabase()
                         .get(ShopSystem.cargoOfferData);
                 break;
-            case "Destructor":
+            case Spaceship.destructor:
                 offers = (SystemOffers)getDatabase()
                         .get(ShopSystem.desOfferData);
                 break;

@@ -1,7 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
 import urjc.grupoo.data.shopData.Client;
-import urjc.grupoo.data.shopData.Spaceship;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**

@@ -189,7 +189,7 @@ public class Database{
         }
 
         public boolean isDirty() {
-            return dirty;
+            return true; // Siempre estan sucios para evitar problemas TODO resolver mejor los problemas
         }
 
         public Serializable get() {

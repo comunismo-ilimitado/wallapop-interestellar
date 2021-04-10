@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.ClientComment;
-import urjc.grupoo.data.shopData.Spaceship;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**

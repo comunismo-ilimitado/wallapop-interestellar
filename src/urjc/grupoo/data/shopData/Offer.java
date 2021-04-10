@@ -3,6 +3,7 @@ package urjc.grupoo.data.shopData;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import urjc.grupoo.data.shipsData.Spaceship;
 
 /*
  * Clase que contiene los datos de las ofertas

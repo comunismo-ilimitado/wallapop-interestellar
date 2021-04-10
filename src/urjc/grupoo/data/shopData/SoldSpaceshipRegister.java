@@ -3,6 +3,7 @@ package urjc.grupoo.data.shopData;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import urjc.grupoo.data.shipsData.Spaceship;
 
 /*
  * Clase en el que se almacena el registro de ventas

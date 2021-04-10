@@ -5,7 +5,11 @@
  */
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import java.util.Collection;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
+import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.adminForms.BuyOffers;
 import urjc.grupoo.system.ui.SystemSession;
 
 
@@ -94,7 +98,21 @@ public class SearchOfferScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_shipTypeSelectorActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+        
+        String offerType = Spaceship.station;
+        switch(shipTypeSelector.getSelectedIndex()){
+            case 0:
+                offerType = Spaceship.destructor;
+                break;
+            case 1:
+                offerType = Spaceship.cargo;
+                break;
+            case 2:
+                offerType = Spaceship.fighter;
+                break; 
+        }
+        Collection<Offer> offers = session.getClientFacade().getOffers(offerType);
+        session.getController().addNewPanel(new BuyOffers(session, client, offers));
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import urjc.grupoo.system.ui.Forms.StartMenu;
 
@@ -29,6 +30,8 @@ public class WindowController {
         
         JPanel startingPanel = new StartMenu(this.session);
         
+        
+        // Poner el fondo
         try {
             Image background = ImageIO.read(getClass().getResourceAsStream("/nave.jpg"));
             window.setContentPane(new JPanel() {
@@ -49,6 +52,15 @@ public class WindowController {
         window.setVisible(true);
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Guardar al cerrar
+        window.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                session.exit();
+                System.exit(0);
+            }
+        });
         
         panels.add(startingPanel);
         internalShowPanel(startingPanel);

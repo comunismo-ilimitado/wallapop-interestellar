@@ -2,13 +2,18 @@ package urjc.grupoo.data.shipsData;
 
 import java.io.Serializable;
 
-public abstract class Spaceship implements Serializable {
+
+
+public class Spaceship implements Serializable {
 
     private String registerNumber;
     private int crewMembersAmount;
     private PropulsionType firstpropulsion;
     private PropulsionType secondpropulsion;
     private String type;
+    
+    public static final String station = "Station", cargo = "Cargo", 
+            destructor = "Destructor", fighter = "Fighter";
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;

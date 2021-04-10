@@ -80,7 +80,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="36" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ofertas a moderar"/>
+            <Property name="text" type="java.lang.String" value="Comprar Ofertas"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scrollpane">
