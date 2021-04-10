@@ -16,6 +16,7 @@ public class SystemClients implements Serializable{
     
     public SystemClients() {
         clientList = new HashMap<>();
+        lastId = 0;
     }
 
     public HashMap<Integer, Client> getClientList() {

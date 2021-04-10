@@ -9,7 +9,7 @@ import java.util.Collection;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
-import urjc.grupoo.system.ui.Forms.adminForms.BuyOffers;
+import urjc.grupoo.system.ui.Forms.clientForms.BuyOffers;
 import urjc.grupoo.system.ui.SystemSession;
 
 
@@ -20,6 +20,7 @@ public class SearchOfferScreen extends javax.swing.JPanel {
     public SearchOfferScreen(SystemSession session, Client client) {
         this.session = session;
         this.client = client;
+        session.getController().checkPoint();
         initComponents();
     }
 

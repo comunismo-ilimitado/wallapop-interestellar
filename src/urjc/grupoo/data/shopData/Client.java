@@ -17,22 +17,19 @@ public class Client extends User {
     private ClientNotifications notifications;
     private int ratingAverage;
     private License license;
-    private int idNumber;
 
     public Client(String origingPlanet, String species, String name, String nick, String password, String email) {
         super(name, nick, password, email);
         this.origingPlanet = origingPlanet;
         this.species = species;
         this.license = null;
-        this.idNumber = -1;
         notifications = new ClientNotifications();
         commentList = new ArrayList<>();
         activeOffers = new ArrayList<>();
+        license = new License();
     }
 
-    public void setIdNumber(int idNumber){
-        this.idNumber = idNumber;
-    }
+    
 
     public String getOrigingPlanet() { return origingPlanet; }
 

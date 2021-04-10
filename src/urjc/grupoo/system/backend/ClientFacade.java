@@ -77,7 +77,6 @@ public class ClientFacade {
     
     public void buyOffer(int buyerId, int offerId, String offerType){
         // TODO revisar que el buyer y la offerta existen
-        
         //Obtener el cliente
         SystemClients clients = 
                 (SystemClients)system.getDatabase().get(ShopSystem.clientData);

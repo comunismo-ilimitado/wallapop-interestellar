@@ -8,6 +8,7 @@ public class PermissionsManager {
     
     public boolean checkPermission(Permission permission, Client client){
        boolean r = false;
+       
        switch(permission){
        
            case UploadOffers:

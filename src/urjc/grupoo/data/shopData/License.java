@@ -8,10 +8,18 @@ import java.io.Serializable;
 
 public class License implements Serializable{
 
-    private Integer TYPE;
-    private boolean fraudSuspect;
-    private boolean pirateSuspect;
+    private Integer TYPE = 0;
+    private boolean fraudSuspect = false;
+    private boolean pirateSuspect = false;
 
+    public License() {
+        TYPE = 0;
+        fraudSuspect = false;
+        pirateSuspect = false;
+    }
+
+    
+    
 
     public Integer getTYPE() {
         return TYPE;
