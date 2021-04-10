@@ -168,7 +168,6 @@ public class ClientMenu extends javax.swing.JPanel {
 
     private void uploadShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadShipActionPerformed
         session.getController().checkPoint();
-        
         session.getController().addNewPanel(new OfferCreationScreen(session, client,
         new OfferCreationScreen.OfferCreationHandler(){
             @Override
