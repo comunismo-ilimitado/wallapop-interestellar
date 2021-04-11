@@ -146,5 +146,4 @@ public class ShipFactory {
         return defence;
     }
 
-
 }
