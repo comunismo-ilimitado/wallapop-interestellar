@@ -3,7 +3,6 @@ package urjc.grupoo.data.shipsData;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
 public class Spaceship implements Serializable {
 
     private String registerNumber;
@@ -17,7 +16,6 @@ public class Spaceship implements Serializable {
             warpdrive = "Motor de curvatura", tracecompressor = "Compresor de traza", ftldrive = "Motor FTL", solarsail = "Velas solares",
             ionthruster = "Motor iónico", seat= "Seat Panda intergaláctico", motorm = "Motor de pedos de marciano", uwu= "UWU",
             shield = "Escudo", armor = "Armadura";
-
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;
@@ -134,4 +132,3 @@ public class Spaceship implements Serializable {
     }
 
 }
-

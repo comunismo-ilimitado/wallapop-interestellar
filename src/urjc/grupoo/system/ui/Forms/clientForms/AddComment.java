@@ -22,7 +22,7 @@ public class AddComment extends javax.swing.JPanel {
     private SystemSession session;
     private Client client;
     private Offer offer;
-    
+
     public AddComment(SystemSession session, Client client, Offer offer) {
         this.session = session;
         this.client = client;
@@ -142,7 +142,7 @@ public class AddComment extends javax.swing.JPanel {
 
     private void backButtonnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonnActionPerformed
         session.getController().checkPoint();
-        
+
     }//GEN-LAST:event_backButtonnActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -161,7 +161,6 @@ public class AddComment extends javax.swing.JPanel {
     private void ratingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ratingActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

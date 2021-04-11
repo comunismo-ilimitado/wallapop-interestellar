@@ -8,7 +8,6 @@ import java.util.List;
 /*
  * Clase que almacena los datos de los clientes
  */
-
 public class Client extends User {
 
     private String origingPlanet;
@@ -30,34 +29,48 @@ public class Client extends User {
         license = new License();
     }
 
-    
+    public String getOrigingPlanet() {
+        return origingPlanet;
+    }
 
-    public String getOrigingPlanet() { return origingPlanet; }
+    public String getSpecies() {
+        return species;
+    }
 
-    public String getSpecies() { return species; }
+    public HashMap<Integer, Offer> getActiveOffers() {
+        return activeOffers;
+    }
 
-    public HashMap<Integer, Offer> getActiveOffers() { return activeOffers; }
+    public void setActiveOffers(HashMap<Integer, Offer> activeOffers) {
+        this.activeOffers = activeOffers;
+    }
 
-    public void setActiveOffers(HashMap<Integer, Offer> activeOffers) { this.activeOffers = activeOffers; }
+    public List<ClientComment> getCommentList() {
+        return commentList;
+    }
 
-    public List<ClientComment> getCommentList() { return commentList; }
+    public void setCommentList(List<ClientComment> commentList) {
+        this.commentList = commentList;
+    }
 
-    public void setCommentList(List<ClientComment> commentList) { this.commentList = commentList; }
+    public int getRatingAverage() {
+        return ratingAverage;
+    }
 
-    public int getRatingAverage() { return ratingAverage; }
+    public void setRatingAverage(int ratingAverage) {
+        this.ratingAverage = ratingAverage;
+    }
 
-    public void setRatingAverage(int ratingAverage) { this.ratingAverage = ratingAverage; }
+    public License getLicense() {
+        return license;
+    }
 
-    public License getLicense() { return license; }
-    
-    public void notifyOffer(Offer offer){
+    public void notifyOffer(Offer offer) {
         notifications.getNotificationList().add(offer);
     }
 
     public ClientNotifications getNotifications() {
         return notifications;
     }
-    
-    
-    
+
 }

@@ -5,8 +5,7 @@ import java.io.Serializable;
 /*
  * Clase que almacena la información de los comentarios y valoraciones
  */
-
-public class ClientComment implements Serializable{
+public class ClientComment implements Serializable {
 
     private int rating;
     private String comment;
@@ -32,7 +31,6 @@ public class ClientComment implements Serializable{
         return offer;
     }
 
-    
     public int getUser() {
         return user;
     }

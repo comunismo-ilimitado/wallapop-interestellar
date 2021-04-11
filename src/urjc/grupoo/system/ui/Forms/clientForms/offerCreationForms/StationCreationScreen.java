@@ -19,6 +19,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
      *
      * @param session
      * @param handler
+     * @param offerhandler
      */
     public StationCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;
@@ -65,12 +66,6 @@ public class StationCreationScreen extends javax.swing.JPanel {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
-            }
-        });
-
-        pasangerAmountField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pasangerAmountFieldActionPerformed(evt);
             }
         });
 
@@ -174,22 +169,19 @@ public class StationCreationScreen extends javax.swing.JPanel {
                 handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
                 handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
                 handler.getPassangerNumber(), handler.getDefenceList(), handler.getShipList());
-        if (handler.getStationCounter() == 0){
+        if (handler.getStationCounter() == 0) {
             offerhandler.addShipToOffer(newShip);
         } else {
             handler.addShip(newShip);
         }
+        session.getController().goBack();
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        session.getController().goBack(); // Para volver al checkpoint
+        session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
-    private void pasangerAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasangerAmountFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pasangerAmountFieldActionPerformed
 
     private void addShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShipButtonActionPerformed
         session.getController().checkPoint();
@@ -201,7 +193,6 @@ public class StationCreationScreen extends javax.swing.JPanel {
         session.getController().checkPoint();
         session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
     }//GEN-LAST:event_addDefenceButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDefenceButton;

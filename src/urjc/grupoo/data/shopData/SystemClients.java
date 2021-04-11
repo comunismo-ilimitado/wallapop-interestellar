@@ -7,13 +7,12 @@ import java.util.List;
 /*
  * Clase que almacena la lista de clientes
  */
-
-public class SystemClients implements Serializable{
+public class SystemClients implements Serializable {
 
     private HashMap<Integer, Client> clientList;
 
     private int lastId = 0;
-    
+
     public SystemClients() {
         clientList = new HashMap<>();
         lastId = 0;
@@ -22,8 +21,8 @@ public class SystemClients implements Serializable{
     public HashMap<Integer, Client> getClientList() {
         return clientList;
     }
-    
-    public void addClient(Client client){
+
+    public void addClient(Client client) {
         client.setIdNumber(lastId);
         clientList.put(lastId, client);
         lastId += 1;

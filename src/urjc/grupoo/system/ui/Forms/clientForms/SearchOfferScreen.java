@@ -12,11 +12,11 @@ import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.system.ui.Forms.clientForms.BuyOffers;
 import urjc.grupoo.system.ui.SystemSession;
 
-
 public class SearchOfferScreen extends javax.swing.JPanel {
 
     private Client client;
     private SystemSession session;
+
     public SearchOfferScreen(SystemSession session, Client client) {
         this.session = session;
         this.client = client;
@@ -99,9 +99,9 @@ public class SearchOfferScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_shipTypeSelectorActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        
+
         String offerType = Spaceship.station;
-        switch(shipTypeSelector.getSelectedIndex()){
+        switch (shipTypeSelector.getSelectedIndex()) {
             case 0:
                 offerType = Spaceship.destructor;
                 break;
@@ -110,7 +110,7 @@ public class SearchOfferScreen extends javax.swing.JPanel {
                 break;
             case 2:
                 offerType = Spaceship.fighter;
-                break; 
+                break;
         }
         Collection<Offer> offers = session.getClientFacade().getOffers(offerType);
         session.getController().addNewPanel(new BuyOffers(session, client, offers));
@@ -119,7 +119,6 @@ public class SearchOfferScreen extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
     }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

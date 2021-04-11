@@ -1,21 +1,19 @@
 package urjc.grupoo.system.ui.Forms;
 
-import javax.swing.JPanel;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminCreationScreen;
 import urjc.grupoo.system.ui.Forms.adminForms.AdminLoginScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientCreationScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientLoginScreen;
 import urjc.grupoo.system.ui.SystemSession;
-import urjc.grupoo.system.ui.SystemSession_OLD;
 
 /**
  *
  * @author Gonzalo Ortega
  */
 public class StartMenu extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
-    
+
     /**
      * Creates new form NewJPanel
      */
@@ -120,7 +118,6 @@ public class StartMenu extends javax.swing.JPanel {
     private void adminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginActionPerformed
         session.getController().addNewPanel(new AdminLoginScreen(session));
     }//GEN-LAST:event_adminLoginActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminLogin;

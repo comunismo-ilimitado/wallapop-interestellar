@@ -1,10 +1,13 @@
 package urjc.grupoo.data.shipsData;
 
-public class Weapon {
+import java.io.Serializable;
+
+public class Weapon implements Serializable {
+
     private double power;
     private String name;
 
-    public Weapon(String str ,double i) {
+    public Weapon(String str, double i) {
         setName(str);
         setPower(i);
     }
@@ -26,4 +29,3 @@ public class Weapon {
     }
 
 }
-

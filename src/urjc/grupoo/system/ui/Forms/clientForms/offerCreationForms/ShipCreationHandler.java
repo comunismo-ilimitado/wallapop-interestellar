@@ -53,7 +53,7 @@ public class ShipCreationHandler {
     public void setDefenceType(String defenceType) {
         this.defenceType = defenceType;
     }
-    
+
     public String getPropulsion1() {
         return propulsion1;
     }
@@ -69,6 +69,7 @@ public class ShipCreationHandler {
     public void setPropulsion2(String propulsion2) {
         this.propulsion2 = propulsion2;
     }
+
     public Spaceship getNewShip() {
         return newShip;
     }
@@ -129,17 +130,18 @@ public class ShipCreationHandler {
         this.cargoCapacity = cargoCapacity;
     }
 
-    public void addWeapon (Weapon newWeapon) {
+    public void addWeapon(Weapon newWeapon) {
         weaponList.add(newWeapon);
     }
-    public void addDefenceSystem (DefenceSystem newDefenceSystem) {
+
+    public void addDefenceSystem(DefenceSystem newDefenceSystem) {
         defenceList.add(newDefenceSystem);
     }
-    
-    public void addShip (Spaceship newship) {
+
+    public void addShip(Spaceship newship) {
         shipList.add(newship);
     }
- 
+
     public void onShipCreated(Spaceship ship) {
 
     }

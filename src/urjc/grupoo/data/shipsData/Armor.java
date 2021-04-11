@@ -28,5 +28,4 @@ public class Armor extends DefenceSystem {
         this.addedWeigth = addedWeigth;
     }
 
-
 }

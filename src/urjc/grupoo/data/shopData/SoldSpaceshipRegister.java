@@ -8,8 +8,7 @@ import urjc.grupoo.data.shipsData.Spaceship;
 /*
  * Clase en el que se almacena el registro de ventas
  */
-
-public class SoldSpaceshipRegister implements Serializable{
+public class SoldSpaceshipRegister implements Serializable {
 
     private List<Spaceship> soldSpacheshipsList;
     private double soldPrice;

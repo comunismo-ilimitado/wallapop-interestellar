@@ -5,8 +5,7 @@ import java.io.Serializable;
 /*
  * Clase que almacena los datos de licencia del usuario
  */
-
-public class License implements Serializable{
+public class License implements Serializable {
 
     private Integer TYPE = 0;
     private boolean fraudSuspect = false;
@@ -17,9 +16,6 @@ public class License implements Serializable{
         fraudSuspect = false;
         pirateSuspect = false;
     }
-
-    
-    
 
     public Integer getTYPE() {
         return TYPE;
@@ -40,7 +36,5 @@ public class License implements Serializable{
     public void setPirateSuspect(boolean pirateSuspect) {
         this.pirateSuspect = pirateSuspect;
     }
-    
-    
-    
+
 }

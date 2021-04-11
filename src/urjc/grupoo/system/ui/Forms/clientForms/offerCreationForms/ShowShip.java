@@ -1,14 +1,11 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.CargoShip;
 import urjc.grupoo.data.shipsData.Spaceship;
-
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -20,10 +17,13 @@ public class ShowShip extends javax.swing.JPanel {
     private final SystemSession session;
     private final Spaceship ship;
     private JPanel propulsionList;
-    private JPanel defncesList;
+    private JPanel defencesList;
+    private JPanel weaponsList;
+    private JPanel shipsList;
 
     /**
      * Creates new form SubsciptionsScreen
+     *
      * @param session
      * @param ship
      */
@@ -31,48 +31,77 @@ public class ShowShip extends javax.swing.JPanel {
         this.session = session;
         this.ship = ship;
         initComponents();
-        
+
         shipTypeField.setText(ship.getType());
         registerField.setText(ship.getRegisterNumber());
         maxSpeedField.setText(Double.toString(ship.getSecondpropulsion().getMaxSpeed()));
         crewNumberField.setText(Integer.toString(ship.getCrewMembersAmount()));
+        pasangerNumberField.setText(Integer.toString(ship.getPassengersLimit()));
+        maxCargoField.setText(Integer.toString(ship.getMaxCargo()));
         addPropulsions();
-        
-        switch (ship.getType()) {
-            case Spaceship.cargo:
-                CargoShip cargo = (CargoShip) ship;
-                maxCargoField.setText(Integer.toString(cargo.getMaxCargo()));
-            
+        addDefences();
+        if (ship.getWeaponList() != null) {
+            addWeapons();
         }
-        
-        // pasangerNumberField.setText();
-        // 
-         
-        
-    }    
-    
+        if (ship.getSpaceshipList() != null) {
+            addShips();
+        }
+    }
+
     private void addPropulsions() {
         propulsionList = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         propulsionList.add(new JPanel(), gbc);
         propulsionPanel.setViewportView(propulsionList);
-        
+
         addEntry(ship.getFirstpropulsion().getName(), propulsionList);
         addEntry(ship.getSecondpropulsion().getName(), propulsionList);
     }
-    
+
     private void addDefences() {
-        defncesList = new JPanel(new GridBagLayout());
+        defencesList = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         propulsionList.add(new JPanel(), gbc);
-        defencesPanel.setViewportView(propulsionList);
-        
-        
-        addEntry(ship.getFirstpropulsion().getName(), defncesList);
-        
+        defencesPanel.setViewportView(defencesList);
+
+        ship.getDefenceList().forEach((defence) -> {
+            addEntry(defence.getDefenceType(), defencesList);
+        });
     }
-    
-    private void addEntry(String text, JPanel displayList){       
+
+    private void addWeapons() {
+        weaponsList = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        weaponsList.add(new JPanel(), gbc);
+        weaponsPanel.setViewportView(weaponsList);
+
+        ship.getWeaponList().forEach((weapon) -> {
+            addEntry(weapon.getName() + " " + weapon.getPower() + " " + "GJ", weaponsList);
+        });
+    }
+
+    private void addShips() {
+        shipsList = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        shipsList.add(new JPanel(), gbc);
+        shipsPanel.setViewportView(shipsList);
+
+        ship.getSpaceshipList().forEach((ship) -> {
+            addButton(ship, shipsList);
+        });
+    }
+
+    private void addButton(Spaceship ship, JPanel displayList) {
+        JPanel panel = new JPanel();
+        panel.add(new ShowShipButton(session, ship));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        displayList.add(panel, gbc, 0);
+    }
+
+    private void addEntry(String text, JPanel displayList) {
         JPanel panel = new JPanel();
         panel.add(new JLabel(text));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -81,7 +110,6 @@ public class ShowShip extends javax.swing.JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         displayList.add(panel, gbc, 0);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,18 +131,16 @@ public class ShowShip extends javax.swing.JPanel {
         maxSpeedField = new javax.swing.JTextField();
         propulsionLabel1 = new javax.swing.JLabel();
         propulsionLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        weaponList = new javax.swing.JList<>();
         shipTypeField = new javax.swing.JTextField();
         pasangerNumberField = new javax.swing.JTextField();
         tripulantsLabel1 = new javax.swing.JLabel();
         maxCargoField = new javax.swing.JTextField();
         tripulantsLabel2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        shipsList = new javax.swing.JList<>();
         propulsionLabel3 = new javax.swing.JLabel();
-        defencesPanel = new javax.swing.JScrollPane();
+        weaponsPanel = new javax.swing.JScrollPane();
         propulsionPanel = new javax.swing.JScrollPane();
+        defencesPanel = new javax.swing.JScrollPane();
+        shipsPanel = new javax.swing.JScrollPane();
 
         registerField.setEditable(false);
 
@@ -143,8 +169,6 @@ public class ShowShip extends javax.swing.JPanel {
 
         propulsionLabel2.setText("Armas:");
 
-        jScrollPane3.setViewportView(weaponList);
-
         shipTypeField.setEditable(false);
 
         pasangerNumberField.setEditable(false);
@@ -154,8 +178,6 @@ public class ShowShip extends javax.swing.JPanel {
         maxCargoField.setEditable(false);
 
         tripulantsLabel2.setText("Capacidad de carga:");
-
-        jScrollPane4.setViewportView(shipsList);
 
         propulsionLabel3.setText("Naves en su interior:");
 
@@ -167,10 +189,25 @@ public class ShowShip extends javax.swing.JPanel {
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(propulsionPanel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(246, 246, 246))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(propulsionPanel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(propulsionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(propulsionLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(shipsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(propulsionLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(propulsionLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 222, Short.MAX_VALUE))
+                                    .addComponent(weaponsPanel))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(shipTypeField)
@@ -179,45 +216,33 @@ public class ShowShip extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(registerField)
-                                .addGap(84, 84, 84)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(backButton)
                         .addGap(50, 50, 50))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tripulantsLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(registerLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tripulantsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(registerLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                                .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(crewNumberField)
-                                    .addComponent(maxSpeedField)))
+                                    .addComponent(maxSpeedField)
+                                    .addComponent(crewNumberField)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tripulantsLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tripulantsLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tripulantsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(maxCargoField, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                                    .addComponent(pasangerNumberField)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(propulsionLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(201, 201, 201)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(propulsionLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(propulsionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(76, 76, 76)
-                                        .addComponent(propulsionLabel1))
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(171, 171, 171))))
+                                    .addComponent(pasangerNumberField, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                    .addComponent(maxCargoField))))
+                        .addContainerGap(419, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,6 +274,7 @@ public class ShowShip extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tripulantsLabel2)
                     .addComponent(maxCargoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(propulsionLabel)
                     .addComponent(propulsionLabel1))
@@ -257,17 +283,14 @@ public class ShowShip extends javax.swing.JPanel {
                     .addComponent(propulsionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propulsionLabel3)
+                    .addComponent(propulsionLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(propulsionLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(propulsionLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))))
+                    .addComponent(weaponsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shipsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -280,8 +303,6 @@ public class ShowShip extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTextField crewNumberField;
     private javax.swing.JScrollPane defencesPanel;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField maxCargoField;
     private javax.swing.JTextField maxSpeedField;
     private javax.swing.JLabel nameLabel;
@@ -295,11 +316,11 @@ public class ShowShip extends javax.swing.JPanel {
     private javax.swing.JLabel registerLabel;
     private javax.swing.JLabel registerLabel1;
     private javax.swing.JTextField shipTypeField;
-    private javax.swing.JList<String> shipsList;
+    private javax.swing.JScrollPane shipsPanel;
     private javax.swing.JLabel tripulantsLabel;
     private javax.swing.JLabel tripulantsLabel1;
     private javax.swing.JLabel tripulantsLabel2;
-    private javax.swing.JList<String> weaponList;
+    private javax.swing.JScrollPane weaponsPanel;
     // End of variables declaration//GEN-END:variables
 
 }

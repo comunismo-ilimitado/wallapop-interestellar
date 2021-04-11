@@ -7,12 +7,11 @@ import java.util.List;
 /**
  * Clase que almacena la lista de offertas para notificar
  */
-
 public class ClientNotifications implements Serializable {
 
     private List<Offer> notificationList;
 
-    public ClientNotifications(){
+    public ClientNotifications() {
         notificationList = new ArrayList<>();
     }
 

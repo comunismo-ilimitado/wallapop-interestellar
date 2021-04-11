@@ -1,26 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package urjc.grupoo.system.ui.Forms.adminForms;
-
-
 
 import urjc.grupoo.system.ui.SystemSession;
 
 public class UpdatePermission extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
-    
 
     /**
      * Creates new form ViewUsers
+     *
+     * @param session
      */
     public UpdatePermission(SystemSession session) {
         this.session = session;
         initComponents();
-        
+
     }
 
     /**
@@ -39,12 +33,6 @@ public class UpdatePermission extends javax.swing.JPanel {
         piracy = new javax.swing.JCheckBox();
         fraud = new javax.swing.JCheckBox();
         incorrect = new javax.swing.JLabel();
-
-        userTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTextFieldActionPerformed(evt);
-            }
-        });
 
         clientLabel.setText("Introduce el ID del cliente");
 
@@ -128,43 +116,38 @@ public class UpdatePermission extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
-      
-    }//GEN-LAST:event_userTextFieldActionPerformed
-
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-         
-       String idUser = userTextField.getText();
-       if (idUser != null){
-         if (piracy.isSelected()){
-             session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
-         }else{
-             session.getAdminFacade().resolveUserReportOfPiracy(Integer.getInteger(idUser));      
-         }
-         if (fraud.isSelected()){
-             session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
-         }else{
-             session.getAdminFacade().resolveUserReportOfFraud(Integer.getInteger(idUser));       
-         }
-       }else{
-           incorrect.setText("Usuario o contraseña incorrectos");
-       }
+
+        String idUser = userTextField.getText();
+        if (idUser != null) {
+            if (piracy.isSelected()) {
+                session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
+            } else {
+                session.getAdminFacade().resolveUserReportOfPiracy(Integer.getInteger(idUser));
+            }
+            if (fraud.isSelected()) {
+                session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
+            } else {
+                session.getAdminFacade().resolveUserReportOfFraud(Integer.getInteger(idUser));
+            }
+        } else {
+            incorrect.setText("Usuario o contraseña incorrectos");
+        }
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);
-        
+
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void piracyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piracyActionPerformed
-       
+
     }//GEN-LAST:event_piracyActionPerformed
 
     private void fraudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fraudActionPerformed
-        
-    }//GEN-LAST:event_fraudActionPerformed
 
+    }//GEN-LAST:event_fraudActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

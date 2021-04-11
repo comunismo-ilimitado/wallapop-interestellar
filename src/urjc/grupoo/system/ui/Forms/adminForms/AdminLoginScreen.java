@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
-import urjc.grupoo.system.ui.SystemSession_OLD;
-
 
 public class AdminLoginScreen extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
 
     /**
      * Creates new form AdminLoginScreen
+     *
+     * @param session
      */
     public AdminLoginScreen(SystemSession session) {
         this.session = session;
@@ -42,18 +37,6 @@ public class AdminLoginScreen extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(700, 500));
         jPanel1.setMinimumSize(new java.awt.Dimension(700, 500));
-
-        userTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTextFieldActionPerformed(evt);
-            }
-        });
-
-        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextFieldActionPerformed(evt);
-            }
-        });
 
         userLabel.setText("Usuario");
 
@@ -135,21 +118,13 @@ public class AdminLoginScreen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userTextFieldActionPerformed
-
-    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextFieldActionPerformed
-
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         String[] userAndPassword = new String[2];
         userAndPassword[0] = userTextField.getText();
         userAndPassword[1] = passwordTextField.getText();
         Admin admin = session.getAdminFacade()
                 .login(userAndPassword[0], userAndPassword[1]);
-        if(admin != null){
+        if (admin != null) {
             incorrectLabel.setText("");
             session.getController().addNewPanel(new AdminMenu(session, admin));
         } else {
@@ -161,7 +136,6 @@ public class AdminLoginScreen extends javax.swing.JPanel {
         session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

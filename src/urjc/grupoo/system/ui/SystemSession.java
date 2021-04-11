@@ -14,20 +14,19 @@ public class SystemSession {
     private final ShopSystem system;
     private final ClientFacade clientFacade;
     private final AdminFacade adminFacade;
-    
-    
+
     public SystemSession() {
         controller = null;
         this.system = new ShopSystem();
         this.system.start();
         clientFacade = new ClientFacade(system);
         adminFacade = new AdminFacade(system);
-        
+
     }
-    
-    public void start(){
+
+    public void start() {
         this.controller = new WindowController(this);
-        
+
         // Para añadir ofertas de prueba descomentar estas lineas
         /*for(int i = 0; i < 15; i++){
             Offer offer = new Offer(new ArrayList<Spaceship>(), new Date(), i, 0, Spaceship.station);
@@ -36,17 +35,16 @@ public class SystemSession {
         for(int i = 0; i < 10; i++){
             adminFacade.moderateOffer(i, true);
         }*/
-        
     }
 
-    public void exit(){
+    public void exit() {
         system.getDatabase().save();
     }
-    
+
     public WindowController getController() {
         return controller;
     }
-    
+
     public ShopSystem getSystem() {
         return system;
     }

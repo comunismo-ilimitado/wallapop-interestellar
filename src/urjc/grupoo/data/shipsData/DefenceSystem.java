@@ -1,6 +1,8 @@
 package urjc.grupoo.data.shipsData;
 
-public abstract class DefenceSystem {
+import java.io.Serializable;
+
+public abstract class DefenceSystem implements Serializable {
 
     private double damageAllowed;
     private String defenceType;

@@ -14,8 +14,10 @@ public class WeaponCreationScreen extends javax.swing.JPanel {
 
     /**
      * Creates new form WeaponCreationScreen
+     *
      * @param session
-     * @param handler */
+     * @param handler
+     */
     public WeaponCreationScreen(SystemSession session, ShipCreationHandler handler) {
         this.session = session;
         this.handler = handler;

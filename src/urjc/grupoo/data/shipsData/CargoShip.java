@@ -1,6 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
 public class CargoShip extends Spaceship {
+
     private DefenceSystem defence;
     private int maxCargo;
 

@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
-import urjc.grupoo.system.ui.SystemSession_OLD;
-
 
 public class AdminProfile extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
-    
+
     public Admin admin;
-    
+
     /**
      * Creates new form AdminProfile
+     *
+     * @param session
+     * @param admin
      */
     public AdminProfile(SystemSession session, Admin admin) {
         this.session = session;
@@ -25,8 +21,8 @@ public class AdminProfile extends javax.swing.JPanel {
         initComponents();
         showAdmin();
     }
-    
-    public void showAdmin(){
+
+    public void showAdmin() {
         nameTextField.setText(admin.getName());
         nickTextField.setText(admin.getNick());
         emailTextField.setText(admin.getEmail());
@@ -57,36 +53,16 @@ public class AdminProfile extends javax.swing.JPanel {
         userLabel.setText("Usuario");
 
         emailTextField.setEditable(false);
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
 
         passwordTextField.setEditable(false);
-        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextFieldActionPerformed(evt);
-            }
-        });
 
         emailLabel.setText("Correo");
 
         passwordLabel.setText("Contraseña");
 
         nickTextField.setEditable(false);
-        nickTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nickTextFieldActionPerformed(evt);
-            }
-        });
 
         nameTextField.setEditable(false);
-        nameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextFieldActionPerformed(evt);
-            }
-        });
 
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,27 +120,10 @@ public class AdminProfile extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
-    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextFieldActionPerformed
-
-    private void nickTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nickTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nickTextFieldActionPerformed
-
-    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextFieldActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

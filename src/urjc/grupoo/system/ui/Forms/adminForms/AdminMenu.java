@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
-import urjc.grupoo.system.ui.SystemSession_OLD;
-
 
 public class AdminMenu extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
 
-    private Admin admin;
-    
+    private final Admin admin;
+
     /**
      * Creates new form AdminMenu
+     *
+     * @param session
+     * @param admin
      */
     public AdminMenu(SystemSession session, Admin admin) {
         this.session = session;
@@ -120,7 +116,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private void viewusersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewusersActionPerformed
         session.getController().addNewPanel(new UpdatePermission(session));
     }//GEN-LAST:event_viewusersActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminProfile;

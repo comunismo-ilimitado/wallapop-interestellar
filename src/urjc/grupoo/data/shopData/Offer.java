@@ -8,8 +8,7 @@ import urjc.grupoo.data.shipsData.Spaceship;
 /*
  * Clase que contiene los datos de las ofertas
  */
-
-public class Offer implements Serializable{
+public class Offer implements Serializable {
 
     private List<Spaceship> offeredSpaceShips;
     private Date limitDate;
@@ -17,7 +16,6 @@ public class Offer implements Serializable{
     private int seller;
     private int offerId;
     private String offerType; // Los offertype estan definidos en ShopSystem
-
 
     public Offer(List<Spaceship> offeredSpaceShips, Date limitDate, double price, int seller, String offerType) {
         this.offeredSpaceShips = offeredSpaceShips;
@@ -55,7 +53,5 @@ public class Offer implements Serializable{
     public String getOfferType() {
         return offerType;
     }
-    
-    
-    
+
 }

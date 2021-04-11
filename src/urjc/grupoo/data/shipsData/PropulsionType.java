@@ -1,6 +1,8 @@
 package urjc.grupoo.data.shipsData;
 
-public class PropulsionType {
+import java.io.Serializable;
+
+public class PropulsionType implements Serializable {
 
     private String name;
     private double maxSpeed;
