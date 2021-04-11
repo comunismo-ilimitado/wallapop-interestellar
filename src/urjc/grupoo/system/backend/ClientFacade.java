@@ -98,6 +98,7 @@ public class ClientFacade {
         // Borrar la oferta
         Offer offer = offers.getOffers().get(offerId);
         Client s = clients.getClientList().get(offer.getSeller());
+        s.getActiveOffers().remove(offer.getOfferId());
         offers.removeOffer(offerId);
         
         // Crear el registro
@@ -166,12 +167,12 @@ public class ClientFacade {
     
     
     // Descarta una notificacion
-    public void notificationSeen(int clientId, int offerId){
+    public void notificationsSeen(int clientId){
         SystemClients clients = 
                 (SystemClients)system.getDatabase().get(ShopSystem.clientData);
         if(clients.getClientList().containsKey(clientId)){
             Client c = clients.getClientList().get(clientId);
-            c.getNotifications().getNotificationList().remove(offerId);
+            c.getNotifications().getNotificationList().clear();
         }
     }
     

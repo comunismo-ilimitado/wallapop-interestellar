@@ -98,7 +98,9 @@ public class WindowController {
     }
     
     public void checkPoint(){
-        checkpoints.add(panels.size());
+        if(checkpoints.peek() < panels.size()){
+            checkpoints.add(panels.size());
+        }
     }
     
     public void goBackToCheckPoint(){

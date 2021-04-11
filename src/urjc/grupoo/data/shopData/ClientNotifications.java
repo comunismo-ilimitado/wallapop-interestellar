@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ClientNotifications implements Serializable {
 
-    private List<Integer> notificationList;
+    private List<Offer> notificationList;
 
     public ClientNotifications(){
         notificationList = new ArrayList<>();
     }
 
-    public List<Integer> getNotificationList() {
+    public List<Offer> getNotificationList() {
         return notificationList;
     }
 }

@@ -40,6 +40,7 @@ public class ClientMenu extends javax.swing.JPanel {
         comments = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         subcriptions = new javax.swing.JButton();
+        myOffers = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("Menu Cliente");
@@ -93,6 +94,13 @@ public class ClientMenu extends javax.swing.JPanel {
             }
         });
 
+        myOffers.setText("Mis ofertas");
+        myOffers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myOffersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,7 +111,8 @@ public class ClientMenu extends javax.swing.JPanel {
                     .addComponent(uploadShip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(clientProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchShips, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(searchShips, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(myOffers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -138,7 +147,9 @@ public class ClientMenu extends javax.swing.JPanel {
                         .addComponent(notifications)
                         .addGap(18, 18, 18)
                         .addComponent(comments)))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(myOffers)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,11 +188,16 @@ public class ClientMenu extends javax.swing.JPanel {
         }));
     }//GEN-LAST:event_uploadShipActionPerformed
 
+    private void myOffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myOffersActionPerformed
+        session.getController().addNewPanel(new ViewMyOffers(session, client));
+    }//GEN-LAST:event_myOffersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton clientProfile;
     private javax.swing.JButton comments;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton myOffers;
     private javax.swing.JButton notifications;
     private javax.swing.JButton searchShips;
     private javax.swing.JButton subcriptions;

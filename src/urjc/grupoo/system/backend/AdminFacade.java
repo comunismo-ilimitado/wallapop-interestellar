@@ -61,7 +61,7 @@ public class AdminFacade {
                 (SystemClients)system.getDatabase().get(ShopSystem.clientData);
             if(clients.getClientList().containsKey(offer.getSeller())){
                 clients.getClientList().get(offer.getSeller())
-                        .getActiveOffers().add(offer.getOfferId());
+                        .getActiveOffers().put(offer.getOfferId(), offer);
             }
         }
     }
