@@ -21,7 +21,7 @@ public class CargoShip extends Spaceship {
     }
 
     public CargoShip(String type, int i, PropulsionType fprop, PropulsionType sprop, String num, DefenceSystem defence, int j) {
-        super(type,i, fprop, sprop, num);
+        super(type, i, fprop, sprop, num);
         setDefence(defence);
         setMaxCargo(j);
 

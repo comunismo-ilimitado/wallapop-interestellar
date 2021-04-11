@@ -1,6 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Spaceship implements Serializable {
@@ -65,5 +66,51 @@ public class Spaceship implements Serializable {
         setRegisterNumber(num);
     }
 
+    public ArrayList<Weapon> getWeaponList(Spaceship ship) {
+        ArrayList<Weapon> list = new ArrayList<>();
+        if ((ship.getType() == ship.fighter) || (ship.getType() == ship.destructor)) {
+            if (ship.getType() == ship.fighter) {
+                SpaceFighter ship2 = (SpaceFighter) ship;
+                list = ship2.getWeapons();
+            }
+            if (ship.getType() == ship.destructor) {
+                Destructor ship2 = (Destructor) ship;
+                list = ship2.getWeapons();
+            }
+        } else {
+            return null;
+        }
+        return list;
+    }
+
+    public ArrayList<DefenceSystem> getDefenceList(Spaceship ship) {
+        ArrayList<DefenceSystem> list = new ArrayList<>();
+        if (ship.getType() == ship.cargo) {
+            CargoShip ship2 = (CargoShip) ship;
+            list.add(ship2.getDefence());
+        }
+        if (ship.getType() == ship.fighter) {
+            SpaceFighter ship2 = (SpaceFighter) ship;
+            list.add(ship2.getDefence());
+        }
+        if (ship.getType() == ship.station) {
+            SpaceStation ship2 = (SpaceStation) ship;
+            list = ship2.getDefences();
+        }
+        if (ship.getType() == ship.destructor) {
+            Destructor ship2 = (Destructor) ship;
+            list = ship2.getDefences();
+        }
+        return list;
+    }
+
+    public ArrayList<Spaceship> getSpaceshipList(Spaceship ship) {
+        ArrayList<Spaceship> list = new ArrayList<>();
+        if (ship.getType() == ship.station) {
+            SpaceStation ship2 = (SpaceStation) ship;
+            list = ship2.getContainedShips();
+        } else {return null;}
+        return list;
+    }
 
 }
