@@ -26,7 +26,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="registerLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField2" min="-2" pref="312" max="-2" attributes="0"/>
+                                  <Component id="pasangerAmountField" min="-2" pref="312" max="-2" attributes="0"/>
                               </Group>
                               <Component id="nameLabel" min="-2" pref="492" max="-2" attributes="0"/>
                           </Group>
@@ -73,7 +73,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="registerLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pasangerAmountField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -128,9 +128,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="pasangerAmountField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pasangerAmountFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="registerLabel2">

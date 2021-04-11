@@ -4,7 +4,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;

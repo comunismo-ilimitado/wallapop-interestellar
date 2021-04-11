@@ -16,6 +16,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
 
     /**
      * Creates new form CargoCreationScreen
+     *
      * @param session
      * @param handler
      */
@@ -143,11 +144,11 @@ public class CargoCreationScreen extends javax.swing.JPanel {
                 handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
                 handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
                 handler.getDefenceList().get(0), handler.getCargoCapacity());
-        if (handler.getStationCounter() == 0){
+        if (handler.getStationCounter() == 0) {
             offerhandler.addShipToOffer(newShip);
         } else {
-            handler.removeStationCounter();
-        }   
+            handler.addShip(newShip);
+        }
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -157,7 +158,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        
+
         session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
     }//GEN-LAST:event_addDefenceButtonActionPerformed
 

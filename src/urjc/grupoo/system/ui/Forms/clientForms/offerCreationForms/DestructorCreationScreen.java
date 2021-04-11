@@ -1,6 +1,8 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
 
+import urjc.grupoo.data.shipsData.ShipFactory;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -8,11 +10,11 @@ import urjc.grupoo.system.ui.SystemSession;
  * @author Gonzalo Ortega
  */
 public class DestructorCreationScreen extends javax.swing.JPanel {
-    
+
     private final SystemSession session;
     private final ShipCreationHandler handler;
     private final OfferCreationHandler offerhandler;
-    
+
     /** Creates new form DestructorCreationScreen
      * @param session
      * @param handler */
@@ -145,6 +147,15 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        Spaceship newShip = new ShipFactory().CreateSpaceship(
+                handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
+                handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
+                handler.getWeaponList(), handler.getDefenceList());
+        if (handler.getStationCounter() == 0){
+            offerhandler.addShipToOffer(newShip);
+        } else {
+            handler.addShip(newShip);
+        }
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 

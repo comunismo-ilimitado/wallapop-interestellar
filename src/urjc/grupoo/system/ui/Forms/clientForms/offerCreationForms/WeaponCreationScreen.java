@@ -111,7 +111,7 @@ public class WeaponCreationScreen extends javax.swing.JPanel {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         handler.addWeapon(new ShipFactory().CreateWeapon(
-                weaponTypeLabel.getText(), Integer.parseInt(weaponPowerLabel.getText())));
+                (String) weaponTypeSelector.getSelectedItem(), Integer.parseInt(weaponPowerField.getText())));
         session.getController().goBack();
     }//GEN-LAST:event_doneButtonActionPerformed
 

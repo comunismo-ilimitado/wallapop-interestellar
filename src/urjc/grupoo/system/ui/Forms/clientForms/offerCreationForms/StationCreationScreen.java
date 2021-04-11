@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shipsData.ShipFactory;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -38,7 +39,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
         doneButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        pasangerAmountField = new javax.swing.JTextField();
         registerLabel2 = new javax.swing.JLabel();
         addShipButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -67,9 +68,9 @@ public class StationCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        pasangerAmountField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                pasangerAmountFieldActionPerformed(evt);
             }
         });
 
@@ -111,7 +112,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(registerLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(pasangerAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(85, 85, 85)
@@ -145,7 +146,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registerLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pasangerAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -167,7 +168,18 @@ public class StationCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        session.getController().checkPoint();
+        handler.removeStationCounter();
+        handler.setPassangerNumber(Integer.parseInt(pasangerAmountField.getText()));
+        Spaceship newShip = new ShipFactory().CreateSpaceship(
+                handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
+                handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
+                handler.getPassangerNumber(), handler.getDefenceList(), handler.getShipList());
+        if (handler.getStationCounter() == 0){
+            offerhandler.addShipToOffer(newShip);
+        } else {
+            handler.addShip(newShip);
+        }
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -175,9 +187,9 @@ public class StationCreationScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void pasangerAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasangerAmountFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_pasangerAmountFieldActionPerformed
 
     private void addShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShipButtonActionPerformed
         session.getController().checkPoint();
@@ -201,8 +213,8 @@ public class StationCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField pasangerAmountField;
     private javax.swing.JLabel registerLabel2;
     private javax.swing.JList<String> shipsDisplay;
     // End of variables declaration//GEN-END:variables
