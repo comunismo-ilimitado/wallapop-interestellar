@@ -12,10 +12,11 @@ public class Spaceship implements Serializable {
     private PropulsionType secondpropulsion;
     private String type;
 
-    public static final String station = "Station", cargo = "Cargo", destructor = "Destructor", fighter = "Fighter",
-            plasmacannon = "Plasma cannon", thermonuclearmissiles = "Thermonuclear missiles", laserbeams = "Laser beams", pem = "PEM",
-            warpdrive = "Warp drive", tracecompressor = " Trace compressor", ftldrive = "FTL drive", solarsail = "Solar sail", ionthruster = "Ion thruster,",
-            shield = "Shield", armor = "Armor";
+    public static final String station = "Estación espacial", cargo = "Carguero", destructor = "Destructor", fighter = "Caza",
+            plasmacannon = "Cañón de plasma", thermonuclearmissiles = "Misiles termonucleares", laserbeams = "Rayos láser", pem = "PEM",
+            warpdrive = "Motor de curvatura", tracecompressor = "Compresor de traza", ftldrive = "Motor FTL", solarsail = "Vela solar",
+            ionthruster = "Motor iónico", seat= "Seat Panda intergaláctico", motorm = "Motor de pedos de marciano", uwu= "UWU",
+            shield = "Escudo", armor = "Armadura";
 
 
     public int getCrewMembersAmount() {
@@ -104,13 +105,32 @@ public class Spaceship implements Serializable {
         return list;
     }
 
-    public ArrayList<Spaceship> getSpaceshipList( ) {
+    public ArrayList<Spaceship> getSpaceshipList() {
         ArrayList<Spaceship> list = new ArrayList<>();
         if (this.getType() == this.station) {
             SpaceStation ship2 = (SpaceStation) this;
             list = ship2.getContainedShips();
-        } else {return null;}
+        } else {
+            return null;
+        }
         return list;
+    }
+
+    public int getPassengersLimit() {
+        if (this.getType() == this.station) {
+            SpaceStation ship2 = (SpaceStation) this;
+            return ship2.getPassengersLimit();
+        } else {
+            return 0;
+        }
+    }
+
+    public int getMaxCargo() {
+        if (this.getType() == this.cargo) {
+            CargoShip ship2 = (CargoShip) this;
+            return ship2.getMaxCargo();
+        } else {return 0;}
+
     }
 
 }
