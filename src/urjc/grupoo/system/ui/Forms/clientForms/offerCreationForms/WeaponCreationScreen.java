@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shipsData.ShipFactory;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,14 +10,13 @@ import urjc.grupoo.system.ui.SystemSession;
 public class WeaponCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-
-    private final ShipCreationScreen.ShipCreationHandler handler;
+    private final ShipCreationHandler handler;
 
     /**
-     * Creates new form fighterCreationScreen
-     */
-    public WeaponCreationScreen(SystemSession session,
-            ShipCreationScreen.ShipCreationHandler handler) {
+     * Creates new form WeaponCreationScreen
+     * @param session
+     * @param handler */
+    public WeaponCreationScreen(SystemSession session, ShipCreationHandler handler) {
         this.session = session;
         this.handler = handler;
         initComponents();
@@ -57,17 +57,6 @@ public class WeaponCreationScreen extends javax.swing.JPanel {
         });
 
         weaponTypeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cañones de plasma", "Misiles termonucleares", "Rayos láser", "PEM" }));
-        weaponTypeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                weaponTypeSelectorActionPerformed(evt);
-            }
-        });
-
-        weaponPowerField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                weaponPowerFieldActionPerformed(evt);
-            }
-        });
 
         weaponPowerLabel.setText("Fuerza destructiva (en Gigajulios):");
 
@@ -121,22 +110,15 @@ public class WeaponCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        session.getController().goBackToCheckPoint();
+        handler.addWeapon(new ShipFactory().CreateWeapon(
+                weaponTypeLabel.getText(), Integer.parseInt(weaponPowerLabel.getText())));
+        session.getController().goBack();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack(); // Para volver al checkpoint
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
-    private void weaponTypeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weaponTypeSelectorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_weaponTypeSelectorActionPerformed
-
-    private void weaponPowerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weaponPowerFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_weaponPowerFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

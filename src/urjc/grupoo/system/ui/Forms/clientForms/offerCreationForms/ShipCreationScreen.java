@@ -1,6 +1,5 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -11,14 +10,16 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ShipCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-    private ShipCreationScreen.ShipCreationHandler handler;
-
+    private final ShipCreationHandler handler;
+    private final OfferCreationHandler offerhandler;
     
-    /** Creates new form ShipCreationScreen */
-    public ShipCreationScreen(SystemSession session,
-        ShipCreationScreen.ShipCreationHandler handler) {
+    /** Creates new form ShipCreationScreen
+     * @param session
+     * @param handler */
+    public ShipCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;  
         this.handler = handler;
+        this.offerhandler = offerhandler;
         initComponents();
     }
 
@@ -45,7 +46,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         propulsion1Selector = new javax.swing.JComboBox<>();
         propulsion2Selector = new javax.swing.JComboBox<>();
         shipTypeSelector = new javax.swing.JComboBox<>();
-        registerTextField1 = new javax.swing.JTextField();
+        speedTextField = new javax.swing.JTextField();
         registerLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -64,12 +65,6 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         propulsion2Label.setText("Tipo de propulsión 2");
 
         tripulantsLabel.setText("Número de tripulantes");
-
-        tripulantsTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tripulantsTextFieldActionPerformed(evt);
-            }
-        });
 
         doneButton.setText("Siguiente");
         doneButton.setToolTipText("");
@@ -92,28 +87,11 @@ public class ShipCreationScreen extends javax.swing.JPanel {
 
         registerLabel.setText("Número de registro");
 
-        registerTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerTextFieldActionPerformed(evt);
-            }
-        });
-
         propulsion1Selector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motor de curvatura", "Compresor de traza", "Motor FTL", "Velas solares", "Motor iónico" }));
 
         propulsion2Selector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Motor de curvatura", "Compresor de traza", "Motor FTL", "Velas solares", "Motor iónico" }));
 
         shipTypeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destructor", "Carguero", "Caza", "Estación Espacial" }));
-        shipTypeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                shipTypeSelectorActionPerformed(evt);
-            }
-        });
-
-        registerTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerTextField1ActionPerformed(evt);
-            }
-        });
 
         registerLabel1.setText("Velocidad sublumínica máxima");
 
@@ -147,7 +125,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(registerTextField1)))
+                                    .addComponent(speedTextField)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(propulsion1Selector, 0, 243, Short.MAX_VALUE)
@@ -179,7 +157,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(registerLabel1)
-                    .addComponent(registerTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(speedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerLabel)
@@ -194,21 +172,45 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tripulantsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tripulantsTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tripulantsTextFieldActionPerformed
-
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+ 
+        handler.setRegNumber(registerTextField.getText());
+        handler.setSpeed(Integer.parseInt(speedTextField.getText()));
+        handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
+        
+        String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
+        switch (selectedPropulsion1) {
+            case "Motor de curvatura": handler.setPropulsion1(Spaceship.warpdrive); break;
+            case "Compresor de traza": handler.setPropulsion1(Spaceship.tracecompressor); break;
+            case "Motor FTL": handler.setPropulsion1(Spaceship.ftldrive); break;
+            case "Velas solares": handler.setPropulsion1(Spaceship.solarsail); break;
+            case "Motor iónico": handler.setPropulsion1(Spaceship.ionthruster); break;
+        }
+        
+        String selectedPropulsion2 = (String) propulsion2Selector.getSelectedItem();
+        switch (selectedPropulsion2) {
+            case "Motor de curvatura": handler.setPropulsion2(Spaceship.warpdrive); break;
+            case "Compresor de traza": handler.setPropulsion2(Spaceship.tracecompressor); break;
+            case "Motor FTL": handler.setPropulsion2(Spaceship.ftldrive); break;
+            case "Velas solares": handler.setPropulsion2(Spaceship.solarsail); break;
+            case "Motor iónico": handler.setPropulsion2(Spaceship.ionthruster); break;
+        }
+        
         String selectedType = (String) shipTypeSelector.getSelectedItem();
         switch (selectedType) {
             case "Destructor":
-                session.getController().addNewPanel(new DestructorCreationScreen(session, handler)); break;
+                handler.setType(Spaceship.destructor);
+                session.getController().addNewPanel(new DestructorCreationScreen(session, handler, offerhandler)); break;
             case "Carguero":
-                session.getController().addNewPanel(new CargoCreationScreen(session, handler)); break;
+                handler.setType(Spaceship.cargo);
+                session.getController().addNewPanel(new CargoCreationScreen(session, handler, offerhandler)); break;
             case "Caza":
-                session.getController().addNewPanel(new FighterCreationScreen(session, handler)); break;
+                handler.setType(Spaceship.fighter);
+                session.getController().addNewPanel(new FighterCreationScreen(session, handler, offerhandler)); break;
             case "Estación Espacial":
-                session.getController().addNewPanel(new StationCreationScreen(session, handler)); break;
+                handler.addStationCounter();
+                handler.setType(Spaceship.station);
+                session.getController().addNewPanel(new StationCreationScreen(session, handler, offerhandler)); break;
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -216,18 +218,6 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
-    private void registerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerTextFieldActionPerformed
-
-    private void shipTypeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shipTypeSelectorActionPerformed
-        
-    }//GEN-LAST:event_shipTypeSelectorActionPerformed
-
-    private void registerTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
@@ -242,14 +232,9 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel registerLabel;
     private javax.swing.JLabel registerLabel1;
     private javax.swing.JTextField registerTextField;
-    private javax.swing.JTextField registerTextField1;
     private javax.swing.JComboBox<String> shipTypeSelector;
+    private javax.swing.JTextField speedTextField;
     private javax.swing.JLabel tripulantsLabel;
     private javax.swing.JTextField tripulantsTextField;
     // End of variables declaration//GEN-END:variables
-
-    public interface ShipCreationHandler{
-        public void onShipCreated(Spaceship ship);
-    }
-    
 }

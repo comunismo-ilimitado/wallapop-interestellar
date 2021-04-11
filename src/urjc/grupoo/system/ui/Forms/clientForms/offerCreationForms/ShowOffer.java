@@ -1,5 +1,10 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JPanel;
+import urjc.grupoo.data.shipsData.Spaceship;
+import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,15 +14,40 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ShowOffer extends javax.swing.JPanel {
 
     private final SystemSession session;
+    private final Offer offer;
+    private final JPanel shipDisplay;
 
     /**
-     * Creates new form SubsciptionsScreen
+     * Creates new form ShowOffer
+     * @param session
+     * @param offer
      */
-    public ShowOffer(SystemSession session) {
+    public ShowOffer(SystemSession session, Offer offer) {
         this.session = session;
+        this.offer = offer;
         initComponents();
+        
+        priceField.setText(Double.toString(offer.getPrice()));
+        
+        shipDisplay = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        shipDisplay.add(new JPanel(), gbc);
+        shipsPanel.setViewportView(shipDisplay);
+        
+        for (Spaceship ship : offer.getOfferedSpaceShips()){
+            addEntry(ship, shipDisplay);
+        }
     }
-
+    
+    private void addEntry(Spaceship ship, JPanel displayList){       
+        JPanel panel = new JPanel();
+        panel.add(new ShowShipButton(session, ship));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        displayList.add(panel, gbc, 0);
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -29,10 +59,10 @@ public class ShowOffer extends javax.swing.JPanel {
     private void initComponents() {
 
         backButton = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        priceField = new javax.swing.JTextField();
+        shipsPanel = new javax.swing.JScrollPane();
 
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -45,11 +75,7 @@ public class ShowOffer extends javax.swing.JPanel {
 
         jLabel2.setText("Naves incluidas en la oferta:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        priceField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,13 +87,13 @@ public class ShowOffer extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(97, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(shipsPanel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(priceField, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backButton)
                         .addGap(51, 51, 51))))
@@ -83,12 +109,12 @@ public class ShowOffer extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(shipsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -97,17 +123,11 @@ public class ShowOffer extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField priceField;
+    private javax.swing.JScrollPane shipsPanel;
     // End of variables declaration//GEN-END:variables
-
 }

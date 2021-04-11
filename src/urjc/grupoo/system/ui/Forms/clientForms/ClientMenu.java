@@ -2,6 +2,7 @@ package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.OfferCreationScreen;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -179,13 +180,7 @@ public class ClientMenu extends javax.swing.JPanel {
 
     private void uploadShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadShipActionPerformed
         session.getController().checkPoint();
-        session.getController().addNewPanel(new OfferCreationScreen(session, client,
-        new OfferCreationScreen.OfferCreationHandler(){
-            @Override
-            public void onOfferCreated(Offer offer) {
-                session.getClientFacade().uploadOffer(client.getIdNumber(), offer);
-            }
-        }));
+        session.getController().addNewPanel(new OfferCreationScreen(session, client, new OfferCreationHandler()));
     }//GEN-LAST:event_uploadShipActionPerformed
 
     private void myOffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myOffersActionPerformed

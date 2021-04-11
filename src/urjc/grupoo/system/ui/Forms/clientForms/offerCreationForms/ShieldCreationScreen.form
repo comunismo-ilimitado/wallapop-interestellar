@@ -93,9 +93,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="neededEnergyField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="neededEnergyFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="damageAlowedLabel">
       <Properties>
@@ -103,9 +100,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="damageAlowedField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="damageAlowedFieldActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

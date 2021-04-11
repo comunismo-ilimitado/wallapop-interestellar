@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,14 +10,14 @@ import urjc.grupoo.system.ui.SystemSession;
 public class DefenceCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-
-    private final ShipCreationScreen.ShipCreationHandler handler;
+    private final ShipCreationHandler handler;
 
     /**
-     * Creates new form fighterCreationScreen
+     * Creates new form DefenceCreationScreen
+     * @param session
+     * @param handler
      */
-    public DefenceCreationScreen(SystemSession session,
-            ShipCreationScreen.ShipCreationHandler handler) {
+    public DefenceCreationScreen(SystemSession session, ShipCreationHandler handler) {
         this.session = session;
         this.handler = handler;
         initComponents();
@@ -57,11 +58,6 @@ public class DefenceCreationScreen extends javax.swing.JPanel {
         });
 
         defenceTypeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escudos", "Blindaje" }));
-        defenceTypeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                defenceTypeSelectorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,9 +99,11 @@ public class DefenceCreationScreen extends javax.swing.JPanel {
         String selectedType = (String) defenceTypeSelector.getSelectedItem();
         switch (selectedType) {
             case "Escudos":
+            handler.setDefenceType(Spaceship.shield);
             session.getController().addNewPanel(new ShieldCreationScreen(session, handler));
             break;
             case "Blindaje":
+            handler.setDefenceType(Spaceship.armor);
             session.getController().addNewPanel(new ArmorCreationScreen(session, handler));
             break;
         }
@@ -113,13 +111,7 @@ public class DefenceCreationScreen extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack(); // Para volver al checkpoint
-        setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
-
-    private void defenceTypeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defenceTypeSelectorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_defenceTypeSelectorActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

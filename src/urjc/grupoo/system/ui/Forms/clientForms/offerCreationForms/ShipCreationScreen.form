@@ -69,7 +69,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="registerLabel1" min="-2" pref="243" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="registerTextField1" max="32767" attributes="0"/>
+                                  <Component id="speedTextField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -115,7 +115,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="registerLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="registerTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="speedTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -146,9 +146,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tripulantsTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tripulantsTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="doneButton">
       <Properties>
@@ -183,9 +180,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="registerTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="propulsion1Selector">
       <Properties>
@@ -231,17 +225,11 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shipTypeSelectorActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="registerTextField1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerTextField1ActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="speedTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="registerLabel1">
       <Properties>

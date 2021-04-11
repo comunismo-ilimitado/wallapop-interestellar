@@ -40,7 +40,7 @@ public class ValorationsScreen extends javax.swing.JPanel {
         }
     }    
     
-    public void addEntry(ClientComment comment){       
+    private void addEntry(ClientComment comment){       
         JPanel panel = new JPanel();
         panel.add(new JLabel(comment.getComment()));
         panel.add(new Button("Botton"));

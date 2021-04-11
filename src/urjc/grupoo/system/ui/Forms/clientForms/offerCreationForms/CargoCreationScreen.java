@@ -1,5 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.data.shipsData.ShipFactory;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -9,16 +11,18 @@ import urjc.grupoo.system.ui.SystemSession;
 public class CargoCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-
-    private final ShipCreationScreen.ShipCreationHandler handler;
+    private final ShipCreationHandler handler;
+    private final OfferCreationHandler offerhandler;
 
     /**
-     * Creates new form fighterCreationScreen
+     * Creates new form CargoCreationScreen
+     * @param session
+     * @param handler
      */
-    public CargoCreationScreen(SystemSession session,
-            ShipCreationScreen.ShipCreationHandler handler) {
+    public CargoCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;
         this.handler = handler;
+        this.offerhandler = offerhandler;
         initComponents();
     }
 
@@ -38,8 +42,13 @@ public class CargoCreationScreen extends javax.swing.JPanel {
         maxCargoLabel = new javax.swing.JLabel();
         addDefenceButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        defencesDisplay = new javax.swing.JList<>();
+        defenceField = new javax.swing.JTextField();
+
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         doneButton.setText("Siguiente");
         doneButton.setToolTipText("");
@@ -59,12 +68,6 @@ public class CargoCreationScreen extends javax.swing.JPanel {
             }
         });
 
-        maxCargoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maxCargoFieldActionPerformed(evt);
-            }
-        });
-
         maxCargoLabel.setText("Capacidad máxima de carga:");
 
         addDefenceButton.setText("Añadir sistema de defensa");
@@ -76,7 +79,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
 
         jLabel1.setText("Sistema de defensa:");
 
-        jScrollPane1.setViewportView(defencesDisplay);
+        defenceField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,11 +93,15 @@ public class CargoCreationScreen extends javax.swing.JPanel {
                             .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jLabel1)
+                                .addGap(139, 139, 139))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(defenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(maxCargoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(maxCargoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -114,15 +121,14 @@ public class CargoCreationScreen extends javax.swing.JPanel {
                     .addComponent(backButton)
                     .addComponent(nameLabel))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(maxCargoLabel)
                         .addGap(6, 6, 6)
-                        .addComponent(maxCargoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(maxCargoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(defenceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addDefenceButton)
                 .addGap(119, 119, 119)
@@ -132,6 +138,16 @@ public class CargoCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        handler.setCargoCapacity(Integer.parseInt(maxCargoField.getText()));
+        Spaceship newShip = new ShipFactory().CreateSpaceship(
+                handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
+                handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
+                handler.getDefenceList().get(0), handler.getCargoCapacity());
+        if (handler.getStationCounter() == 0){
+            offerhandler.addShipToOffer(newShip);
+        } else {
+            handler.removeStationCounter();
+        }   
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -140,23 +156,21 @@ public class CargoCreationScreen extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void maxCargoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxCargoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maxCargoFieldActionPerformed
-
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        session.getController().checkPoint();
+        
         session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
     }//GEN-LAST:event_addDefenceButtonActionPerformed
 
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        defenceField.setText(handler.getDefenceType());
+    }//GEN-LAST:event_formFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDefenceButton;
     private javax.swing.JButton backButton;
-    private javax.swing.JList<String> defencesDisplay;
+    private javax.swing.JTextField defenceField;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField maxCargoField;
     private javax.swing.JLabel maxCargoLabel;
     private javax.swing.JLabel nameLabel;

@@ -9,14 +9,16 @@ import urjc.grupoo.system.ui.SystemSession;
 public class FighterCreationScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
-
-    private final ShipCreationScreen.ShipCreationHandler handler;
+    private final ShipCreationHandler handler;
+    private final OfferCreationHandler offerhandler;
     
-    /** Creates new form fighterCreationScreen */
-    public FighterCreationScreen(SystemSession session, 
-            ShipCreationScreen.ShipCreationHandler handler) {
+    /** Creates new form FighterCreationScreen
+     * @param session
+     * @param handler */
+    public FighterCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;
         this.handler = handler;
+        this.offerhandler = offerhandler;
         initComponents();
     }
 
@@ -145,24 +147,21 @@ public class FighterCreationScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        handler.setCrewNumber(1);
         session.getController().checkPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        session.getController().goBack(); // Para volver al checkpoint
-        setVisible(false);
+        session.getController().goBack();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addWeaponButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWeaponButtonActionPerformed
-        session.getController().checkPoint();
         session.getController().addNewPanel(new WeaponCreationScreen(session, handler));
     }//GEN-LAST:event_addWeaponButtonActionPerformed
 
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        session.getController().checkPoint();
         session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
     }//GEN-LAST:event_addDefenceButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDefenceButton;
@@ -178,5 +177,4 @@ public class FighterCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel registerLabel3;
     private javax.swing.JList<String> weaponsDisplay;
     // End of variables declaration//GEN-END:variables
-
 }

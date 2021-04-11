@@ -1,7 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-import urjc.grupoo.data.shipsData.Spaceship;
-import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen.ShipCreationHandler;
+
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -11,13 +10,16 @@ import urjc.grupoo.system.ui.SystemSession;
 public class DestructorCreationScreen extends javax.swing.JPanel {
     
     private final SystemSession session;
-    private final ShipCreationScreen.ShipCreationHandler handler;
+    private final ShipCreationHandler handler;
+    private final OfferCreationHandler offerhandler;
     
-    /** Creates new form fighterCreationScreen */
-    public DestructorCreationScreen(SystemSession session,
-            ShipCreationHandler handler) {
+    /** Creates new form DestructorCreationScreen
+     * @param session
+     * @param handler */
+    public DestructorCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;
         this.handler = handler;
+        this.offerhandler = offerhandler;
         initComponents();
     }
 
@@ -152,15 +154,14 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addWeaponButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWeaponButtonActionPerformed
-        session.getController().checkPoint();
+//        session.getController().checkPoint();
         session.getController().addNewPanel(new WeaponCreationScreen(session, handler));
     }//GEN-LAST:event_addWeaponButtonActionPerformed
 
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        session.getController().checkPoint();
+//        session.getController().checkPoint();
         session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
     }//GEN-LAST:event_addDefenceButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDefenceButton;
@@ -175,5 +176,4 @@ public class DestructorCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel nameLabel;
     private javax.swing.JList<String> weaponsDisplay;
     // End of variables declaration//GEN-END:variables
-
 }
