@@ -66,15 +66,15 @@ public class Spaceship implements Serializable {
         setRegisterNumber(num);
     }
 
-    public ArrayList<Weapon> getWeaponList(Spaceship ship) {
+    public ArrayList<Weapon> getWeaponList() {
         ArrayList<Weapon> list = new ArrayList<>();
-        if ((ship.getType() == ship.fighter) || (ship.getType() == ship.destructor)) {
-            if (ship.getType() == ship.fighter) {
-                SpaceFighter ship2 = (SpaceFighter) ship;
+        if ((this.getType() == this.fighter) || (this.getType() == this.destructor)) {
+            if (this.getType() == this.fighter) {
+                SpaceFighter ship2 = (SpaceFighter) this;
                 list = ship2.getWeapons();
             }
-            if (ship.getType() == ship.destructor) {
-                Destructor ship2 = (Destructor) ship;
+            if (this.getType() == this.destructor) {
+                Destructor ship2 = (Destructor) this;
                 list = ship2.getWeapons();
             }
         } else {
@@ -83,31 +83,31 @@ public class Spaceship implements Serializable {
         return list;
     }
 
-    public ArrayList<DefenceSystem> getDefenceList(Spaceship ship) {
+    public ArrayList<DefenceSystem> getDefenceList() {
         ArrayList<DefenceSystem> list = new ArrayList<>();
-        if (ship.getType() == ship.cargo) {
-            CargoShip ship2 = (CargoShip) ship;
+        if (this.getType() == this.cargo) {
+            CargoShip ship2 = (CargoShip) this;
             list.add(ship2.getDefence());
         }
-        if (ship.getType() == ship.fighter) {
-            SpaceFighter ship2 = (SpaceFighter) ship;
+        if (this.getType() == this.fighter) {
+            SpaceFighter ship2 = (SpaceFighter) this;
             list.add(ship2.getDefence());
         }
-        if (ship.getType() == ship.station) {
-            SpaceStation ship2 = (SpaceStation) ship;
+        if (this.getType() == this.station) {
+            SpaceStation ship2 = (SpaceStation) this;
             list = ship2.getDefences();
         }
-        if (ship.getType() == ship.destructor) {
-            Destructor ship2 = (Destructor) ship;
+        if (this.getType() == this.destructor) {
+            Destructor ship2 = (Destructor) this;
             list = ship2.getDefences();
         }
         return list;
     }
 
-    public ArrayList<Spaceship> getSpaceshipList(Spaceship ship) {
+    public ArrayList<Spaceship> getSpaceshipList( ) {
         ArrayList<Spaceship> list = new ArrayList<>();
-        if (ship.getType() == ship.station) {
-            SpaceStation ship2 = (SpaceStation) ship;
+        if (this.getType() == this.station) {
+            SpaceStation ship2 = (SpaceStation) this;
             list = ship2.getContainedShips();
         } else {return null;}
         return list;

@@ -130,6 +130,7 @@ public class ShipFactory {
      */
     public DefenceSystem CreateDefence(double damageAllowed, double weigth, String material) {
         Armor defence = new Armor(damageAllowed, weigth, material);
+        defence.setDefenceType(Spaceship.armor);
         return defence;
     }
 
@@ -141,6 +142,7 @@ public class ShipFactory {
      */
     public DefenceSystem CreateDefence(double damageAllowed, double neededEnergy) {
         Shield defence = new Shield(damageAllowed, neededEnergy);
+        defence.setDefenceType(Spaceship.shield);
         return defence;
     }
 
