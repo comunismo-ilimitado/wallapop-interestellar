@@ -3,7 +3,6 @@ package urjc.grupoo.data.shipsData;
 import java.io.Serializable;
 
 
-
 public class Spaceship implements Serializable {
 
     private String registerNumber;
@@ -11,10 +10,11 @@ public class Spaceship implements Serializable {
     private PropulsionType firstpropulsion;
     private PropulsionType secondpropulsion;
     private String type;
-    
-    public static final String station = "Station", cargo = "Cargo",
-            destructor = "Destructor", fighter = "Fighter",shield = "Shield", armor = "Armor";
 
+    public static final String station = "Station", cargo = "Cargo", destructor = "Destructor", fighter = "Fighter",
+            plasmacannon = "Plasma cannon", thermonuclearmissiles = "Thermonuclear missiles", laserbeams = "Laser beams", pem = "PEM",
+            warpdrive = "Warp drive", tracecompressor = " Trace compressor", ftldrive = "FTL drive", solarsail = "Solar sail", ionthruster = "Ion thruster,",
+            shield = "Shield", armor = "Armor";
 
 
     public int getCrewMembersAmount() {
@@ -57,7 +57,6 @@ public class Spaceship implements Serializable {
         return registerNumber;
     }
 
-
     public Spaceship(String type, int i, PropulsionType fprop, PropulsionType sprop, String num) {
         setType(type);
         setCrewMembersAmount(i);
@@ -65,10 +64,6 @@ public class Spaceship implements Serializable {
         setSecondpropulsion(sprop);
         setRegisterNumber(num);
     }
-
-
-
-
 
 
 }

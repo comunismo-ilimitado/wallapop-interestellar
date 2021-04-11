@@ -4,7 +4,7 @@ public class Weapon {
     private double power;
     private String name;
 
-    public Weapon(double i, String str) {
+    public Weapon(String str ,double i) {
         setName(str);
         setPower(i);
     }

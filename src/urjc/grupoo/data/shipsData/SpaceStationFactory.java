@@ -2,12 +2,12 @@ package urjc.grupoo.data.shipsData;
 
 import java.util.ArrayList;
 
-public class SpaceStacionFactory extends ShipFactory {
+public class SpaceStationFactory extends ShipFactory {
 
-    public SpaceStacionFactory() {
+    public SpaceStationFactory() {
     }
 
-    public SpaceStation CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
+    public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
                                 int passengers, ArrayList<DefenceSystem> defencelist, ArrayList<Spaceship> listofships) {
 
         PropulsionType prop1 = new PropulsionType(maxSpeed1, propname1);

@@ -6,7 +6,7 @@ public class CargoShipFactory extends ShipFactory {
     }
 
 
-    public CargoShip CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
+    public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
                                 DefenceSystem defence, int cargo) {
 
         PropulsionType prop1 = new PropulsionType(maxSpeed1, propname1);
