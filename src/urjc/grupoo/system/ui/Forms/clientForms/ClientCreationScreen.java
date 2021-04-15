@@ -45,6 +45,7 @@ public class ClientCreationScreen extends javax.swing.JPanel {
         emailTextField = new javax.swing.JTextField();
         doneButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        kromaggLicense = new javax.swing.JCheckBox();
 
         nameLabel.setText("Nombre");
 
@@ -73,33 +74,45 @@ public class ClientCreationScreen extends javax.swing.JPanel {
             }
         });
 
+        kromaggLicense.setText("Licencia, solo para especie Kromagg");
+        kromaggLicense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kromaggLicenseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(doneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(speciesTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nickTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(50, 50, 50))
+                        .addComponent(kromaggLicense)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(doneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(speciesTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nickTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(passwordTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +146,11 @@ public class ClientCreationScreen extends javax.swing.JPanel {
                         .addComponent(planetLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(planetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(kromaggLicense)
+                .addGap(26, 26, 26)
                 .addComponent(doneButton)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,6 +165,7 @@ public class ClientCreationScreen extends javax.swing.JPanel {
         Client newClient = new Client(
                 clientAtributes.get(0), clientAtributes.get(1), clientAtributes.get(2),
                 clientAtributes.get(3), clientAtributes.get(4), clientAtributes.get(5));
+        newClient.getLicense().setBuysWeapon(kromaggLicense.isSelected());
         session.getClientFacade().registerClient(newClient);
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
@@ -158,11 +174,16 @@ public class ClientCreationScreen extends javax.swing.JPanel {
         session.getController().goBack();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void kromaggLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kromaggLicenseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kromaggLicenseActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
+    private javax.swing.JCheckBox kromaggLicense;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel nick;

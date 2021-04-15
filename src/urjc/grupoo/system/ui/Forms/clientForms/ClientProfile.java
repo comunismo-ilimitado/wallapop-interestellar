@@ -33,6 +33,7 @@ public class ClientProfile extends javax.swing.JPanel {
         nickTextField.setText(client.getNick());
         emailTextField.setText(client.getEmail());
         passwordTextField.setText(client.getPassword());
+        deniedOffers.setText(Integer.toString(client.getLicense().getWarned()));
     }
 
     /**
@@ -58,6 +59,8 @@ public class ClientProfile extends javax.swing.JPanel {
         nameTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         comments = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        deniedOffers = new javax.swing.JTextField();
 
         speciesTextField.setEditable(false);
 
@@ -97,6 +100,15 @@ public class ClientProfile extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Ofertas rechazadas");
+
+        deniedOffers.setEditable(false);
+        deniedOffers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deniedOffersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,22 +116,28 @@ public class ClientProfile extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(speciesTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(comments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(speciesTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(speciesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(planetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(planetLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                            .addComponent(deniedOffers))
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nickTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(nick, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                    .addComponent(comments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
                 .addComponent(backButton)
                 .addGap(50, 50, 50))
         );
@@ -156,8 +174,12 @@ public class ClientProfile extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(planetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(comments)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deniedOffers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comments))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,11 +191,17 @@ public class ClientProfile extends javax.swing.JPanel {
         session.getController().addNewPanel(new ValorationsScreen(session, client));
     }//GEN-LAST:event_commentsActionPerformed
 
+    private void deniedOffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deniedOffersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deniedOffersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton comments;
+    private javax.swing.JTextField deniedOffers;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel nick;
