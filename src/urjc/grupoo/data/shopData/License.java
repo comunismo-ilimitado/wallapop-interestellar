@@ -2,8 +2,10 @@ package urjc.grupoo.data.shopData;
 
 import java.io.Serializable;
 
-/*
+/**
  * Clase que almacena los datos de licencia del usuario
+ *
+ * @author Sergio
  */
 public class License implements Serializable {
 

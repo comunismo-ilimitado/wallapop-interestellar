@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-/*
- * Clase que almacena la lista de clientes
+/**
+ * Clase que almacena todos los clientes
+ *
+ * @author Sergio
  */
 public class SystemClients implements Serializable {
 

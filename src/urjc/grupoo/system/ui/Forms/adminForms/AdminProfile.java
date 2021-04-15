@@ -3,6 +3,11 @@ package urjc.grupoo.system.ui.Forms.adminForms;
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
 
+/**
+ * Clase correspondiente a la ventana que muestra el perfil de un administrador
+ *
+ * @author Sergio
+ */
 public class AdminProfile extends javax.swing.JPanel {
 
     private final SystemSession session;
@@ -22,6 +27,9 @@ public class AdminProfile extends javax.swing.JPanel {
         showAdmin();
     }
 
+    /**
+     * Se muestra por pantalla los datos del administrador
+     */
     public void showAdmin() {
         nameTextField.setText(admin.getName());
         nickTextField.setText(admin.getNick());
@@ -120,6 +128,11 @@ public class AdminProfile extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);

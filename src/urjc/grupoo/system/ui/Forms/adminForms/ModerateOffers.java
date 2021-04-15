@@ -1,27 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package urjc.grupoo.system.ui.Forms.adminForms;
 
-import java.awt.Button;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShowOffer;
 import urjc.grupoo.system.ui.SystemSession;
 
+/**
+ * Clase correspondiente a la ventana que permite moderar todas las ofertas que
+ * no han sido moderadas
+ *
+ * @author Sergio
+ */
 public class ModerateOffers extends javax.swing.JPanel {
 
     private final SystemSession session;
     private final JPanel mainList;
 
     /**
-     * Creates new form ValorationsScreen
+     * Creates new form ModerateOffers
      *
      * @param session
      */
@@ -42,32 +44,38 @@ public class ModerateOffers extends javax.swing.JPanel {
         }
     }
 
-    public void addEntry(Offer offerId) {
+    /**
+     * Muestra la lista de todas las ofertas sin moderar y permite ver la
+     * oferta, aceptarla o rechazarla
+     *
+     * @param offer
+     */
+    public void addEntry(Offer offer) {
         JPanel panel = new JPanel();
         Label offeridlab = new Label("Id: " + Integer
-                .toString(offerId.getOfferId()) + " de tipo " + offerId.getOfferType() + " ");
-        Button viewButton = new Button("Ver oferta");
-        Button acceptButton = new Button("Aceptar");
-        Button deleteButton = new Button("Rechazar");
+                .toString(offer.getOfferId()) + " de tipo " + offer.getOfferType() + " ");
+        JButton viewButton = new JButton("Ver oferta");
+        JButton acceptButton = new JButton("Aceptar");
+        JButton deleteButton = new JButton("Rechazar");
 
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                // session.getController().addNewPanel(new ViewOffer(session));  CREAR form ViewOffer
+                session.getController().addNewPanel(new ShowOffer(session, offer));
             }
         });
 
         acceptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                session.getAdminFacade().moderateOffer(offerId.getOfferId(), true);
+                session.getAdminFacade().moderateOffer(offer.getOfferId(), true);
             }
         });
 
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                session.getAdminFacade().moderateOffer(offerId.getOfferId(), false);
+                session.getAdminFacade().moderateOffer(offer.getOfferId(), false);
             }
         });
         panel.add(offeridlab);
@@ -81,25 +89,8 @@ public class ModerateOffers extends javax.swing.JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         mainList.add(panel, gbc, 0);
 
-        //validate();
-        //repaint();
     }
 
-//      public void addEntry(Offer offerId){       
-//        JPanel panel = new JPanel();
-//        panel.add(new JLabel(Integer.toString(offerId.getOfferId())));
-//        panel.add(new Button("Ver oferta"));
-//        panel.add(new Button("Aceptar"));
-//        panel.add(new Button("Denegar"));
-//        GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.gridwidth = GridBagConstraints.REMAINDER;
-//        gbc.weightx = 1;
-//        gbc.fill = GridBagConstraints.HORIZONTAL;
-//        mainList.add(panel, gbc, 0);
-//
-//        //validate();
-//        //repaint();
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,6 +163,11 @@ public class ModerateOffers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void backButtonnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonnActionPerformed
         session.getController().goBack();
         setVisible(false);

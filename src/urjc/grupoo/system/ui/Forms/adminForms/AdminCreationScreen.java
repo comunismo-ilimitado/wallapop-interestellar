@@ -5,8 +5,9 @@ import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
+ * Clase correspondiente a la ventana de creación de un Administrador
  *
- * @author Gonzalo Ortega
+ * @author Sergio
  */
 public class AdminCreationScreen extends javax.swing.JPanel {
 
@@ -119,6 +120,11 @@ public class AdminCreationScreen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Guarda el texto introducido por el usuario al pulsar el botón de Listo
+     *
+     * @param evt
+     */
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         ArrayList<String> adminAtributes = new ArrayList<>();
         adminAtributes.add(nameTextField.getText());
@@ -131,6 +137,11 @@ public class AdminCreationScreen extends javax.swing.JPanel {
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
     }//GEN-LAST:event_backButtonActionPerformed

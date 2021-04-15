@@ -3,6 +3,11 @@ package urjc.grupoo.system.ui.Forms.adminForms;
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
 
+/**
+ * Clase correspndiente a la ventana de inicio de sesión de un Administrador
+ *
+ * @author Sergio
+ */
 public class AdminLoginScreen extends javax.swing.JPanel {
 
     private final SystemSession session;
@@ -118,6 +123,12 @@ public class AdminLoginScreen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Recoge la contraseña y usuario escrito y comprueba si está resgistrado y
+     * si es correcta la contraseña
+     *
+     * @param evt
+     */
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         String[] userAndPassword = new String[2];
         userAndPassword[0] = userTextField.getText();
@@ -132,6 +143,11 @@ public class AdminLoginScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);

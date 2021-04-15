@@ -2,12 +2,17 @@ package urjc.grupoo.system.ui.Forms.adminForms;
 
 import urjc.grupoo.system.ui.SystemSession;
 
+/**
+ * Clase correspondiente a la ventana que permite reportar a los usuarios
+ *
+ * @author Sergio
+ */
 public class UpdatePermission extends javax.swing.JPanel {
 
     private final SystemSession session;
 
     /**
-     * Creates new form ViewUsers
+     * Creates new form UpdatePermission
      *
      * @param session
      */
@@ -116,6 +121,12 @@ public class UpdatePermission extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite reportar o no al usuario introduciendo su Id y marcando la
+     * casilla de fraude o pirateria
+     *
+     * @param evt
+     */
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
 
         String idUser = userTextField.getText();
@@ -131,10 +142,15 @@ public class UpdatePermission extends javax.swing.JPanel {
                 session.getAdminFacade().resolveUserReportOfFraud(Integer.getInteger(idUser));
             }
         } else {
-            incorrect.setText("Usuario o contraseña incorrectos");
+            incorrect.setText("Usuario no encontrado");
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);

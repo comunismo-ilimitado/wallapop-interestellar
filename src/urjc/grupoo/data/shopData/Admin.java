@@ -1,7 +1,9 @@
 package urjc.grupoo.data.shopData;
 
-/*
-* Clase que almacena los datos de los administradores
+/**
+ * Clase de creación de un administrador
+ *
+ * @author Sergio
  */
 public class Admin extends User {
 

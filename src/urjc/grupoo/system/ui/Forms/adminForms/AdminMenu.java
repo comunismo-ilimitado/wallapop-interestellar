@@ -3,6 +3,11 @@ package urjc.grupoo.system.ui.Forms.adminForms;
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.system.ui.SystemSession;
 
+/**
+ * Clase correspondiente a la ventana de menú de un Administrador
+ *
+ * @author Sergio
+ */
 public class AdminMenu extends javax.swing.JPanel {
 
     private final SystemSession session;
@@ -100,19 +105,42 @@ public class AdminMenu extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Al pulsar el botón de Mi perfil, se avanza hacia la ventana de mostrar
+     * perfil de admin
+     *
+     * @param evt
+     */
     private void adminProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminProfileActionPerformed
         session.getController().addNewPanel(new AdminProfile(session, admin));
     }//GEN-LAST:event_adminProfileActionPerformed
 
+    /**
+     * Al pulsar el botón de Moderar ofertas, se avanza hacia la ventana de
+     * moderar ofertas
+     *
+     * @param evt
+     */
     private void viewoffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewoffersActionPerformed
         session.getController().addNewPanel(new ModerateOffers(session));
     }//GEN-LAST:event_viewoffersActionPerformed
 
+    /**
+     * Al pulsar el botón de Reportar usuarios, se avanza hacia la ventana de
+     * poder reportar usuarios
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    /**
+     * Se vuelve a la ventana anterior al pulsar el botón superior derecho "<"
+     *
+     * @param evt
+     */
     private void viewusersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewusersActionPerformed
         session.getController().addNewPanel(new UpdatePermission(session));
     }//GEN-LAST:event_viewusersActionPerformed

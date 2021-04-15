@@ -2,8 +2,10 @@ package urjc.grupoo.data.shopData;
 
 import java.io.Serializable;
 
-/*
-     * Clase abstracta correspondiente al usuario
+/**
+ * Clase abstracta correspondiente al usuario
+ *
+ * @author Sergio
  */
 public abstract class User implements Serializable {
 

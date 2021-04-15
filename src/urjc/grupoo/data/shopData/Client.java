@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-/*
- * Clase que almacena los datos de los clientes
+/**
+ * Clase de creación y almacén de datos de los clientes
+ *
+ * @author Sergio
  */
 public class Client extends User {
 
@@ -22,11 +24,15 @@ public class Client extends User {
         super(name, nick, password, email);
         this.origingPlanet = origingPlanet;
         this.species = species;
-        this.license = null;
+        if (species == "Kromagg") {
+            license = new License();
+        } else {
+            license = null;
+        }
         notifications = new ClientNotifications();
         commentList = new ArrayList<>();
         activeOffers = new HashMap<>();
-        license = new License();
+
     }
 
     public String getOrigingPlanet() {

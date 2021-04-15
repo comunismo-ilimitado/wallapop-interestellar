@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Clase que almacena la lista de offertas para notificar
+ *
+ * @author Sergio
  */
 public class ClientNotifications implements Serializable {
 

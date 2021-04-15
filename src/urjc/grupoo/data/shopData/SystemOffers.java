@@ -7,7 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import urjc.grupoo.system.backend.ShopSystem;
 
-// ESTA CLASE NO ESTA TERMINADA
+/**
+ * Clase correspondiente a los sitemas de ofertas
+ *
+ * @author Sergio
+ */
 public class SystemOffers implements Serializable {
 
     private HashMap<Integer, Offer> offers;
@@ -25,6 +29,12 @@ public class SystemOffers implements Serializable {
         return offers;
     }
 
+    /**
+     * Método para añadir una oferta
+     *
+     * @param offer
+     * @param system
+     */
     public void addOffer(Offer offer, ShopSystem system) {
         offers.put(lastOffer, offer);
         offer.setOfferId(lastOffer);
@@ -32,10 +42,21 @@ public class SystemOffers implements Serializable {
         lastOffer += 1;
     }
 
+    /**
+     * Método para eliminar una oferta
+     *
+     * @param offerId
+     */
     public void removeOffer(int offerId) {
         offers.remove(offerId);
     }
 
+    /**
+     * Método para notificar la oferta
+     *
+     * @param offer
+     * @param system
+     */
     public void notifyObservers(Offer offer, ShopSystem system) {
         observers.forEach((obs) -> {
             obs.update(offer, system);

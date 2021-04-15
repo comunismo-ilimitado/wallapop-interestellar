@@ -5,8 +5,11 @@ import java.util.Date;
 import java.util.List;
 import urjc.grupoo.data.shipsData.Spaceship;
 
-/*
- * Clase que contiene los datos de las ofertas
+/**
+ * Clase que contiene los datos de las ofertasde creación y almacén de datos de
+ * las ofertas
+ *
+ * @author Sergio
  */
 public class Offer implements Serializable {
 

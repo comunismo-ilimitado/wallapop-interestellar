@@ -2,8 +2,10 @@ package urjc.grupoo.data.shopData;
 
 import java.io.Serializable;
 
-/*
+/**
  * Clase que almacena la información de los comentarios y valoraciones
+ *
+ * @author Sergio
  */
 public class ClientComment implements Serializable {
 

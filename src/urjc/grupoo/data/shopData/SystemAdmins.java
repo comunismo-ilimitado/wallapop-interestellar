@@ -1,12 +1,15 @@
 package urjc.grupoo.data.shopData;
 
-/*
- * Clase que almacena la lista de administradores
- */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que almacena todos los administradores
+ *
+ * @author Sergio
+ */
 public class SystemAdmins implements Serializable {
 
     private List<Admin> adminList;
