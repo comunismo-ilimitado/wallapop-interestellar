@@ -14,8 +14,24 @@ public class Spaceship implements Serializable {
     public static final String station = "Estación espacial", cargo = "Carguero", destructor = "Destructor", fighter = "Caza",
             plasmacannon = "Cañón de plasma", thermonuclearmissiles = "Misiles termonucleares", laserbeams = "Rayos láser", pem = "PEM",
             warpdrive = "Motor de curvatura", tracecompressor = "Compresor de traza", ftldrive = "Motor FTL", solarsail = "Velas solares",
-            ionthruster = "Motor iónico", seat= "Seat Panda intergaláctico", motorm = "Motor de pedos de marciano", uwu= "UWU",
+            ionthruster = "Motor iónico", seat = "Seat Panda intergaláctico", motorm = "Motor de pedos de marciano", uwu = "UWU",
             shield = "Escudo", armor = "Blindaje";
+
+    /**
+     * Constructor de Nave Espacial
+     * @param type
+     * @param i
+     * @param fprop
+     * @param sprop
+     * @param num
+     */
+    public Spaceship(String type, int i, PropulsionType fprop, PropulsionType sprop, String num) {
+        setType(type);
+        setCrewMembersAmount(i);
+        setFirstpropulsion(fprop);
+        setSecondpropulsion(sprop);
+        setRegisterNumber(num);
+    }
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;
@@ -57,13 +73,6 @@ public class Spaceship implements Serializable {
         return registerNumber;
     }
 
-    public Spaceship(String type, int i, PropulsionType fprop, PropulsionType sprop, String num) {
-        setType(type);
-        setCrewMembersAmount(i);
-        setFirstpropulsion(fprop);
-        setSecondpropulsion(sprop);
-        setRegisterNumber(num);
-    }
 
     public ArrayList<Weapon> getWeaponList() {
         ArrayList<Weapon> list = new ArrayList<>();
@@ -127,7 +136,9 @@ public class Spaceship implements Serializable {
         if (this.getType() == this.cargo) {
             CargoShip ship2 = (CargoShip) this;
             return ship2.getMaxCargo();
-        } else {return 0;}
+        } else {
+            return 0;
+        }
 
     }
 

@@ -32,6 +32,17 @@ public class SpaceStation extends Spaceship {
         this.defences = defences;
     }
 
+    /**
+     * Constructor de Estación Espacial
+     * @param type
+     * @param i
+     * @param fprop
+     * @param sprop
+     * @param num
+     * @param passengers
+     * @param defencelist
+     * @param listofships
+     */
     public SpaceStation(String type, int i, PropulsionType fprop, PropulsionType sprop, String num, int passengers,
             ArrayList<DefenceSystem> defencelist, ArrayList<Spaceship> listofships) {
         super(type, i, fprop, sprop, num);

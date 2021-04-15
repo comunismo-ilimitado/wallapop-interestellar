@@ -3,6 +3,9 @@ package urjc.grupoo.data.shipsData;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Desde esta clase contruimos todos los tipos de naves
+ */
 public class ShipFactory implements Serializable {
 
     /**
@@ -17,7 +20,7 @@ public class ShipFactory implements Serializable {
      * @param registernumber
      * @param weaponlist
      * @param defencelist
-     * @return
+     * @return Spaceship
      */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             ArrayList<Weapon> weaponlist, ArrayList<DefenceSystem> defencelist) {
@@ -42,7 +45,7 @@ public class ShipFactory implements Serializable {
      * @param registernumber
      * @param defence
      * @param cargo
-     * @return
+     * @return Spaceship
      */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             DefenceSystem defence, int cargo) {
@@ -70,7 +73,7 @@ public class ShipFactory implements Serializable {
      * @param passengers
      * @param defencelist
      * @param listofships
-     * @return
+     * @return Spaceship
      */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             int passengers, ArrayList<DefenceSystem> defencelist, ArrayList<Spaceship> listofships) {
@@ -97,7 +100,7 @@ public class ShipFactory implements Serializable {
      * @param registernumber
      * @param weaponlist
      * @param defence
-     * @return
+     * @return Spaceship
      */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             ArrayList<Weapon> weaponlist, DefenceSystem defence) {
@@ -118,7 +121,7 @@ public class ShipFactory implements Serializable {
      *
      * @param weaponName
      * @param weaponDamage
-     * @return
+     * @return Weapon
      */
     public Weapon CreateWeapon(String weaponName, double weaponDamage) {
         Weapon weapon = new Weapon(weaponName, weaponDamage);
@@ -131,7 +134,7 @@ public class ShipFactory implements Serializable {
      * @param damageAllowed
      * @param weigth
      * @param material
-     * @return
+     * @return DefenceSystem
      */
     public DefenceSystem CreateDefence(double damageAllowed, double weigth, String material) {
         Armor defence = new Armor(damageAllowed, weigth, material);
@@ -144,7 +147,7 @@ public class ShipFactory implements Serializable {
      *
      * @param damageAllowed
      * @param neededEnergy
-     * @return
+     * @return DefenceSystem
      */
     public DefenceSystem CreateDefence(double damageAllowed, double neededEnergy) {
         Shield defence = new Shield(damageAllowed, neededEnergy);

@@ -4,6 +4,11 @@ public class Shield extends DefenceSystem {
 
     private double neededEnergy;
 
+    /**
+     * Cosntructor de Escudo
+     * @param i
+     * @param j
+     */
     public Shield(double i, double j) {
         super(i);
         setNeededEnergy(j);

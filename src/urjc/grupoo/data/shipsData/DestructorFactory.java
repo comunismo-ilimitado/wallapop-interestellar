@@ -7,6 +7,19 @@ public class DestructorFactory extends ShipFactory {
     public DestructorFactory() {
     }
 
+    /**
+     *Función que devuelve un Destructor con los parámetros proporcionados
+     * @param Type
+     * @param crewmembers
+     * @param propname1
+     * @param maxSpeed1
+     * @param propname2
+     * @param maxSpeed2
+     * @param registernumber
+     * @param weaponlist
+     * @param defencelist
+     * @return Spaceship
+     */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             ArrayList<Weapon> weaponlist, ArrayList<DefenceSystem> defencelist) {
 

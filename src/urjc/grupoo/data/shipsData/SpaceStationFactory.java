@@ -7,6 +7,20 @@ public class SpaceStationFactory extends ShipFactory {
     public SpaceStationFactory() {
     }
 
+    /**
+     * Función que devuelve una Estación Espacial con los parámetros proporcionados
+     * @param Type
+     * @param crewmembers
+     * @param propname1
+     * @param maxSpeed1
+     * @param propname2
+     * @param maxSpeed2
+     * @param registernumber
+     * @param passengers
+     * @param defencelist
+     * @param listofships
+     * @return Spaceship
+     */
     public Spaceship CreateSpaceship(String Type, int crewmembers, String propname1, Double maxSpeed1, String propname2, Double maxSpeed2, String registernumber,
             int passengers, ArrayList<DefenceSystem> defencelist, ArrayList<Spaceship> listofships) {
 

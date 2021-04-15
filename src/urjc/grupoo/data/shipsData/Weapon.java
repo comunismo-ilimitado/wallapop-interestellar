@@ -7,6 +7,11 @@ public class Weapon implements Serializable {
     private double power;
     private String name;
 
+    /**
+     * Constructor de Arma
+     * @param str
+     * @param i
+     */
     public Weapon(String str, double i) {
         setName(str);
         setPower(i);

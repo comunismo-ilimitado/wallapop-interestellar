@@ -23,6 +23,11 @@ public class PropulsionType implements Serializable {
         this.maxSpeed = maxSpeed;
     }
 
+    /**
+     *Constructor de Propulsión
+     * @param i
+     * @param str
+     */
     public PropulsionType(double i, String str) {
         setMaxSpeed(i);
         setName(str);

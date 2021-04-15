@@ -23,6 +23,16 @@ public class Destructor extends Spaceship {
         this.weapons = weapons;
     }
 
+    /**
+     *Constructor de Destructor
+     * @param type
+     * @param i
+     * @param fprop
+     * @param sprop
+     * @param num
+     * @param weaponlist
+     * @param defencelist
+     */
     public Destructor(String type, int i, PropulsionType fprop, PropulsionType sprop, String num, ArrayList<Weapon> weaponlist, ArrayList<DefenceSystem> defencelist) {
         super(type, i, fprop, sprop, num);
         setDefences(defencelist);

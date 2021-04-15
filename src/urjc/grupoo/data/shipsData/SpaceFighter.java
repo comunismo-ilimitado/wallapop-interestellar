@@ -23,6 +23,16 @@ public class SpaceFighter extends Spaceship {
         this.defence = defence;
     }
 
+    /**
+     * Constructor de Caza
+     * @param type
+     * @param i
+     * @param fprop
+     * @param sprop
+     * @param num
+     * @param weaponlist
+     * @param dfsystem
+     */
     public SpaceFighter(String type, int i, PropulsionType fprop, PropulsionType sprop, String num, ArrayList<Weapon> weaponlist, DefenceSystem dfsystem) {
         super(type, i, fprop, sprop, num);
         setDefence(dfsystem);

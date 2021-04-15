@@ -2,6 +2,9 @@ package urjc.grupoo.data.shipsData;
 
 import java.io.Serializable;
 
+/**
+ *Clase Abstracta de la que derivan Blindaje y Escudo.
+ */
 public abstract class DefenceSystem implements Serializable {
 
     private double damageAllowed;
