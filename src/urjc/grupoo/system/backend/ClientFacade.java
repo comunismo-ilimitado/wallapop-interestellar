@@ -111,6 +111,7 @@ public class ClientFacade {
         spaceships.getSoldSpaceshipList().add(reg);
     }
 
+    // Logearse en el sistema
     public Client login(String user, String passwd) {
         Client c = null;
 

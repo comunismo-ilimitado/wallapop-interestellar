@@ -24,11 +24,15 @@ public class Client extends User {
         super(name, nick, password, email);
         this.origingPlanet = origingPlanet;
         this.species = species;
+        license = new License();
+        
         if (species == "Kromagg") {
-            license = new License();
+            license.setBuysWeapon(false);
         } else {
-            license = null;
+        
         }
+        
+        
         notifications = new ClientNotifications();
         commentList = new ArrayList<>();
         activeOffers = new HashMap<>();

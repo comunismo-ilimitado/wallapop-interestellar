@@ -13,17 +13,21 @@ public class ShopSystem {
     private Database database;
 
     private PermissionsManager permissionsManager;
+    
+    private Manager manager;
 
     public ShopSystem() {
         this.database = new Database();
         this.permissionsManager = new PermissionsManager();
+        this.manager = new Manager(this);
     }
 
     // Funcion que inicia las bases del sistema
     public void start() {
         loadDatabase();
+        manager.run();
     }
-
+    
     public static String clientData = "ClientData";
     public static String adminData = "AdminData";
     public static String moderationOfferData = "ModOfferData";

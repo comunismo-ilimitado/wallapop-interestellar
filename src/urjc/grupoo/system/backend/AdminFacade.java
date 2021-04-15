@@ -2,6 +2,7 @@ package urjc.grupoo.system.backend;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import urjc.grupoo.data.shopData.Admin;
 import urjc.grupoo.data.shopData.Client;
@@ -59,6 +60,21 @@ public class AdminFacade {
             if (clients.getClientList().containsKey(offer.getSeller())) {
                 clients.getClientList().get(offer.getSeller())
                         .getActiveOffers().put(offer.getOfferId(), offer);
+            }
+        }else{
+            // Notificar al cliente
+            SystemClients clients
+                    = (SystemClients) system.getDatabase().get(ShopSystem.clientData);
+            if (clients.getClientList().containsKey(offer.getSeller())) {
+                
+                //Añadir una notificacion y banear en caso de ser muchas ocurrencias
+                int w = clients.getClientList().get(offer.getSeller()).getLicense().getWarned();
+                clients.getClientList().get(offer.getSeller()).getLicense().setWarned(w+1);
+                if(w+1 >= 2){
+                    clients.getClientList().get(offer.getSeller()).getLicense().setBanned(true);
+                    clients.getClientList().get(offer.getSeller()).getLicense().setLastBanned(new Date());
+                }
+
             }
         }
     }

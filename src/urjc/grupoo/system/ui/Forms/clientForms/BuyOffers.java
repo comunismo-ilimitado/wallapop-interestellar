@@ -12,9 +12,11 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShowOffer;
 import urjc.grupoo.system.ui.SystemSession;
 
 public class BuyOffers extends javax.swing.JPanel {
@@ -50,13 +52,13 @@ public class BuyOffers extends javax.swing.JPanel {
         JPanel panel = new JPanel();
         Label offeridlab = new Label("Id: " + Integer
                 .toString(offerId.getOfferId()) + " de tipo " + offerId.getOfferType() + " ");
-        Button viewButton = new Button("Ver oferta");
-        Button acceptButton = new Button("Comprar");
+        JButton viewButton = new JButton("Ver oferta");
+        JButton acceptButton = new JButton("Comprar");
 
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                // session.getController().addNewPanel(new ViewOffer(session));  CREAR form ViewOffer
+                session.getController().addNewPanel(new ShowOffer(session, offerId));
             }
         });
 

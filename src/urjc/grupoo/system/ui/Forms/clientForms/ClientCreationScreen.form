@@ -16,33 +16,41 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="doneButton" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nameTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="speciesTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="nameLabel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="speciesLabel" alignment="0" pref="200" max="32767" attributes="0"/>
-                          <Component id="planetTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="planetLabel" alignment="1" pref="200" max="32767" attributes="0"/>
+                      <Component id="kromaggLicense" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="doneButton" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="nameTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="speciesTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="nameLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="speciesLabel" alignment="0" pref="200" max="32767" attributes="0"/>
+                                  <Component id="planetTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="planetLabel" alignment="1" pref="200" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="emailTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="nickTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="emailLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="nick" alignment="0" pref="201" max="32767" attributes="0"/>
+                                  <Component id="passwordTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="password" alignment="1" pref="201" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="emailTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="nickTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="emailLabel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="nick" alignment="0" pref="201" max="32767" attributes="0"/>
-                          <Component id="passwordTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="password" alignment="1" pref="201" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace pref="88" max="32767" attributes="0"/>
+                      <Component id="backButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
-              <Component id="backButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,9 +91,11 @@
                       <Component id="planetTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="kromaggLicense" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="doneButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="147" max="32767" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -148,6 +158,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="kromaggLicense">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Licencia, solo para especie Kromagg"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kromaggLicenseActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
