@@ -1,5 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms.StationCreationScreen;
@@ -45,6 +47,11 @@ public class ShipCreationScreen extends javax.swing.JPanel {
             handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
             String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
             
+            if(!checkRegNumber(registerTextField.getText())){
+                incorrectLabel.setText("Formato de registro incorrecto.");
+                return false;
+            }
+            
             switch (selectedPropulsion1) {
                 case "Motor de curvatura":
                     handler.setPropulsion1(Spaceship.warpdrive);
@@ -89,6 +96,20 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         return true;
     }
 
+    /**
+     * Chequea el formato del registro
+     * @param regnumber
+     * @return true si el formato es correcto
+     */
+    private boolean checkRegNumber(String regnumber){
+            
+        regnumber = regnumber.toUpperCase();
+        Pattern patron = Pattern.compile("[A-Z]{1}[0-9]{4}[A-Z]{3}");
+        Matcher mat = patron.matcher(regnumber);
+        
+        return mat.matches();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

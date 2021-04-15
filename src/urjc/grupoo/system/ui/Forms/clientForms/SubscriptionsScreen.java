@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -128,27 +129,27 @@ public class SubscriptionsScreen extends javax.swing.JPanel {
 
     private void saveSubcriptionsButtonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSubcriptionsButtonsActionPerformed
         if (cargoSubCheck.isSelected()) {
-            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "cargo");
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), Spaceship.cargo);
         } else {
-            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "cargo");
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), Spaceship.cargo);
         }
 
         if (destructorSubCheck.isSelected()) {
-            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "destructor");
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), Spaceship.destructor);
         } else {
-            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "destructor");
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), Spaceship.destructor);
         }
 
         if (fighterSubCheck.isSelected()) {
-            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "fighter");
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), Spaceship.fighter);
         } else {
-            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "fighter");
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), Spaceship.fighter);
         }
 
         if (stationsSubCheck.isSelected()) {
-            session.getClientFacade().suscribeClientTo(client.getIdNumber(), "stations");
+            session.getClientFacade().suscribeClientTo(client.getIdNumber(), Spaceship.station);
         } else {
-            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), "stations");
+            session.getClientFacade().unsuscribeClientTo(client.getIdNumber(), Spaceship.station);
         }
 
     }//GEN-LAST:event_saveSubcriptionsButtonsActionPerformed

@@ -29,7 +29,7 @@ public class Client extends User {
         if (species == "Kromagg") {
             license.setBuysWeapon(false);
         } else {
-        
+            license.setBuysWeapon(true);
         }
         
         

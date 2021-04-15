@@ -166,7 +166,7 @@ public class ClientMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_searchShipsActionPerformed
 
     private void notificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationsActionPerformed
-        // TODO add your handling code here:
+        session.getController().addNewPanel(new ViewNotifications(session, client));
     }//GEN-LAST:event_notificationsActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

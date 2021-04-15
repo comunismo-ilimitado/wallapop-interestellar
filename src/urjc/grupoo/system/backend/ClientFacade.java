@@ -74,23 +74,24 @@ public class ClientFacade {
 
     }
 
-    public void buyOffer(int buyerId, int offerId, String offerType) {
+    public boolean buyOffer(int buyerId, int offerId, String offerType) {
         // TODO revisar que el buyer y la offerta existen
         //Obtener el cliente
         SystemClients clients
                 = (SystemClients) system.getDatabase().get(ShopSystem.clientData);
         Client c = clients.getClientList().get(buyerId);
 
+        
         // chequear que el usuario puede comprar
         if (!system.getPermissionsManager()
                 .checkPermission(PermissionsManager.Permission.Buy, c)) {
-            return;
+            return false;
         }
 
         // chequear que el usuario puede comprar armas
         if (!offerType.equals("Cargo") && !system.getPermissionsManager()
                 .checkPermission(PermissionsManager.Permission.BuyWeaponizedShip, c)) {
-            return;
+            return false;
         }
 
         //Obtener la oferta
@@ -99,9 +100,11 @@ public class ClientFacade {
         // Borrar la oferta
         Offer offer = offers.getOffers().get(offerId);
         Client s = clients.getClientList().get(offer.getSeller());
-        s.getActiveOffers().remove(offer.getOfferId());
+        s.getActiveOffers().remove(offerId);
         offers.removeOffer(offerId);
 
+        
+        
         // Crear el registro
         SoldSpaceshipRegister reg = new SoldSpaceshipRegister(offer.getOfferedSpaceShips(), system.getDate(), s, c, offer.getPrice());
 
@@ -109,6 +112,8 @@ public class ClientFacade {
         SoldSpaceships spaceships = (SoldSpaceships) system.getDatabase()
                 .get(ShopSystem.soldData);
         spaceships.getSoldSpaceshipList().add(reg);
+        
+        return true;
     }
 
     // Logearse en el sistema
@@ -128,6 +133,9 @@ public class ClientFacade {
                     found = true;
                 }
             }
+        }
+        if(c.getLicense().isBanned()){
+            c = null;
         }
 
         return c;

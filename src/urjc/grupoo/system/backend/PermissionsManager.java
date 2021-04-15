@@ -5,7 +5,7 @@ import urjc.grupoo.data.shopData.Client;
 public class PermissionsManager {
 
     public boolean checkPermission(Permission permission, Client client) {
-        boolean r = false;
+        boolean r = true;
 
         switch (permission) {
 
@@ -17,7 +17,7 @@ public class PermissionsManager {
                 break;
             case BuyWeaponizedShip:
                 r = !client.getLicense().isPirateSuspect();
-                r = r&client.getLicense().isBuysWeapon();
+                //r = r&client.getLicense().isBuysWeapon();
                 break;
             case Buy:
                 r = !client.getLicense().isFraudSuspect();

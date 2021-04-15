@@ -22,6 +22,7 @@ public class License implements Serializable {
         TYPE = 0;
         fraudSuspect = false;
         pirateSuspect = false;
+        buysWeapon = true;
     }
 
     public Integer getTYPE() {

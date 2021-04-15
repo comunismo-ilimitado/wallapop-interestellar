@@ -113,7 +113,7 @@ public class ClientLoginScreen extends javax.swing.JPanel {
             incorrectLabel.setText("");
             session.getController().addNewPanel(new ClientMenu(session, client));
         } else {
-            incorrectLabel.setText("Usuario o contraseña incorrectos");
+            incorrectLabel.setText("Usuario o contraseña incorrectos o cuenta baneada");
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
