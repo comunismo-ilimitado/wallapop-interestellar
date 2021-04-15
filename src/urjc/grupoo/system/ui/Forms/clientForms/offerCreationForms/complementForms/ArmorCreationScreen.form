@@ -19,23 +19,37 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="newShieldLabel" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
-                  <Component id="doneButton" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="neededEnergyField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="eregyNeededLabel" alignment="1" pref="243" max="32767" attributes="0"/>
+                          <Component id="weightField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="weightLabel" alignment="1" min="-2" pref="243" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="damageAlowedLabel" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                          <Component id="damageAlowedField" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="incorrectLabel" min="-2" pref="490" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="shieldLabel" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
+                              <Component id="doneButton" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="materialField" max="32767" attributes="0"/>
+                                      <Component id="materialLabel" pref="243" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="damageAlowedLabel" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                                      <Component id="damageAlowedField" min="-2" pref="243" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="backButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="backButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,29 +59,35 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="backButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="newShieldLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="shieldLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="eregyNeededLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="materialLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="damageAlowedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="neededEnergyField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="materialField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="damageAlowedField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="weightLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="weightField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <Component id="incorrectLabel" min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="doneButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="eregyNeededLabel">
+    <Component class="javax.swing.JLabel" name="materialLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Energ&#xed;a requerida (en Gigaculombios):"/>
+        <Property name="text" type="java.lang.String" value="Material:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="doneButton">
@@ -79,9 +99,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doneButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="newShieldLabel">
+    <Component class="javax.swing.JLabel" name="shieldLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Escudos"/>
+        <Property name="text" type="java.lang.String" value="Blindaje"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
@@ -92,7 +112,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="neededEnergyField">
+    <Component class="javax.swing.JTextField" name="materialField">
     </Component>
     <Component class="javax.swing.JLabel" name="damageAlowedLabel">
       <Properties>
@@ -100,6 +120,20 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="damageAlowedField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="weightLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Peso a&#xf1;adido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="weightField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="incorrectLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

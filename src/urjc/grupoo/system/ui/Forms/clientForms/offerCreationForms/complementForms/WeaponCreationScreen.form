@@ -20,31 +20,29 @@
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="weightField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="weightLabel" alignment="1" min="-2" pref="243" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="incorrectLabel" min="-2" pref="490" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="shieldLabel" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
-                          <Component id="doneButton" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="materialField" max="32767" attributes="0"/>
-                                  <Component id="materialLabel" pref="243" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="weaponTypeLabel" min="-2" pref="243" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="damageAlowedLabel" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                                  <Component id="damageAlowedField" min="-2" pref="243" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="weaponPowerLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="weaponPowerField" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="newWeaponLabel" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
+                          <Component id="doneButton" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="backButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="weaponTypeSelector" min="-2" pref="243" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -56,35 +54,31 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="backButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="shieldLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="newWeaponLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="materialLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="damageAlowedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="weaponTypeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="weaponTypeSelector" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="weaponPowerLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="weaponPowerField" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="materialField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="damageAlowedField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="weightLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="weightField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+              <Component id="incorrectLabel" min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="doneButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="materialLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Material:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="doneButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Siguiente"/>
@@ -94,9 +88,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doneButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="shieldLabel">
+    <Component class="javax.swing.JLabel" name="newWeaponLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Blindaje"/>
+        <Property name="text" type="java.lang.String" value="Nuevo Arma"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
@@ -107,21 +101,39 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="materialField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="damageAlowedLabel">
+    <Component class="javax.swing.JComboBox" name="weaponTypeSelector">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Da&#xf1;o absorbible (en Gigajulios):"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Ca&#xf1;ones de plasma"/>
+            <StringItem index="1" value="Misiles termonucleares"/>
+            <StringItem index="2" value="Rayos l&#xe1;ser"/>
+            <StringItem index="3" value="PEM"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="weaponPowerField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="weaponPowerLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fuerza destructiva (en Gigajulios):"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="damageAlowedField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="weightLabel">
+    <Component class="javax.swing.JLabel" name="weaponTypeLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Peso a&#xf1;adido:"/>
+        <Property name="text" type="java.lang.String" value="Tipo de arma:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="weightField">
+    <Component class="javax.swing.JLabel" name="incorrectLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

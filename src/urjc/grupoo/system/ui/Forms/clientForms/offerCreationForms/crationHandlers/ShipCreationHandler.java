@@ -1,4 +1,4 @@
-package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
+package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers;
 
 import java.util.ArrayList;
 import urjc.grupoo.data.shipsData.DefenceSystem;

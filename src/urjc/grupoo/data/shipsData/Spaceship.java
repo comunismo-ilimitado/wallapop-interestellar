@@ -15,7 +15,7 @@ public class Spaceship implements Serializable {
             plasmacannon = "Cañón de plasma", thermonuclearmissiles = "Misiles termonucleares", laserbeams = "Rayos láser", pem = "PEM",
             warpdrive = "Motor de curvatura", tracecompressor = "Compresor de traza", ftldrive = "Motor FTL", solarsail = "Velas solares",
             ionthruster = "Motor iónico", seat= "Seat Panda intergaláctico", motorm = "Motor de pedos de marciano", uwu= "UWU",
-            shield = "Escudo", armor = "Armadura";
+            shield = "Escudo", armor = "Blindaje";
 
     public int getCrewMembersAmount() {
         return crewMembersAmount;

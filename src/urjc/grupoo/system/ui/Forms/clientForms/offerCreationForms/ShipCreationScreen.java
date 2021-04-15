@@ -1,5 +1,11 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms.StationCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms.DestructorCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms.FighterCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms.CargoCreationScreen;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -18,12 +24,69 @@ public class ShipCreationScreen extends javax.swing.JPanel {
      *
      * @param session
      * @param handler
+     * @param offerhandler
      */
     public ShipCreationScreen(SystemSession session, ShipCreationHandler handler, OfferCreationHandler offerhandler) {
         this.session = session;
         this.handler = handler;
         this.offerhandler = offerhandler;
         initComponents();
+    }
+
+    /**
+     * Saves the input data in the ShipCreationHandler
+     * 
+     * @return TRUE if all parameters are of the correct type.
+     */
+    private boolean checkParameters() {
+        try {
+            handler.setRegNumber(registerTextField.getText());
+            handler.setSpeed(Integer.parseInt(speedTextField.getText()));
+            handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
+            String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
+            
+            switch (selectedPropulsion1) {
+                case "Motor de curvatura":
+                    handler.setPropulsion1(Spaceship.warpdrive);
+                    break;
+                case "Compresor de traza":
+                    handler.setPropulsion1(Spaceship.tracecompressor);
+                    break;
+                case "Motor FTL":
+                    handler.setPropulsion1(Spaceship.ftldrive);
+                    break;
+                case "Velas solares":
+                    handler.setPropulsion1(Spaceship.solarsail);
+                    break;
+                case "Motor iónico":
+                    handler.setPropulsion1(Spaceship.ionthruster);
+                    break;
+            }
+
+            String selectedPropulsion2 = (String) propulsion2Selector.getSelectedItem();
+            switch (selectedPropulsion2) {
+                case "Motor de curvatura":
+                    handler.setPropulsion2(Spaceship.warpdrive);
+                    break;
+                case "Compresor de traza":
+                    handler.setPropulsion2(Spaceship.tracecompressor);
+                    break;
+                case "Motor FTL":
+                    handler.setPropulsion2(Spaceship.ftldrive);
+                    break;
+                case "Velas solares":
+                    handler.setPropulsion2(Spaceship.solarsail);
+                    break;
+                case "Motor iónico":
+                    handler.setPropulsion2(Spaceship.ionthruster);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            incorrectLabel.setText("Revise los datos introducidos.");
+            return false;
+        }
+        incorrectLabel.setText("");
+        return true;
     }
 
     /**
@@ -51,6 +114,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
         shipTypeSelector = new javax.swing.JComboBox<>();
         speedTextField = new javax.swing.JTextField();
         registerLabel1 = new javax.swing.JLabel();
+        incorrectLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +162,8 @@ public class ShipCreationScreen extends javax.swing.JPanel {
 
         registerLabel1.setText("Velocidad sublumínica máxima");
 
+        incorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,20 +181,6 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(registerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tripulantsTextField))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tripulantsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(speedTextField)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(propulsion1Selector, 0, 243, Short.MAX_VALUE)
@@ -136,7 +188,23 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(propulsion2Selector, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propulsion2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(propulsion2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(doneButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(registerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tripulantsTextField))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tripulantsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(registerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(speedTextField)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -169,75 +237,36 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tripulantsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doneButton)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-
-        handler.setRegNumber(registerTextField.getText());
-        handler.setSpeed(Integer.parseInt(speedTextField.getText()));
-        handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
-
-        String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
-        switch (selectedPropulsion1) {
-            case "Motor de curvatura":
-                handler.setPropulsion1(Spaceship.warpdrive);
-                break;
-            case "Compresor de traza":
-                handler.setPropulsion1(Spaceship.tracecompressor);
-                break;
-            case "Motor FTL":
-                handler.setPropulsion1(Spaceship.ftldrive);
-                break;
-            case "Velas solares":
-                handler.setPropulsion1(Spaceship.solarsail);
-                break;
-            case "Motor iónico":
-                handler.setPropulsion1(Spaceship.ionthruster);
-                break;
-        }
-
-        String selectedPropulsion2 = (String) propulsion2Selector.getSelectedItem();
-        switch (selectedPropulsion2) {
-            case "Motor de curvatura":
-                handler.setPropulsion2(Spaceship.warpdrive);
-                break;
-            case "Compresor de traza":
-                handler.setPropulsion2(Spaceship.tracecompressor);
-                break;
-            case "Motor FTL":
-                handler.setPropulsion2(Spaceship.ftldrive);
-                break;
-            case "Velas solares":
-                handler.setPropulsion2(Spaceship.solarsail);
-                break;
-            case "Motor iónico":
-                handler.setPropulsion2(Spaceship.ionthruster);
-                break;
-        }
-
-        String selectedType = (String) shipTypeSelector.getSelectedItem();
-        switch (selectedType) {
-            case "Destructor":
-                handler.setType(Spaceship.destructor);
-                session.getController().addNewPanel(new DestructorCreationScreen(session, handler, offerhandler));
-                break;
-            case "Carguero":
-                handler.setType(Spaceship.cargo);
-                session.getController().addNewPanel(new CargoCreationScreen(session, handler, offerhandler));
-                break;
-            case "Caza":
-                handler.setType(Spaceship.fighter);
-                session.getController().addNewPanel(new FighterCreationScreen(session, handler, offerhandler));
-                break;
-            case "Estación Espacial":
-                handler.addStationCounter();
-                handler.setType(Spaceship.station);
-                session.getController().addNewPanel(new StationCreationScreen(session, handler, offerhandler));
-                break;
+        if (checkParameters()) {
+            String selectedType = (String) shipTypeSelector.getSelectedItem();
+            switch (selectedType) {
+                case "Destructor":
+                    handler.setType(Spaceship.destructor);
+                    session.getController().addNewPanel(new DestructorCreationScreen(session, handler, offerhandler));
+                    break;
+                case "Carguero":
+                    handler.setType(Spaceship.cargo);
+                    session.getController().addNewPanel(new CargoCreationScreen(session, handler, offerhandler));
+                    break;
+                case "Caza":
+                    handler.setType(Spaceship.fighter);
+                    session.getController().addNewPanel(new FighterCreationScreen(session, handler, offerhandler));
+                    break;
+                case "Estación Espacial":
+                    handler.addStationCounter();
+                    handler.setType(Spaceship.station);
+                    session.getController().addNewPanel(new StationCreationScreen(session, handler, offerhandler));
+                    break;
+            }
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -249,6 +278,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
+    private javax.swing.JLabel incorrectLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel nameLabel;

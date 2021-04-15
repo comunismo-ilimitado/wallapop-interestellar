@@ -1,5 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -37,6 +39,27 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         shipDisplay.add(new JPanel(), gbc);
         shipsPanel.setViewportView(shipDisplay);
     }
+    
+    /**
+     * Saves the input data in the ShipCreationHandler
+     * 
+     * @return TRUE if all parameters are of the correct type.
+     */
+    private boolean checkParameters() {
+        if (offerhandler.getOfferShipStack().isEmpty()) {
+            incorrectLabel.setText("Introduzca al menos una nave.");
+            return false;
+        } else {
+            try {
+                Double.parseDouble(priceLabel.getText());
+            } catch (NumberFormatException e) {
+                incorrectLabel.setText("Revise los datos introducidos.");
+                return false;
+            }
+        }
+        incorrectLabel.setText("");
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +77,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         addShipButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         shipsPanel = new javax.swing.JScrollPane();
+        incorrectLabel = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -87,6 +111,8 @@ public class OfferCreationScreen extends javax.swing.JPanel {
 
         jLabel1.setText("Naves añadidas:");
 
+        incorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +133,10 @@ public class OfferCreationScreen extends javax.swing.JPanel {
                                 .addComponent(addShipButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(backButton)
-                        .addGap(50, 50, 50))))
+                        .addGap(50, 50, 50))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,12 +155,15 @@ public class OfferCreationScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addShipButton)
                 .addGap(18, 18, 18)
+                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(doneButton)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        if (checkParameters()) {
         ArrayList<Spaceship> shipList = new ArrayList<>(offerhandler.getOfferShipStack());
         Date limitDate = new Date();
         Double price = Double.parseDouble(priceLabel.getText());
@@ -139,9 +171,8 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         Offer newOffer = new Offer(shipList, limitDate, price, client.getIdNumber(), offerType);
 
         session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
-
-        //       session.getController().addNewPanel(new ShowOffer(session, newOffer));
         session.getController().addNewPanel(new ClientMenu(session, client));
+        }
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -151,6 +182,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
 
     private void addShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShipButtonActionPerformed
         session.getController().checkPoint();
+        incorrectLabel.setText("");
         session.getController().addNewPanel(new ShipCreationScreen(
                 session, new ShipCreationHandler(), offerhandler));
     }//GEN-LAST:event_addShipButtonActionPerformed
@@ -177,6 +209,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
     private javax.swing.JButton addShipButton;
     private javax.swing.JButton backButton;
     private javax.swing.JButton doneButton;
+    private javax.swing.JLabel incorrectLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField priceLabel;

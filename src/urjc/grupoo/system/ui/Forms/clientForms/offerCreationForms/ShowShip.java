@@ -4,7 +4,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import urjc.grupoo.data.shipsData.CargoShip;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.SystemSession;
 
@@ -61,7 +60,7 @@ public class ShowShip extends javax.swing.JPanel {
     private void addDefences() {
         defencesList = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        propulsionList.add(new JPanel(), gbc);
+        defencesList.add(new JPanel(), gbc);
         defencesPanel.setViewportView(defencesList);
 
         ship.getDefenceList().forEach((defence) -> {
@@ -74,7 +73,6 @@ public class ShowShip extends javax.swing.JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         weaponsList.add(new JPanel(), gbc);
         weaponsPanel.setViewportView(weaponsList);
-
         ship.getWeaponList().forEach((weapon) -> {
             addEntry(weapon.getName() + " " + weapon.getPower() + " " + "GJ", weaponsList);
         });
@@ -87,6 +85,7 @@ public class ShowShip extends javax.swing.JPanel {
         shipsPanel.setViewportView(shipsList);
 
         ship.getSpaceshipList().forEach((ship) -> {
+            addEntry(ship.getType(), shipsList);
             addButton(ship, shipsList);
         });
     }

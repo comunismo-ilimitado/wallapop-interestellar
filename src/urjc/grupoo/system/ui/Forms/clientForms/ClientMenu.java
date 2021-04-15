@@ -1,7 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
 import urjc.grupoo.data.shopData.Client;
-import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.OfferCreationHandler;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.OfferCreationScreen;
 import urjc.grupoo.system.ui.SystemSession;
 
