@@ -1,6 +1,7 @@
-package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
+package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons;
 
 import urjc.grupoo.data.shipsData.Spaceship;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShowShip;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -13,7 +14,7 @@ public class ShowShipButton extends javax.swing.JPanel {
     private final Spaceship ship;
 
     /**
-     * Creates new form SubsciptionsScreen
+     * Creates new form ShowShipButton
      *
      * @param session
      * @param ship
@@ -21,7 +22,6 @@ public class ShowShipButton extends javax.swing.JPanel {
     public ShowShipButton(SystemSession session, Spaceship ship) {
         this.session = session;
         this.ship = ship;
-        //button.setText(ship.getType());
         initComponents();
     }
 
@@ -58,7 +58,6 @@ public class ShowShipButton extends javax.swing.JPanel {
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         session.getController().addNewPanel(new ShowShip(session, ship));
-
     }//GEN-LAST:event_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

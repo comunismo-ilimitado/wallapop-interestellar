@@ -1,15 +1,16 @@
 package urjc.grupoo.system.ui.Forms.clientForms;
 
-import java.awt.Button;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.ClientComment;
-import urjc.grupoo.data.shipsData.Spaceship;
+import urjc.grupoo.data.shopData.SystemClients;
+import urjc.grupoo.system.backend.ShopSystem;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons.ShowClientButton;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons.ShowOfferButton;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -24,6 +25,9 @@ public class ValorationsScreen extends javax.swing.JPanel {
 
     /**
      * Creates new form ValorationsScreen
+     *
+     * @param session
+     * @param client
      */
     public ValorationsScreen(SystemSession session, Client client) {
         this.session = session;
@@ -37,15 +41,23 @@ public class ValorationsScreen extends javax.swing.JPanel {
 
         List<ClientComment> commentsList = client.getCommentList();
 
-        for (ClientComment comment : commentsList) {
+        commentsList.forEach((comment) -> {
             addEntry(comment);
-        }
+        });
     }
 
     private void addEntry(ClientComment comment) {
         JPanel panel = new JPanel();
         panel.add(new JLabel(comment.getComment()));
-        panel.add(new Button("Botton"));
+        panel.add(new JLabel(Integer.toString(comment.getRating())));
+        panel.add(new ShowOfferButton(session, comment.getOffer()));
+
+        SystemClients clients = (SystemClients) session.getSystem().getDatabase().get(ShopSystem.clientData);
+        if (clients.getClientList().containsKey(comment.getUser())) {
+            client = clients.getClientList().get(comment.getUser());
+            panel.add(new ShowClientButton(session, client));
+        }
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.weightx = 1;

@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons.ShowShipButton;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
