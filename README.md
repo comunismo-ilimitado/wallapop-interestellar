@@ -1,2 +1,11 @@
 # wallapop-interestellar
-Proyecto para la asignatura Metodología de la Programación de la URJC 2020/2021
+## El mejor concesionario a tres parseks de tu casa!
+
+## Instalación
+
+Requiere java 1.8
+
+```sh
+cd wallapop-interestellar
+./gradlew run
+```
