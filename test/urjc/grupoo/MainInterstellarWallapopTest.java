@@ -5,13 +5,19 @@
  */
 package urjc.grupoo;
 
+import static junit.framework.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.fail;
-import org.junit.jupiter.api.Test;
+
 
 public class MainInterstellarWallapopTest {
     
     public MainInterstellarWallapopTest() {
+    }
+    
+    @Before
+    public void setUp() {
     }
     
     /**
