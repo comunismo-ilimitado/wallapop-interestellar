@@ -165,14 +165,14 @@ public class OfferCreationScreen extends javax.swing.JPanel {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         if (checkParameters()) {
-        ArrayList<Spaceship> shipList = new ArrayList<>(offerhandler.getOfferShipStack());
-        Date limitDate = new Date();
-        Double price = Double.parseDouble(priceLabel.getText());
-        String offerType = offerhandler.getOfferShipStack().peek().getType();
-        Offer newOffer = new Offer(shipList, limitDate, price, client.getIdNumber(), offerType);
+            ArrayList<Spaceship> shipList = new ArrayList<>(offerhandler.getOfferShipStack());
+            Date limitDate = new Date();
+            Double price = Double.parseDouble(priceLabel.getText());
+            String offerType = offerhandler.getOfferShipStack().peek().getType();
+            Offer newOffer = new Offer(shipList, limitDate, price, client.getIdNumber(), offerType);
 
-        session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
-        session.getController().addNewPanel(new ClientMenu(session, client));
+            session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
+            session.getController().addNewPanel(new ClientMenu(session, client));
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
