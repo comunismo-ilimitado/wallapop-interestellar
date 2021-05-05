@@ -51,6 +51,7 @@ public class OfferCreationTest {
     ArrayList<Spaceship> shipsList = new ArrayList<>();
     Date limitDate = new Date();
     Double price = 199.99;
+    Double price2 = 23.67;
     String offerType = shipsList.get(0).getType();
 
     public Offer createTestOffer() {
@@ -58,6 +59,15 @@ public class OfferCreationTest {
             shipsList.add(testShips.createTestCargo());
         }
         return new Offer(shipsList, limitDate, price, client.getIdNumber(), offerType);
+     
+    }
+    
+    public Offer createTestOffer2() {
+        for (int i = 0; i < 10; i++) {
+            shipsList.add(testShips.createTestCargo());
+        }
+        return new Offer(shipsList, limitDate, price2, client.getIdNumber(), offerType);
+    
     }
 
     @Test
