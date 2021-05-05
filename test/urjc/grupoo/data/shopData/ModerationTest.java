@@ -17,23 +17,36 @@ public class ModerationTest {
     public ModerationTest() {
     }
 
+    
+        String planet1 = "Luna";
+        String species1 = "Azul";
+        String name1 = "Lucas";
+        String nick1 = "Luquitas2";
+        String password1 = "holahola";
+        String email1 = "lucas@gmail.com";
+        String planet2 = "Sol";
+        String species2 = "Rojo";
+        String name2 = "Marcos";
+        String nick2 = "Marquitos2";
+        String password2 = "hola";
+        String email2 = "marcos@gmail.com";
+        
+        ShopSystem system = new ShopSystem();
+        AdminFacade admin = new AdminFacade(system);
+        ClientFacade clients = new ClientFacade(system);
+    
+    
+    
+    
     /**
      * Test para comprobar que un cliente es incluido correctamente en la lista
      * de fraude
      */
     @Test
     public void testInFraudList() {
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-        ShopSystem system = new ShopSystem();
-        AdminFacade admin = new AdminFacade(system);
-        ClientFacade clients = new ClientFacade(system);
+        
 
-        Client client = new Client(planet, species, name, nick, password, email);
+        Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         system.start();
         clients.registerClient(client);
         admin.reportUserOfFraud(client.getIdNumber());
@@ -47,17 +60,8 @@ public class ModerationTest {
      */
     @Test
     public void testInPirateList() {
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-        ShopSystem system = new ShopSystem();
-        AdminFacade admin = new AdminFacade(system);
-        ClientFacade clients = new ClientFacade(system);
 
-        Client client = new Client(planet, species, name, nick, password, email);
+        Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         system.start();
         clients.registerClient(client);
         admin.reportUserOfPiracy(client.getIdNumber());
@@ -71,17 +75,8 @@ public class ModerationTest {
      */
     @Test
     public void testNoInFraudList() {
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-        ShopSystem system = new ShopSystem();
-        AdminFacade admin = new AdminFacade(system);
-        ClientFacade clients = new ClientFacade(system);
-
-        Client client = new Client(planet, species, name, nick, password, email);
+        
+        Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         system.start();
         clients.registerClient(client);
         admin.reportUserOfFraud(client.getIdNumber());
@@ -97,27 +92,11 @@ public class ModerationTest {
      */
     @Test
     public void testNoInPirateList() {
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-        String planet2 = "Sol";
-        String species2 = "Rojo";
-        String name2 = "Marcos";
-        String nick2 = "Marquitos2";
-        String password2 = "hola";
-        String email2 = "marcos@gmail.com";
-
-        ShopSystem system = new ShopSystem();
-        AdminFacade admin = new AdminFacade(system);
-        ClientFacade clients = new ClientFacade(system);
-        system.start();
-
+        
         //Reportamos dos clientes de piratería, quitamos solo 1 y comprobamos
-        Client client1 = new Client(planet, species, name, nick, password, email);
+        Client client1 = new Client(planet1, species1, name1, nick1, password1, email1);
         Client client2 = new Client(planet2, species2, name2, nick2, password2, email2);
+        system.start();
         clients.registerClient(client1);
         clients.registerClient(client2);
         admin.reportUserOfPiracy(client1.getIdNumber());
@@ -133,14 +112,8 @@ public class ModerationTest {
      */
     @Test
     public void testBanned() {
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-
-        Client client = new Client(planet, species, name, nick, password, email);
+  
+        Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         client.getLicense().setBanned(true);
         assertTrue(client.getLicense().isBanned());
 
@@ -158,15 +131,7 @@ public class ModerationTest {
         Offer newOffer2 = offercreate.createTestOffer();
 
         //Creamos cliente
-        String planet = "Luna";
-        String species = "Azul";
-        String name = "Lucas";
-        String nick = "Luquitas2";
-        String password = "holahola";
-        String email = "lucas@gmail.com";
-        Client client = new Client(planet, species, name, nick, password, email);
-        ShopSystem system = new ShopSystem();
-        ClientFacade clients = new ClientFacade(system);
+        Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         system.start();
         clients.registerClient(client);
 
@@ -175,7 +140,6 @@ public class ModerationTest {
         clients.uploadOffer(client.getIdNumber(), newOffer2);
 
         //Rechazamos oferta 1 y 2
-        AdminFacade admin = new AdminFacade(system);
         admin.moderateOffer(newOffer1.getOfferId(), false);
         admin.moderateOffer(newOffer2.getOfferId(), false);
 
