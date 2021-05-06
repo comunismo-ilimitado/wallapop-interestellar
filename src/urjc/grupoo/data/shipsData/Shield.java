@@ -23,4 +23,14 @@ public class Shield extends DefenceSystem {
         this.neededEnergy = neededEnergy;
     }
 
+    public boolean equals(Shield x) {
+        boolean a = false;
+        boolean c = false;
+        if (this.getDefenceType()==x.getDefenceType()){
+            Shield o = (Shield) x;
+            a = this.getNeededEnergy()==o.getNeededEnergy();
+            c= this.getDamageAllowed()==o.getDamageAllowed();
+        }
+        return  a  && c;
+    }
 }

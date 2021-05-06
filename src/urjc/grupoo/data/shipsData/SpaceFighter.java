@@ -1,6 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SpaceFighter extends Spaceship {
 
@@ -39,4 +40,17 @@ public class SpaceFighter extends Spaceship {
         setWeapons(weaponlist);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SpaceFighter)) return false;
+        if (!super.equals(o)) return false;
+        SpaceFighter that = (SpaceFighter) o;
+        return Objects.equals(getWeapons(), that.getWeapons()) && Objects.equals(getDefence(), that.getDefence());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getWeapons(), getDefence());
+    }
 }

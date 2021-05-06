@@ -33,4 +33,13 @@ public class Weapon implements Serializable {
         this.power = power;
     }
 
+    public boolean equals(Weapon x) {
+        boolean a = false;
+        boolean b = false;
+        b = this.getName()==x.getName();
+        a = this.getPower()==x.getPower();
+        return a&&b;
+        }
+
+
 }

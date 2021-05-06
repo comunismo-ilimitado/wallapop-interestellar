@@ -1,6 +1,8 @@
 package urjc.grupoo.data.shipsData;
 
 
+import java.util.Objects;
+
 public class CargoShip extends Spaceship {
 
     private DefenceSystem defence;
@@ -23,7 +25,8 @@ public class CargoShip extends Spaceship {
     }
 
     /**
-     *Constructor de Carguero
+     * Constructor de Carguero
+     *
      * @param type
      * @param i
      * @param fprop
@@ -36,6 +39,19 @@ public class CargoShip extends Spaceship {
         super(type, i, fprop, sprop, num);
         setDefence(defence);
         setMaxCargo(j);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CargoShip)) return false;
+        CargoShip cargoShip = (CargoShip) o;
+        return getMaxCargo() == cargoShip.getMaxCargo() && Objects.equals(getDefence(), cargoShip.getDefence());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDefence(), getMaxCargo());
     }
 }
+

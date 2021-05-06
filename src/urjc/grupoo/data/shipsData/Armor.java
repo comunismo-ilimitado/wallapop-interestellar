@@ -35,4 +35,19 @@ public class Armor extends DefenceSystem {
         this.addedWeigth = addedWeigth;
     }
 
+
+    public boolean equals(DefenceSystem x) {
+        boolean a = false;
+        boolean b = false;
+        boolean c = false;
+
+        if (this.getDefenceType()==x.getDefenceType()){
+            Armor o = (Armor) x;
+             a = this.getAddedWeigth()==o.getAddedWeigth();
+             b = this.getMaterial()==o.getMaterial();
+             c= this.getDamageAllowed()==o.getDamageAllowed();
+        }
+        return  a && b && c;
+    }
+
 }

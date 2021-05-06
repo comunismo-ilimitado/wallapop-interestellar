@@ -2,6 +2,7 @@ package urjc.grupoo.data.shipsData;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Spaceship implements Serializable {
 
@@ -142,4 +143,16 @@ public class Spaceship implements Serializable {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Spaceship)) return false;
+        Spaceship spaceship = (Spaceship) o;
+        return getCrewMembersAmount() == spaceship.getCrewMembersAmount() && Objects.equals(getRegisterNumber(), spaceship.getRegisterNumber()) && Objects.equals(getFirstpropulsion(), spaceship.getFirstpropulsion()) && Objects.equals(getSecondpropulsion(), spaceship.getSecondpropulsion()) && Objects.equals(getType(), spaceship.getType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRegisterNumber(), getCrewMembersAmount(), getFirstpropulsion(), getSecondpropulsion(), getType());
+    }
 }

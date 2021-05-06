@@ -1,6 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SpaceStation extends Spaceship {
 
@@ -49,5 +50,19 @@ public class SpaceStation extends Spaceship {
         setPassengersLimit(passengers);
         setContainedShips(listofships);
         setDefences(defencelist);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SpaceStation)) return false;
+        if (!super.equals(o)) return false;
+        SpaceStation that = (SpaceStation) o;
+        return getPassengersLimit() == that.getPassengersLimit() && Objects.equals(getDefences(), that.getDefences()) && Objects.equals(getContainedShips(), that.getContainedShips());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getDefences(), getPassengersLimit(), getContainedShips());
     }
 }
