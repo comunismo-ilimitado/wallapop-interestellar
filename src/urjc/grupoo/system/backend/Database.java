@@ -22,10 +22,10 @@ import java.util.logging.Logger;
 public class Database {
 
     // Carpeta donde se guardan los ficheros
-    private static final String savefolder = "saveddata/";
+    public static final String savefolder = "saveddata/";
 
     // Sufijo de archivos
-    private static final String suffix = ".data";
+    public static final String suffix = ".data";
 
     private HashMap<String, Container> containers;
 
