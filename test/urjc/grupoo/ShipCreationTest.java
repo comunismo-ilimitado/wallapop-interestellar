@@ -36,7 +36,6 @@ public class ShipCreationTest {
     @After
     public void tearDown() {
     }
-
     
     private final int crewNumber = 4;
     private final String propulsionType1 = Spaceship.ftldrive;
@@ -78,7 +77,7 @@ public class ShipCreationTest {
         return new ShipFactory().CreateSpaceship(
                     Spaceship.destructor, crewNumber, propulsionType1, speed,
                     propulsionType2, speed, regNumber,
-                    weaponList, defence);
+                    weaponList, defenceList);
     }
     
     public Spaceship createTestStation() {
@@ -127,5 +126,46 @@ public class ShipCreationTest {
             assertTrue(weaponList.get(i).equals(newShip.getWeaponList().get(i)));
         }
         
+    }
+    
+    @Test
+    public void testDestructorCreation() {
+        Spaceship newShip = createTestDestructor();
+        
+        assertTrue(Spaceship.destructor.equals(newShip.getType()));
+        assertTrue(crewNumber == newShip.getCrewMembersAmount());
+        assertTrue(propulsionType1.equals(newShip.getFirstpropulsion().getName()));
+        assertTrue(propulsionType2.equals(newShip.getSecondpropulsion().getName()));
+        assertTrue(speed == newShip.getFirstpropulsion().getMaxSpeed());
+        assertTrue(regNumber.equals(newShip.getRegisterNumber()));
+        
+        for(int i=0; i<defenceList.size(); i++) {
+            assertTrue(defenceList.get(i).equals(newShip.getDefenceList().get(i)));
+        }
+        
+        for(int i=0; i<weaponList.size(); i++) {
+            assertTrue(weaponList.get(i).equals(newShip.getWeaponList().get(i)));
+        }
+    }
+    
+    @Test
+    public void testStationCreation() {
+        Spaceship newShip = createTestStation();
+        
+        assertTrue(Spaceship.station.equals(newShip.getType()));
+        assertTrue(crewNumber == newShip.getCrewMembersAmount());
+        assertTrue(propulsionType1.equals(newShip.getFirstpropulsion().getName()));
+        assertTrue(propulsionType2.equals(newShip.getSecondpropulsion().getName()));
+        assertTrue(speed == newShip.getFirstpropulsion().getMaxSpeed());
+        assertTrue(regNumber.equals(newShip.getRegisterNumber()));
+        assertTrue(passangers == newShip.getPassengersLimit());
+        
+        for(int i=0; i<defenceList.size(); i++) {
+            assertTrue(defenceList.get(i).equals(newShip.getDefenceList().get(i)));
+        }
+        
+        for(int i=0; i<shipsList.size(); i++) {
+            assertTrue(shipsList.get(i).equals(newShip.getSpaceshipList().get(i)));
+        }
     }
 }

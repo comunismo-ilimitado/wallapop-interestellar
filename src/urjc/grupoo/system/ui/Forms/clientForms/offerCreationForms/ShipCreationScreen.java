@@ -48,7 +48,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
             String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
             
             if(!checkRegNumber(registerTextField.getText())){
-                incorrectLabel.setText("Formato de registro incorrecto.");
+                incorrectLabel.setText("Formato de registro incorrecto. Formato: LNNNNLLL");
                 return false;
             }
             
