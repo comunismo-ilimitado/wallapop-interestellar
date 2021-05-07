@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import urjc.grupoo.TestLib;
 
 /**
  *
@@ -29,8 +30,11 @@ public class DatabaseTest {
     
     Database database;
     
+    
+    
     @Before
     public void setUp() {
+        TestLib.deleteDirectory(new File(Database.savefolder));
         database = new Database();
     }
     

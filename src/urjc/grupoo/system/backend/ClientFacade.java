@@ -134,7 +134,7 @@ public class ClientFacade {
                 }
             }
         }
-        if(c.getLicense().isBanned()){
+        if(c != null && c.getLicense().isBanned()){
             c = null;
         }
 
