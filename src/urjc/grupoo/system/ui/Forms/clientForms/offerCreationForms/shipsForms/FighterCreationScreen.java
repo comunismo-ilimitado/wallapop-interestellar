@@ -1,15 +1,12 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.ShipFactory;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.complementForms.DefenceCreationScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.complementForms.WeaponCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -18,9 +15,13 @@ import urjc.grupoo.system.ui.SystemSession;
  */
 public class FighterCreationScreen extends javax.swing.JPanel {
 
+    private final int maxWeapons = 2;
+    private final int maxDefences = 1;
+    
     private final SystemSession session;
     private final ShipCreationHandler handler;
     private final OfferCreationHandler offerhandler;
+    private final ListShower shower;
 
     /**
      * Creates new form FighterCreationScreen
@@ -34,6 +35,7 @@ public class FighterCreationScreen extends javax.swing.JPanel {
         this.handler = handler;
         this.offerhandler = offerhandler;
         initComponents();
+        shower = new ListShower(session);
     }
 
     /**
@@ -50,36 +52,6 @@ public class FighterCreationScreen extends javax.swing.JPanel {
         }
         incorrectLabel.setText("");
         return true;
-    }
-    
-    private void addDefences() {
-        JPanel defencesList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        defencesPanel.setViewportView(defencesList);
-
-        handler.getDefenceList().forEach((defence) -> {
-            addEntry(defence.getDefenceType(), defencesList);
-        });
-    }
-    
-    private void addWeapons() {
-        JPanel weaponsList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        weaponsList.add(new JPanel(), gbc);
-        weaponsPanel.setViewportView(weaponsList);
-        handler.getWeaponList().forEach((weapon) -> {
-            addEntry(weapon.getName() + " " + weapon.getPower() + " " + "GJ", weaponsList);
-        });
-    }
-    
-    private void addEntry(String text, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new JLabel(text));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
     }
 
     /**
@@ -221,10 +193,10 @@ public class FighterCreationScreen extends javax.swing.JPanel {
                     handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
                     handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
                     handler.getWeaponList(), handler.getDefenceList().get(0));
-            if (handler.getStationCounter() == 0) {
+            if (offerhandler.isStationShipsListsEmpty()) {
                 offerhandler.addShipToOffer(newShip);
             } else {
-                handler.addShip(newShip);
+                offerhandler.addShip(newShip);
             }
             session.getController().goBackToCheckPoint();
         }
@@ -235,7 +207,7 @@ public class FighterCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addWeaponButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWeaponButtonActionPerformed
-        if (handler.getWeaponList().size() < 2) {
+        if (handler.getWeaponList().size() < maxWeapons) {
             session.getController().addNewPanel(new WeaponCreationScreen(session, handler));
             incorrectLabel.setText("");
         } else {
@@ -244,7 +216,7 @@ public class FighterCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addWeaponButtonActionPerformed
 
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        if (handler.getDefenceList().isEmpty()) {
+        if (handler.getDefenceList().size() < maxDefences) {
             session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
             incorrectLabel.setText("");
         } else {
@@ -253,8 +225,8 @@ public class FighterCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addDefenceButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        addDefences();
-        addWeapons();
+        shower.addDefences(defencesPanel, handler.getDefenceList());
+        shower.addWeapons(weaponsPanel, handler.getWeaponList());
     }//GEN-LAST:event_formComponentShown
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

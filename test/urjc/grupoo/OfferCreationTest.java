@@ -5,6 +5,7 @@
  */
 package urjc.grupoo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import org.junit.After;
@@ -16,6 +17,10 @@ import static org.junit.Assert.*;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
+import urjc.grupoo.system.backend.AdminFacade;
+import urjc.grupoo.system.backend.ClientFacade;
+import urjc.grupoo.system.backend.Database;
+import urjc.grupoo.system.backend.ShopSystem;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -27,24 +32,31 @@ public class OfferCreationTest {
     public OfferCreationTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
+    ShopSystem system;
+    ClientFacade clientFacade;
+    AdminFacade adminFacade;
+    
+    private final Client client = new UserCreationTest().createTestClient();
+    
+    @Before
+    public void setUp() {
+        TestLib.deleteDirectory(new File(Database.savefolder));
+        system = TestLib.setUpSystem();
+        clientFacade = new ClientFacade(system);
+        adminFacade = new AdminFacade(system);
+        clientFacade.registerClient(client);
     }
 
     @AfterClass
     public static void tearDownClass() {
     }
 
-    @Before
-    public void setUp() {
-    }
-
+  
     @After
     public void tearDown() {
     }
 
-    private final SystemSession session = new SystemSession();
-    private final Client client = new UserCreationTest().createTestClient();
+   
 
     ShipCreationTest testShips = new ShipCreationTest();
 
@@ -52,12 +64,13 @@ public class OfferCreationTest {
     Date limitDate = new Date();
     Double price = 199.99;
     Double price2 = 23.67;
-    String offerType = shipsList.get(0).getType();
+    String offerType;
 
     public Offer createTestOffer() {
         for (int i = 0; i < 10; i++) {
             shipsList.add(testShips.createTestCargo());
         }
+        offerType = shipsList.get(0).getType();
         return new Offer(shipsList, limitDate, price, client.getIdNumber(), offerType);
      
     }
@@ -66,6 +79,7 @@ public class OfferCreationTest {
         for (int i = 0; i < 10; i++) {
             shipsList.add(testShips.createTestCargo());
         }
+        offerType = shipsList.get(0).getType();
         return new Offer(shipsList, limitDate, price2, client.getIdNumber(), offerType);
     
     }
@@ -73,9 +87,10 @@ public class OfferCreationTest {
     @Test
     public void testOfferUpload() {
         Offer newOffer = createTestOffer();
-        session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
+        clientFacade.uploadOffer(0, newOffer);
+        adminFacade.moderateOffer(newOffer.getOfferId(), true);   
+        Offer uploadOffer = clientFacade.getOffer(newOffer.getOfferId(), newOffer.getOfferType());
         
-        Offer uploadOffer = session.getClientFacade().getOffer(newOffer.getOfferId(), newOffer.getOfferType());
         assertTrue(uploadOffer.getPrice() == price);
     }
 

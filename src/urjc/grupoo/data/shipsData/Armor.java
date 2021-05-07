@@ -1,6 +1,8 @@
 package urjc.grupoo.data.shipsData;
 
 
+import java.util.Objects;
+
 public class Armor extends DefenceSystem {
 
     private Double addedWeigth;
@@ -36,18 +38,17 @@ public class Armor extends DefenceSystem {
     }
 
 
-    public boolean equals(DefenceSystem x) {
-        boolean a = false;
-        boolean b = false;
-        boolean c = false;
-
-        if (this.getDefenceType()==x.getDefenceType()){
-            Armor o = (Armor) x;
-             a = this.getAddedWeigth()==o.getAddedWeigth();
-             b = this.getMaterial()==o.getMaterial();
-             c= this.getDamageAllowed()==o.getDamageAllowed();
-        }
-        return  a && b && c;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Armor)) return false;
+        if (!super.equals(o)) return false;
+        Armor armor = (Armor) o;
+        return Objects.equals(getAddedWeigth(), armor.getAddedWeigth()) && Objects.equals(getMaterial(), armor.getMaterial());
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getAddedWeigth(), getMaterial());
+    }
 }

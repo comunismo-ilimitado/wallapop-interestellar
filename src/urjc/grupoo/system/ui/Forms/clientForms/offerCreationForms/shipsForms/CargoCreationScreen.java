@@ -1,12 +1,9 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.ShipFactory;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.complementForms.DefenceCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
 import urjc.grupoo.system.ui.SystemSession;
@@ -20,6 +17,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
     private final SystemSession session;
     private final ShipCreationHandler handler;
     private final OfferCreationHandler offerhandler;
+    private final ListShower shower;
 
     /**
      * Creates new form CargoCreationScreen
@@ -33,6 +31,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
         this.handler = handler;
         this.offerhandler = offerhandler;
         initComponents();
+        shower = new ListShower(session);
     }
 
     /**
@@ -54,26 +53,6 @@ public class CargoCreationScreen extends javax.swing.JPanel {
         }
         incorrectLabel.setText("");
         return true;
-    }
-    
-    private void addDefences() {
-        JPanel defencesList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        defencesPanel.setViewportView(defencesList);
-
-        handler.getDefenceList().forEach((defence) -> {
-            addEntry(defence.getDefenceType(), defencesList);
-        });
-    }
-    
-    private void addEntry(String text, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new JLabel(text));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
     }
 
     /**
@@ -200,11 +179,10 @@ public class CargoCreationScreen extends javax.swing.JPanel {
                     handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
                     handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
                     handler.getDefenceList().get(0), handler.getCargoCapacity());
-            if (handler.getStationCounter() == 0) {
+            if (offerhandler.isStationShipsListsEmpty()) {
                 offerhandler.addShipToOffer(newShip);
             } else {
-                handler.addShip(newShip);
-                System.out.println("Naves en el handler: " + handler.getShipList().size());
+                offerhandler.addShip(newShip);
             }
             session.getController().goBackToCheckPoint();
         }
@@ -225,7 +203,7 @@ public class CargoCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addDefenceButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        addDefences();
+        shower.addDefences(defencesPanel, handler.getDefenceList());
     }//GEN-LAST:event_formComponentShown
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

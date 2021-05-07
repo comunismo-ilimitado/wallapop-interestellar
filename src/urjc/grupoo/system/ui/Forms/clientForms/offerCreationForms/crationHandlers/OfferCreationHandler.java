@@ -1,5 +1,6 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers;
 
+import java.util.ArrayList;
 import java.util.Stack;
 import urjc.grupoo.data.shipsData.Spaceship;
 
@@ -9,14 +10,36 @@ import urjc.grupoo.data.shipsData.Spaceship;
  */
 public class OfferCreationHandler {
 
-    private final Stack<Spaceship> offerShipStack = new Stack<>();
+    private final ArrayList<Spaceship> offerShipList = new ArrayList<>();
 
     public void addShipToOffer(Spaceship ship) {
-        offerShipStack.push(ship);
+        offerShipList.add(ship);
     }
 
-    public Stack<Spaceship> getOfferShipStack() {
-        return offerShipStack;
+    public ArrayList<Spaceship> getOfferShipList() {
+        return offerShipList;
     }
 
+    private final Stack<ArrayList<Spaceship>> stationShipsLists = new Stack<>();
+
+    public void addStationShipList() {
+        ArrayList<Spaceship> shipList = new ArrayList<>();
+        stationShipsLists.push(shipList);
+    }
+
+    public ArrayList<Spaceship> getShipList() {
+        return stationShipsLists.peek();
+    }
+    
+    public void removeShipList() {
+        stationShipsLists.pop();
+    }
+    
+    public boolean isStationShipsListsEmpty() {
+        return stationShipsLists.isEmpty();
+    }
+
+    public void addShip(Spaceship newship) {
+        stationShipsLists.peek().add(newship);
+    }
 }

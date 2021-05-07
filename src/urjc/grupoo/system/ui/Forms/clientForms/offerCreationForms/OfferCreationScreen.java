@@ -1,17 +1,12 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons.ShowShipButton;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JPanel;
-import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
 import urjc.grupoo.system.ui.Forms.clientForms.ClientMenu;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.SystemSession;
 
 public class OfferCreationScreen extends javax.swing.JPanel {
@@ -19,8 +14,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
     private final SystemSession session;
     private final Client client;
     private final OfferCreationHandler offerhandler;
-    private final JPanel shipDisplay;
-    private int offerShipAmount = 0;
+    private final ListShower shower;
 
     /**
      * Creates new form OfferCreationScreen
@@ -34,11 +28,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
         this.client = client;
         this.offerhandler = offerhandler;
         initComponents();
-
-        shipDisplay = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        shipDisplay.add(new JPanel(), gbc);
-        shipsPanel.setViewportView(shipDisplay);
+        shower = new ListShower(session);
     }
     
     /**
@@ -47,7 +37,7 @@ public class OfferCreationScreen extends javax.swing.JPanel {
      * @return TRUE if all parameters are of the correct type.
      */
     private boolean checkParameters() {
-        if (offerhandler.getOfferShipStack().isEmpty()) {
+        if (offerhandler.getOfferShipList().isEmpty()) {
             incorrectLabel.setText("Introduzca al menos una nave.");
             return false;
         } else {
@@ -165,11 +155,10 @@ public class OfferCreationScreen extends javax.swing.JPanel {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         if (checkParameters()) {
-            ArrayList<Spaceship> shipList = new ArrayList<>(offerhandler.getOfferShipStack());
             Date limitDate = new Date();
             Double price = Double.parseDouble(priceLabel.getText());
-            String offerType = offerhandler.getOfferShipStack().peek().getType();
-            Offer newOffer = new Offer(shipList, limitDate, price, client.getIdNumber(), offerType);
+            String offerType = offerhandler.getOfferShipList().get(0).getType();
+            Offer newOffer = new Offer(offerhandler.getOfferShipList(), limitDate, price, client.getIdNumber(), offerType);
 
             session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
             session.getController().addNewPanel(new ClientMenu(session, client));
@@ -189,22 +178,9 @@ public class OfferCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addShipButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if (offerhandler.getOfferShipStack().size() > offerShipAmount) {
-            offerShipAmount++;
-            addEntry(offerhandler.getOfferShipStack().peek(), shipDisplay);
-            validate();
-        }
-
+        shower.addShips(shipsPanel, offerhandler.getOfferShipList());
     }//GEN-LAST:event_formComponentShown
-    private void addEntry(Spaceship ship, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new ShowShipButton(session, ship));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addShipButton;

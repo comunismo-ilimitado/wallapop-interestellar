@@ -1,15 +1,12 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.shipsForms;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.ShipFactory;
 import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.complementForms.DefenceCreationScreen;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.OfferCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ShipCreationHandler;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.ShipCreationScreen;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -18,9 +15,12 @@ import urjc.grupoo.system.ui.SystemSession;
  */
 public class StationCreationScreen extends javax.swing.JPanel {
 
+    private final int maxDefences = 3;
+    
     private final SystemSession session;
     private final ShipCreationHandler handler;
     private final OfferCreationHandler offerhandler;
+    private final ListShower shower;
 
     /**
      * Creates new form StationCreationScreen
@@ -34,9 +34,8 @@ public class StationCreationScreen extends javax.swing.JPanel {
         this.handler = handler;
         this.offerhandler = offerhandler;
         initComponents();
+        shower = new ListShower(session);
     }
-    
-    
 
     /**
      *
@@ -46,29 +45,16 @@ public class StationCreationScreen extends javax.swing.JPanel {
         if (handler.getDefenceList().isEmpty()) {
             incorrectLabel.setText("Introduzca al menos un sistema de defensa.");
             return false;
+        } else {
+            try {
+                handler.setCargoCapacity(Integer.parseInt(pasangerAmountField.getText()));
+            } catch (NumberFormatException e) {
+                incorrectLabel.setText("Revise los datos introducidos.");
+                return false;
+            }
         }
         incorrectLabel.setText("");
         return true;
-    }
-    
-    private void addDefences() {
-        JPanel defencesList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        defencesPanel.setViewportView(defencesList);
-
-        handler.getDefenceList().forEach((defence) -> {
-            addEntry(defence.getDefenceType(), defencesList);
-        });
-    }
-    
-    private void addEntry(String text, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new JLabel(text));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
     }
 
     /**
@@ -91,6 +77,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         incorrectLabel = new javax.swing.JLabel();
         defencesPanel = new javax.swing.JScrollPane();
+        shipsPanel = new javax.swing.JScrollPane();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -143,36 +130,39 @@ public class StationCreationScreen extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(registerLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(pasangerAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(85, 85, 85)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(262, 262, 262)
-                                    .addComponent(jLabel1))
-                                .addComponent(jLabel2)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(25, 25, 25)
-                                    .addComponent(addDefenceButton)
-                                    .addGap(116, 116, 116)
-                                    .addComponent(addShipButton))
-                                .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(72, 72, 72)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(incorrectLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(doneButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(registerLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pasangerAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(262, 262, 262)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(addDefenceButton)
+                                .addGap(116, 116, 116)
+                                .addComponent(addShipButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(shipsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,34 +180,34 @@ public class StationCreationScreen extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(defencesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shipsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addShipButton)
                     .addComponent(addDefenceButton))
-                .addGap(62, 62, 62)
-                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(doneButton)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         if (checkParameters()) {
-            handler.removeStationCounter();
             handler.setPassangerNumber(Integer.parseInt(pasangerAmountField.getText()));
             Spaceship newShip = new ShipFactory().CreateSpaceship(
                     handler.getType(), handler.getCrewNumber(), handler.getPropulsion1(), handler.getSpeed(),
                     handler.getPropulsion2(), handler.getSpeed(), handler.getRegNumber(),
-                    handler.getPassangerNumber(), handler.getDefenceList(), handler.getShipList());
-            if (handler.getStationCounter() == 0) {
+                    handler.getPassangerNumber(), handler.getDefenceList(), offerhandler.getShipList());
+            offerhandler.removeShipList();
+            if (offerhandler.isStationShipsListsEmpty()) {
                 offerhandler.addShipToOffer(newShip);
-                System.out.println("Naves dentro: " + newShip.getSpaceshipList().size());
             } else {
-                handler.addShip(newShip);
-                System.out.println("Naves en el handler: " + handler.getShipList().size());
+                offerhandler.addShip(newShip);
             }
             session.getController().goBack();
             session.getController().goBackToCheckPoint();
@@ -236,7 +226,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addShipButtonActionPerformed
 
     private void addDefenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDefenceButtonActionPerformed
-        if (handler.getDefenceList().size() < 3) {
+        if (handler.getDefenceList().size() < maxDefences) {
             session.getController().addNewPanel(new DefenceCreationScreen(session, handler));
             incorrectLabel.setText("");
         } else {
@@ -245,7 +235,8 @@ public class StationCreationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_addDefenceButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        addDefences();
+        shower.addDefences(defencesPanel, handler.getDefenceList());
+        shower.addShips(shipsPanel, offerhandler.getShipList());
     }//GEN-LAST:event_formComponentShown
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -260,6 +251,7 @@ public class StationCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField pasangerAmountField;
     private javax.swing.JLabel registerLabel2;
+    private javax.swing.JScrollPane shipsPanel;
     // End of variables declaration//GEN-END:variables
 
 }

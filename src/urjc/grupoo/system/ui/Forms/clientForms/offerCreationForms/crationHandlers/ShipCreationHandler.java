@@ -15,14 +15,6 @@ public class ShipCreationHandler {
     private String type;
     private String regNumber;
     private double speed;
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
     private int crewNumber;
     private int passangerNumber;
     private int cargoCapacity;
@@ -31,20 +23,11 @@ public class ShipCreationHandler {
     private final ArrayList<Weapon> weaponList = new ArrayList<>();
     private String defenceType;
     private final ArrayList<DefenceSystem> defenceList = new ArrayList<>();
-    private final ArrayList<Spaceship> shipList = new ArrayList<>();
-    private int stationCounter = 0;
+    
+    
 
-    public void addStationCounter() {
-        stationCounter++;
-    }
-
-    public int getStationCounter() {
-        return stationCounter;
-    }
-
-    public void removeStationCounter() {
-        stationCounter--;
-    }
+    
+    
 
     public String getDefenceType() {
         return defenceType;
@@ -85,6 +68,14 @@ public class ShipCreationHandler {
     public int getCrewNumber() {
         return crewNumber;
     }
+    
+     public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     public int getPassangerNumber() {
         return passangerNumber;
@@ -102,9 +93,7 @@ public class ShipCreationHandler {
         return defenceList;
     }
 
-    public ArrayList<Spaceship> getShipList() {
-        return shipList;
-    }
+   
 
     public void setNewShip(Spaceship newShip) {
         this.newShip = newShip;
@@ -138,9 +127,7 @@ public class ShipCreationHandler {
         defenceList.add(newDefenceSystem);
     }
 
-    public void addShip(Spaceship newship) {
-        shipList.add(newship);
-    }
+    
 
     public void onShipCreated(Spaceship ship) {
 

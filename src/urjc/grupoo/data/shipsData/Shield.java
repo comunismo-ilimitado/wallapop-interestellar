@@ -1,5 +1,7 @@
 package urjc.grupoo.data.shipsData;
 
+import java.util.Objects;
+
 public class Shield extends DefenceSystem {
 
     private double neededEnergy;
@@ -23,14 +25,18 @@ public class Shield extends DefenceSystem {
         this.neededEnergy = neededEnergy;
     }
 
-    public boolean equals(Shield x) {
-        boolean a = false;
-        boolean c = false;
-        if (this.getDefenceType()==x.getDefenceType()){
-            Shield o = (Shield) x;
-            a = this.getNeededEnergy()==o.getNeededEnergy();
-            c= this.getDamageAllowed()==o.getDamageAllowed();
-        }
-        return  a  && c;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Shield)) return false;
+        if (!super.equals(o)) return false;
+        Shield shield = (Shield) o;
+        return Double.compare(shield.getNeededEnergy(), getNeededEnergy()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getNeededEnergy());
     }
 }

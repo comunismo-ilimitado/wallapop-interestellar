@@ -47,10 +47,10 @@ public class ShipCreationScreen extends javax.swing.JPanel {
             handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
             String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
             
-            if(!checkRegNumber(registerTextField.getText())){
-                incorrectLabel.setText("Formato de registro incorrecto. Formato: LNNNNLLL");
-                return false;
-            }
+//            if(!checkRegNumber(registerTextField.getText())){
+//                incorrectLabel.setText("Formato de registro incorrecto. Formato: LNNNNLLL");
+//                return false;
+//            }
             
             switch (selectedPropulsion1) {
                 case "Motor de curvatura":
@@ -283,7 +283,7 @@ public class ShipCreationScreen extends javax.swing.JPanel {
                     session.getController().addNewPanel(new FighterCreationScreen(session, handler, offerhandler));
                     break;
                 case "Estación Espacial":
-                    handler.addStationCounter();
+                    offerhandler.addStationShipList();
                     handler.setType(Spaceship.station);
                     session.getController().addNewPanel(new StationCreationScreen(session, handler, offerhandler));
                     break;

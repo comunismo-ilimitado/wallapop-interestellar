@@ -1,11 +1,7 @@
 package urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms;
 
-import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.buttons.ShowShipButton;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import urjc.grupoo.data.shipsData.Spaceship;
+import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.SystemSession;
 
 /**
@@ -15,11 +11,6 @@ import urjc.grupoo.system.ui.SystemSession;
 public class ShowShip extends javax.swing.JPanel {
 
     private final SystemSession session;
-    private final Spaceship ship;
-    private JPanel propulsionList;
-    private JPanel defencesList;
-    private JPanel weaponsList;
-    private JPanel shipsList;
 
     /**
      * Creates new form SubsciptionsScreen
@@ -29,88 +20,27 @@ public class ShowShip extends javax.swing.JPanel {
      */
     public ShowShip(SystemSession session, Spaceship ship) {
         this.session = session;
-        this.ship = ship;
+        
+        ListShower shower = new ListShower(session);
+        
         initComponents();
-
-        shipTypeField.setText(ship.getType());
+        
+        String type = ship.getType();
+        shipTypeField.setText(type);
+            
         registerField.setText(ship.getRegisterNumber());
         maxSpeedField.setText(Double.toString(ship.getSecondpropulsion().getMaxSpeed()));
         crewNumberField.setText(Integer.toString(ship.getCrewMembersAmount()));
         pasangerNumberField.setText(Integer.toString(ship.getPassengersLimit()));
         maxCargoField.setText(Integer.toString(ship.getMaxCargo()));
-        addPropulsions();
-        addDefences();
-        if (ship.getWeaponList() != null) {
-            addWeapons();
-        }
-        if (ship.getSpaceshipList() != null) {
-            addShips();
-        }
+        
+        shower.addPropulsions(propulsionPanel, ship.getFirstpropulsion(), ship.getSecondpropulsion());
+        shower.addDefences(defencesPanel, ship.getDefenceList());
+        shower.addWeapons(weaponsPanel, ship.getWeaponList());
+        shower.addShips(shipsPanel, ship.getSpaceshipList());
+ 
     }
-
-    private void addPropulsions() {
-        propulsionList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        propulsionList.add(new JPanel(), gbc);
-        propulsionPanel.setViewportView(propulsionList);
-
-        addEntry(ship.getFirstpropulsion().getName(), propulsionList);
-        addEntry(ship.getSecondpropulsion().getName(), propulsionList);
-    }
-
-    private void addDefences() {
-        defencesList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        defencesList.add(new JPanel(), gbc);
-        defencesPanel.setViewportView(defencesList);
-
-        ship.getDefenceList().forEach((defence) -> {
-            addEntry(defence.getDefenceType(), defencesList);
-        });
-    }
-
-    private void addWeapons() {
-        weaponsList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        weaponsList.add(new JPanel(), gbc);
-        weaponsPanel.setViewportView(weaponsList);
-        ship.getWeaponList().forEach((weapon) -> {
-            addEntry(weapon.getName() + " " + weapon.getPower() + " " + "GJ", weaponsList);
-        });
-    }
-
-    private void addShips() {
-        shipsList = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        shipsList.add(new JPanel(), gbc);
-        shipsPanel.setViewportView(shipsList);
-
-        ship.getSpaceshipList().forEach((ship) -> {
-            addEntry(ship.getType(), shipsList);
-            addButton(ship, shipsList);
-        });
-    }
-
-    private void addButton(Spaceship ship, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new ShowShipButton(session, ship));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
-    }
-
-    private void addEntry(String text, JPanel displayList) {
-        JPanel panel = new JPanel();
-        panel.add(new JLabel(text));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.weightx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        displayList.add(panel, gbc, 0);
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

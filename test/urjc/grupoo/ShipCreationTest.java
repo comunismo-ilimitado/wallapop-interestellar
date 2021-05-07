@@ -88,7 +88,7 @@ public class ShipCreationTest {
         
         defenceList.clear();
         defenceList.add(new ShipFactory().CreateDefence(20, 20, "Wood"));
-        defenceList.add(new ShipFactory().CreateDefence(34, 1223));
+        //defenceList.add(new ShipFactory().CreateDefence(34, 1223));
 
         return new ShipFactory().CreateSpaceship(
                     Spaceship.station, crewNumber, propulsionType1, speed,
