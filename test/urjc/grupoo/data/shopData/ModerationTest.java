@@ -1,10 +1,16 @@
 package urjc.grupoo.data.shopData;
 
+import java.io.File;
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import urjc.grupoo.OfferCreationTest;
+import org.junit.Before;
+import urjc.grupoo.TestLib;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.system.backend.AdminFacade;
 import urjc.grupoo.system.backend.ClientFacade;
+import urjc.grupoo.system.backend.Database;
+import urjc.grupoo.system.backend.Manager;
 import urjc.grupoo.system.backend.ShopSystem;
 
 /**
@@ -14,43 +20,51 @@ import urjc.grupoo.system.backend.ShopSystem;
  */
 public class ModerationTest {
 
+    ShopSystem system;
+    AdminFacade admin;
+    ClientFacade clients;
+    
+    
+    
     public ModerationTest() {
     }
+    
+    
+    
+    
+    @Before
+    public void setUp() {
+        TestLib.deleteDirectory(new File(Database.savefolder));
+        system = TestLib.setUpSystem();
+        clients = new ClientFacade(system);
+        admin = new AdminFacade(system);
+    }
+    
+    String planet1 = "Luna";
+    String species1 = "Azul";
+    String name1 = "Lucas";
+    String nick1 = "Luquitas2";
+    String password1 = "holahola";
+    String email1 = "lucas@gmail.com";
+    String planet2 = "Sol";
+    String species2 = "Rojo";
+    String name2 = "Marcos";
+    String nick2 = "Marquitos2";
+    String password2 = "hola";
+    String email2 = "marcos@gmail.com";
+    
 
-    
-        String planet1 = "Luna";
-        String species1 = "Azul";
-        String name1 = "Lucas";
-        String nick1 = "Luquitas2";
-        String password1 = "holahola";
-        String email1 = "lucas@gmail.com";
-        String planet2 = "Sol";
-        String species2 = "Rojo";
-        String name2 = "Marcos";
-        String nick2 = "Marquitos2";
-        String password2 = "hola";
-        String email2 = "marcos@gmail.com";
-        
-        ShopSystem system = new ShopSystem();
-        AdminFacade admin = new AdminFacade(system);
-        ClientFacade clients = new ClientFacade(system);
-    
-    
-    
-    
     /**
      * Test para comprobar que un cliente es incluido correctamente en la lista
      * de fraude
      */
     @Test
     public void testInFraudList() {
-        
 
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
-        system.start();
         clients.registerClient(client);
         admin.reportUserOfFraud(client.getIdNumber());
-        assertTrue(client.getLicense().isFraudSuspect());
+        assertEquals(client.getLicense().isFraudSuspect(), true);
 
     }
 
@@ -62,10 +76,9 @@ public class ModerationTest {
     public void testInPirateList() {
 
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
-        system.start();
         clients.registerClient(client);
         admin.reportUserOfPiracy(client.getIdNumber());
-        assertTrue(client.getLicense().isPirateSuspect());
+        assertEquals(client.getLicense().isPirateSuspect(),true);
 
     }
 
@@ -75,9 +88,8 @@ public class ModerationTest {
      */
     @Test
     public void testNoInFraudList() {
-        
+
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
-        system.start();
         clients.registerClient(client);
         admin.reportUserOfFraud(client.getIdNumber());
         assertTrue(client.getLicense().isFraudSuspect());
@@ -92,11 +104,10 @@ public class ModerationTest {
      */
     @Test
     public void testNoInPirateList() {
-        
+
         //Reportamos dos clientes de piratería, quitamos solo 1 y comprobamos
         Client client1 = new Client(planet1, species1, name1, nick1, password1, email1);
         Client client2 = new Client(planet2, species2, name2, nick2, password2, email2);
-        system.start();
         clients.registerClient(client1);
         clients.registerClient(client2);
         admin.reportUserOfPiracy(client1.getIdNumber());
@@ -112,8 +123,9 @@ public class ModerationTest {
      */
     @Test
     public void testBanned() {
-  
+
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
+        clients.registerClient(client);
         client.getLicense().setBanned(true);
         assertTrue(client.getLicense().isBanned());
 
@@ -123,16 +135,14 @@ public class ModerationTest {
      * Test para comprobar que un cliente es baneado correctamente por subir más
      * de 2 ofertas inadecuadas
      */
+    @Test
     public void testBanned2() {
 
-        //Creamos ofertas 1 y 2
-        OfferCreationTest offercreate = new OfferCreationTest();
-        Offer newOffer1 = offercreate.createTestOffer();
-        Offer newOffer2 = offercreate.createTestOffer();
+        Offer newOffer1 = TestLib.testOffer(Spaceship.fighter);
+        Offer newOffer2 = TestLib.testOffer(Spaceship.fighter);
 
         //Creamos cliente
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
-        system.start();
         clients.registerClient(client);
 
         //Subimos ofertas 1 y 2
@@ -144,14 +154,16 @@ public class ModerationTest {
         admin.moderateOffer(newOffer2.getOfferId(), false);
 
         //Cliente baneado, se comprueba que es correcto
-        assertFalse(client.getLicense().isBanned());
-        
-//        //Actualizo sistema
-//        Manager manager = new Manager(system);
-//        manager.run();
-//
-//        //Coimpruebo que está desbaneado
-//        assertFalse(client.getLicense().isBanned());
+        assertTrue(client.getLicense().isBanned());
 
+        //Sumamos 5 días a la fecha actual
+        long DAY_IN_MS = 1000 * 60 * 60 * 24;
+        Date d = new Date(System.currentTimeMillis()- (5 * DAY_IN_MS + 1));
+        client.getLicense().setLastBanned(d);
+        Manager manager = new Manager(system);
+        manager.run();
+
+        //Coimpruebo que está desbaneado
+        assertFalse(client.getLicense().isBanned());
     }
 }
