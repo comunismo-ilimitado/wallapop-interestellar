@@ -31,18 +31,17 @@ public abstract class DefenceSystem implements Serializable {
         this.damageAllowed = damageAllowed;
     }
 
-    public boolean equals(DefenceSystem o){
-        boolean a= false;
-        if (this.defenceType==Spaceship.armor){
-            Armor that = (Armor) this;
-            a = that.equals(o);
-        }
-        if (this.defenceType==Spaceship.shield){
-            Shield that = (Shield) this;
-            a = that.equals(o);
-        }
-        return a;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DefenceSystem)) return false;
+        DefenceSystem that = (DefenceSystem) o;
+        return Double.compare(that.getDamageAllowed(), getDamageAllowed()) == 0 && Objects.equals(getDefenceType(), that.getDefenceType());
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDamageAllowed(), getDefenceType());
+    }
 }

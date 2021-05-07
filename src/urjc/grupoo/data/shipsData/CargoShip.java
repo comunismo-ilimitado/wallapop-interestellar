@@ -41,17 +41,19 @@ public class CargoShip extends Spaceship {
         setMaxCargo(j);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CargoShip)) return false;
+        if (!super.equals(o)) return false;
         CargoShip cargoShip = (CargoShip) o;
         return getMaxCargo() == cargoShip.getMaxCargo() && Objects.equals(getDefence(), cargoShip.getDefence());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDefence(), getMaxCargo());
+        return Objects.hash(super.hashCode(), getDefence(), getMaxCargo());
     }
 }
 
