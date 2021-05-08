@@ -47,10 +47,10 @@ public class ShipCreationScreen extends javax.swing.JPanel {
             handler.setCrewNumber(Integer.parseInt(tripulantsTextField.getText()));
             String selectedPropulsion1 = (String) propulsion1Selector.getSelectedItem();
             
-//            if(!checkRegNumber(registerTextField.getText())){
-//                incorrectLabel.setText("Formato de registro incorrecto. Formato: LNNNNLLL");
-//                return false;
-//            }
+            if(!checkRegNumber(registerTextField.getText())){
+                incorrectLabel.setText("Formato de registro incorrecto. Formato: LNNNNLLL");
+                return false;
+            }
             
             switch (selectedPropulsion1) {
                 case "Motor de curvatura":

@@ -23,15 +23,10 @@ public class ModerationTest {
     ShopSystem system;
     AdminFacade admin;
     ClientFacade clients;
-    
-    
-    
+
     public ModerationTest() {
     }
-    
-    
-    
-    
+
     @Before
     public void setUp() {
         TestLib.deleteDirectory(new File(Database.savefolder));
@@ -39,7 +34,7 @@ public class ModerationTest {
         clients = new ClientFacade(system);
         admin = new AdminFacade(system);
     }
-    
+
     String planet1 = "Luna";
     String species1 = "Azul";
     String name1 = "Lucas";
@@ -52,7 +47,6 @@ public class ModerationTest {
     String nick2 = "Marquitos2";
     String password2 = "hola";
     String email2 = "marcos@gmail.com";
-    
 
     /**
      * Test para comprobar que un cliente es incluido correctamente en la lista
@@ -78,7 +72,7 @@ public class ModerationTest {
         Client client = new Client(planet1, species1, name1, nick1, password1, email1);
         clients.registerClient(client);
         admin.reportUserOfPiracy(client.getIdNumber());
-        assertEquals(client.getLicense().isPirateSuspect(),true);
+        assertEquals(client.getLicense().isPirateSuspect(), true);
 
     }
 
@@ -158,12 +152,12 @@ public class ModerationTest {
 
         //Sumamos 5 días a la fecha actual
         long DAY_IN_MS = 1000 * 60 * 60 * 24;
-        Date d = new Date(System.currentTimeMillis()- (5 * DAY_IN_MS + 1));
+        Date d = new Date(System.currentTimeMillis() - (5 * DAY_IN_MS + 1));
         client.getLicense().setLastBanned(d);
         Manager manager = new Manager(system);
         manager.run();
 
-        //Coimpruebo que está desbaneado
+        //Compruebo que está desbaneado
         assertFalse(client.getLicense().isBanned());
     }
 }
