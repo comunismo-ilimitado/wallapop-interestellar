@@ -161,7 +161,8 @@ public class OfferCreationScreen extends javax.swing.JPanel {
             Offer newOffer = new Offer(offerhandler.getOfferShipList(), limitDate, price, client.getIdNumber(), offerType);
 
             session.getClientFacade().uploadOffer(client.getIdNumber(), newOffer);
-            session.getController().addNewPanel(new ClientMenu(session, client));
+            session.getController().goBack();
+            session.getController().goBackToCheckPoint();
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 

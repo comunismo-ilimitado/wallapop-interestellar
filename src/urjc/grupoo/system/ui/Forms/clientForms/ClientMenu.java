@@ -171,6 +171,7 @@ public class ClientMenu extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void subcriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subcriptionsActionPerformed

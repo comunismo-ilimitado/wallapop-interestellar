@@ -100,7 +100,6 @@ public class UserInteractionTest {
         adminFacade.moderateOffer(offer.getOfferId(), true);
         
         Collection<Offer> roffers = clientFacade.getOffers(Spaceship.fighter);
-        System.out.println(clientFacade.getOffer(offer.getOfferId(), Spaceship.fighter).getPrice());
         assertEquals(roffers.contains(offer), true);
     }
     
