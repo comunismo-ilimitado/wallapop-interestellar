@@ -133,7 +133,7 @@ public class AdminMenu extends javax.swing.JPanel {
      */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         session.getController().goBack();
-        setVisible(false);
+        session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**

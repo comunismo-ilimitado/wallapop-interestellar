@@ -47,7 +47,7 @@ public class SearchOfferScreen extends javax.swing.JPanel {
             }
         });
 
-        searchButton.setText("buscar");
+        searchButton.setText("Buscar");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);

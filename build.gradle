@@ -11,7 +11,7 @@ sourceSets {
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 group 'urjc.grupoo'
-version 'b0.1'
+version '1.0'
 
 ext {
     javaMainClass = "urjc.grupoo.MainInterstellarWallapop"
