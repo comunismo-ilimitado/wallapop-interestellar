@@ -165,7 +165,8 @@ public class ClientCreationScreen extends javax.swing.JPanel {
         Client newClient = new Client(
                 clientAtributes.get(0), clientAtributes.get(1), clientAtributes.get(2),
                 clientAtributes.get(3), clientAtributes.get(4), clientAtributes.get(5));
-        newClient.getLicense().setBuysWeapon(kromaggLicense.isSelected());
+        if("Kromagg".equals(speciesTextField.getText()))
+            newClient.getLicense().setBuysWeapon(kromaggLicense.isSelected());
         session.getClientFacade().registerClient(newClient);
         session.getController().goBackToCheckPoint();
     }//GEN-LAST:event_doneButtonActionPerformed

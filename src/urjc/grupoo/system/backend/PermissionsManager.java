@@ -17,7 +17,7 @@ public class PermissionsManager {
                 break;
             case BuyWeaponizedShip:
                 r = !client.getLicense().isPirateSuspect();
-                //r = r&client.getLicense().isBuysWeapon();
+                r = r&client.getLicense().isBuysWeapon();
                 break;
             case Buy:
                 r = !client.getLicense().isFraudSuspect();
