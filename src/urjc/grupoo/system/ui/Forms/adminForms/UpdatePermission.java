@@ -37,7 +37,7 @@ public class UpdatePermission extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         piracy = new javax.swing.JCheckBox();
         fraud = new javax.swing.JCheckBox();
-        incorrect = new javax.swing.JLabel();
+        incorrectLabel = new javax.swing.JLabel();
 
         clientLabel.setText("Introduce el ID del cliente");
 
@@ -69,6 +69,8 @@ public class UpdatePermission extends javax.swing.JPanel {
             }
         });
 
+        incorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +78,9 @@ public class UpdatePermission extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(doneButton, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                         .addGap(253, 253, 253))
@@ -90,8 +95,7 @@ public class UpdatePermission extends javax.swing.JPanel {
                                 .addComponent(piracy)
                                 .addGap(93, 93, 93)
                                 .addComponent(fraud))
-                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(incorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -103,13 +107,13 @@ public class UpdatePermission extends javax.swing.JPanel {
                     .addComponent(backButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(incorrect)
-                .addGap(24, 24, 24)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(piracy)
                     .addComponent(fraud))
-                .addGap(68, 68, 68)
+                .addGap(38, 38, 38)
+                .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doneButton)
                 .addGap(80, 80, 80))
         );
@@ -124,19 +128,23 @@ public class UpdatePermission extends javax.swing.JPanel {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
 
         String idUser = userTextField.getText();
-        if (idUser != null) {
-            if (piracy.isSelected()) {
-                session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
-            } else {
-                session.getAdminFacade().resolveUserReportOfPiracy(Integer.getInteger(idUser));
+        try {
+            int id = Integer.parseInt(idUser);
+            incorrectLabel.setText("");
+            if (idUser != null) {
+                if (piracy.isSelected()) {
+                    session.getAdminFacade().reportUserOfPiracy(id);
+                } else {
+                    session.getAdminFacade().resolveUserReportOfPiracy(id);
+                }
+                if (fraud.isSelected()) {
+                    session.getAdminFacade().reportUserOfFraud(id);
+                } else {
+                    session.getAdminFacade().resolveUserReportOfFraud(id);
+                }
             }
-            if (fraud.isSelected()) {
-                session.getAdminFacade().reportUserOfFraud(Integer.getInteger(idUser));
-            } else {
-                session.getAdminFacade().resolveUserReportOfFraud(Integer.getInteger(idUser));
-            }
-        } else {
-            incorrect.setText("Usuario no encontrado");
+        } catch (NumberFormatException e) {
+            incorrectLabel.setText("Introduzca un ID válido");
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -164,7 +172,7 @@ public class UpdatePermission extends javax.swing.JPanel {
     private javax.swing.JLabel clientLabel;
     private javax.swing.JButton doneButton;
     private javax.swing.JCheckBox fraud;
-    private javax.swing.JLabel incorrect;
+    private javax.swing.JLabel incorrectLabel;
     private javax.swing.JCheckBox piracy;
     private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables

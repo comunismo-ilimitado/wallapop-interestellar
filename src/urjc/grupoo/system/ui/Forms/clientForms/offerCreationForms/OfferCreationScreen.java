@@ -5,7 +5,6 @@ import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandler
 import java.util.Date;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.Offer;
-import urjc.grupoo.system.ui.Forms.clientForms.ClientMenu;
 import urjc.grupoo.system.ui.Forms.clientForms.offerCreationForms.crationHandlers.ListShower;
 import urjc.grupoo.system.ui.SystemSession;
 

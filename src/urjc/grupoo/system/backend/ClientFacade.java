@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import urjc.grupoo.data.shipsData.Spaceship;
 import urjc.grupoo.data.shopData.Client;
 import urjc.grupoo.data.shopData.ClientComment;
 import urjc.grupoo.data.shopData.Offer;
@@ -89,7 +90,7 @@ public class ClientFacade {
         }
 
         // chequear que el usuario puede comprar armas
-        if (!offerType.equals("Cargo") && !system.getPermissionsManager()
+        if (!offerType.equals(Spaceship.cargo) && !system.getPermissionsManager()
                 .checkPermission(PermissionsManager.Permission.BuyWeaponizedShip, c)) {
             return false;
         }

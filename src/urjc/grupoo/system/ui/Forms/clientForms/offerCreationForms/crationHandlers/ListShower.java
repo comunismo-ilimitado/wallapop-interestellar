@@ -63,7 +63,7 @@ public class ListShower {
 
         if (list != null) {
             list.forEach((defence) -> {
-                addEntry(defence.getDefenceType(), defencesList);
+                addEntry(defence.getDefenceType() + " " + defence.getDamageAllowed() + " GJ", defencesList);
             });
         }
     }
@@ -76,7 +76,7 @@ public class ListShower {
 
         if (list != null) {
             list.forEach((weapon) -> {
-                addEntry(weapon.getName() + " " + weapon.getPower() + " " + "GJ", weaponsList);
+                addEntry(weapon.getName() + " " + weapon.getPower() + " GJ", weaponsList);
             });
         }
     }

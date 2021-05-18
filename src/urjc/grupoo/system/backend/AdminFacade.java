@@ -86,6 +86,7 @@ public class AdminFacade {
         if (clients.getClientList().containsKey(clientId)) {
             Client client = clients.getClientList().get(clientId);
             client.getLicense().setFraudSuspect(true);
+            client.getLicense().setBanned(true);
         }
     }
 
@@ -106,6 +107,7 @@ public class AdminFacade {
         if (clients.getClientList().containsKey(clientId)) {
             Client client = clients.getClientList().get(clientId);
             client.getLicense().setFraudSuspect(false);
+            client.getLicense().setBanned(false);
         }
     }
 
